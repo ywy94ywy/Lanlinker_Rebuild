@@ -1,0 +1,56 @@
+@import '../../../styles/variables.less';
+
+.switchSystems {
+  display: flex;
+  height: 100%;
+  .switcher {
+    width: 40px;
+    .hover-background-white;
+    .center;
+  }
+  .systems {
+    padding: 0 10px;
+  }
+  .sysPanel {
+    width: 480px;
+    .dropdown-panel;
+    .system {
+      width: 160px;
+      height: 160px;
+      float: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+      &:hover {
+        .hover-background;
+      }
+      .icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(
+          180deg,
+          rgb(113, 187, 255) 0%,
+          rgb(24, 144, 255) 100%
+        );
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > .i {
+          color: #fff;
+          font-size: 35px;
+        }
+      }
+      .title {
+        margin-top: 18px;
+      }
+    }
+    :global {
+      .ant-card-body {
+        padding: 0;
+      }
+    }
+  }
+}

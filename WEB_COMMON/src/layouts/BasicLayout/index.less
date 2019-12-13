@@ -1,0 +1,102 @@
+@import '../../../styles/variables.less';
+
+.themeWrapper {
+  height: 100%;
+  position: relative;
+  > .bgwrapper {
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    position: fixed;
+    > .bg {
+      height: inherit;
+      background: var(--background, #1c1f87);
+      background-size: cover;
+      // transform: scale(1.01);
+      // filter: blur(3px);
+    }
+  }
+  > .basicLayout {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    .headerContent {
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      font-size: var(--fontSize, 14px);
+      i {
+        font-size: calc(var(--fontSize, 14px) + 2px);
+      }
+      > .left {
+        width: 300px;
+        margin-left: 4px;
+      }
+      > .middle {
+        width: fit-content;
+      }
+      > .right {
+        width: 200px;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 14px;
+        margin-left: auto;
+      }
+    }
+  }
+  :global {
+    .ant-layout-has-sider {
+      background: transparent;
+      height: auto !important;
+      > .ant-pro-sider-menu-sider {
+        background: transparent;
+        box-shadow: none;
+        > .ant-layout-sider-children {
+          > .ant-pro-sider-menu-logo {
+            background: transparent;
+          }
+          > .ant-pro-sider-menu {
+            padding: 0 !important;
+            background: transparent;
+            .ant-menu-inline {
+              background: transparent;
+              box-shadow: none;
+            }
+            .ant-menu-submenu-title,
+            .ant-menu-item {
+              margin: 0;
+              font-size: var(--fontSize, 14px);
+              i {
+                font-size: var(--fontSize, 14px);
+              }
+            }
+            .ant-menu-submenu-open {
+              > .ant-menu-submenu-title {
+                background: rgba(255, 255, 255, 0.15);
+              }
+            }
+            > .ant-menu-submenu {
+              > .ant-menu-submenu-title {
+                height: 60px;
+                line-height: 60px;
+              }
+            }
+            .ant-menu-item-selected {
+              background-color: rgba(0, 0, 0, 0.15);
+            }
+          }
+        }
+      }
+      > .ant-layout {
+        min-height: 100vh;
+        background: transparent;
+        > .ant-layout-header {
+          background: transparent;
+        }
+        > .ant-layout-content {
+          background: #f0f2f5;
+        }
+      }
+    }
+  }
+}

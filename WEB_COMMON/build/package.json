@@ -1,0 +1,30 @@
+{
+  "name": "lanlinker",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "config",
+    "styles"
+  ],
+  "scripts": {
+    "dev": "umi dev",
+    "build": "father build",
+    "copy": "build.bat"
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^4.9.7",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "antd": "^3.26.0",
+    "classnames": "^2.2.6",
+    "react-resizable": "^1.10.1",
+    "umi": "^2.12.5"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.0",
+    "father": "^2.29.0"
+  }
+}
