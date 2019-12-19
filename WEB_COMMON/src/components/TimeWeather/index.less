@@ -1,0 +1,42 @@
+@import '../../../style/index.less';
+
+.timeWeather {
+  position: relative;
+  height: 100%;
+  .wrapper {
+    position: absolute;
+    width: 460px;
+    height: 32px;
+    border-radius: 16px;
+    line-height: 30px;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid @normal-color;
+    padding: 0 30px;
+    font-size: var(--fontSize, 14px);
+    color: @normal-color;
+    display: flex;
+    justify-content: space-around;
+    span:not(:last-child) {
+      margin-right: 8px;
+    }
+    .iconWrapper {
+      display: flex;
+      align-items: center;
+      > i {
+        margin-right: 8px;
+      }
+    }
+    .weather {
+      :global {
+        .sw-container {
+          color: @normal-color;
+          .sw-typography {
+            font-size: var(--fontSize, 14px);
+          }
+        }
+      }
+    }
+  }
+}

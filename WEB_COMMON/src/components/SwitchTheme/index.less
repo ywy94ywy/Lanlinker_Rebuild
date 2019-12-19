@@ -1,16 +1,19 @@
-@import '../../../styles/variables.less';
+@import '../../../style/index.less';
 
 .switchTheme {
   width: 40px;
-  .hover-background-white;
+  .background-dark-hover;
   .center;
+  > i {
+    font-size: calc(var(--fontSize, 14px) + 2px);
+  }
 }
 
 .themePanel {
   width: 350px;
   .wrapper {
     padding: 8px 0;
-    .dropdown-panel;
+    .header-panel;
     .title {
       font-size: 16px;
       font-weight: bold;
@@ -20,7 +23,7 @@
     .list() {
       padding: 16px 40px;
       display: flex;
-      border-bottom: @border-2;
+      border-bottom: @border-width-base @border-style-base @border-color-base;
     }
     .fontList {
       .list;
@@ -44,7 +47,7 @@
         height: 40px;
         border-radius: 50%;
         cursor: pointer;
-        .center
+        .center;
       }
       .rectangle {
         width: 60px;

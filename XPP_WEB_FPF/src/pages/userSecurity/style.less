@@ -1,0 +1,92 @@
+@import '~lanlinker/style/index.less';
+
+.userSecurity {
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  overflow: auto;
+  background-color: @menu-bg;
+  .leftMenu {
+    width: 224px;
+    border-right: @border-width-base @border-style-base @border-color-split;
+    :global {
+      .ant-menu-inline {
+        border: none;
+      }
+      .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        font-weight: bold;
+      }
+    }
+  }
+  .right {
+    flex: 1;
+    padding: 8px 40px;
+    .title {
+      margin-bottom: 12px;
+      .h3;
+    }
+  }
+  :global {
+    .ant-list-split .ant-list-item:last-child {
+      border-bottom: @border-width-base @border-style-base @border-color-split;
+    }
+    .ant-list-item {
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+  }
+  // .card {
+  //   min-height: @height;
+  //   .row {
+  //     min-height: @height;
+  //   }
+  //   .left {
+  //     width: 210px;
+  //     border-right: @border-1;
+  //     box-sizing: border-box;
+  //   }
+  //   .right {
+  //     flex: 1;
+  //   }
+  //   :global {
+  //     .ant-card-body {
+  //       min-height: @height;
+  //       padding-left: 0;
+  //       .ant-menu {
+  //         border-right: none;
+  //         .ant-menu-item {
+  //           height: 50px;
+  //           line-height: 50px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // .management {
+  //   padding-left: 30px;
+  //   .manageCard {
+  //     height: 60px;
+  //     border-bottom: @border-2;
+  //     margin-bottom: 20px;
+  //     &:first-of-type {
+  //       margin-top: 18px;
+  //     }
+  //     .strong {
+  //       color: @strong-color;
+  //     }
+  //   }
+  // }
+}
+
+// 密码强度
+:global {
+  .strong {
+    color: @success-color;
+  }
+  .medium {
+    color: @warning-color;
+  }
+  .weak {
+    color: @error-color;
+  }
+}

@@ -1,10 +1,12 @@
-import request from '@/utils/request';
+import axios from '@/utils/request';
+
 export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
+  return axios.get('/login/account', {
     method: 'POST',
     data: params,
   });
 }
+
 export async function getFakeCaptcha(mobile) {
-  return request(`/api/login/captcha?mobile=${mobile}`);
+  return axios.get(`/login/captcha?mobile=${mobile}`);
 }

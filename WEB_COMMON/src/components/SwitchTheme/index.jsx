@@ -63,6 +63,7 @@ const setTheme = (name, value) => {
 const getTheme = name => {
   return document.documentElement.style.getPropertyValue(name)
 }
+
 const defaultTheme = {
   fontSize: themeData.fontSize[0].value,
   background: themeData.background[0].value[0],
@@ -76,7 +77,6 @@ export default () => {
       overlayClassName={style.themePanel}
       overlay={<Content></Content>}
       trigger={['click']}
-      getPopupContainer={trigger => trigger.parentNode}
     >
       <div className={style.switchTheme}>
         <Icon type='skin'></Icon>

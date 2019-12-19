@@ -2,7 +2,7 @@ import 'antd/lib/result/style';
 import _Result from 'antd/lib/result';
 import 'antd/lib/spin/style';
 import _Spin from 'antd/lib/spin';
-import React, { useState, useEffect, useMemo, Fragment } from 'react';
+import React, { useMemo, useState, Fragment, forwardRef, useRef, useEffect } from 'react';
 import { BasicLayout, PageHeaderWrapper } from '@ant-design/pro-layout';
 import Link from 'umi/link';
 import 'antd/lib/dropdown/style';
@@ -15,14 +15,25 @@ import 'antd/lib/radio/style';
 import _Radio from 'antd/lib/radio';
 import 'antd/lib/icon/style';
 import _Icon from 'antd/lib/icon';
-import 'antd/lib/list/style';
-import _List from 'antd/lib/list';
 import 'antd/lib/badge/style';
 import _Badge from 'antd/lib/badge';
-import 'antd/lib/tabs/style';
-import _Tabs from 'antd/lib/tabs';
 import 'antd/lib/card/style';
 import _Card from 'antd/lib/card';
+import 'antd/lib/select/style';
+import _Select from 'antd/lib/select';
+import 'antd/lib/input/style';
+import _Input from 'antd/lib/input';
+import 'antd/lib/tree/style';
+import _Tree from 'antd/lib/tree';
+import classnames from 'classnames';
+import 'antd/lib/col/style';
+import _Col from 'antd/lib/col';
+import 'antd/lib/form/style';
+import _Form from 'antd/lib/form';
+import 'antd/lib/table/style';
+import _Table from 'antd/lib/table';
+import { Resizable } from 'react-resizable';
+import moment from 'moment';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -216,8 +227,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".src-layouts-BasicLayout-_themeWrapper_rmGOJ {\n  height: 100%;\n  position: relative;\n  overflow: hidden;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_bg_2V2Ya {\n  width: 100%;\n  height: 100%;\n  background: var(--background, #1c1f87);\n  background-size: cover;\n  position: absolute;\n  -webkit-transform: scale(1.01);\n          transform: scale(1.01);\n  -webkit-filter: blur(3px);\n          filter: blur(3px);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu {\n  height: 100%;\n  width: 100%;\n  overflow: auto;\n  position: absolute;\n  z-index: 1;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu .src-layouts-BasicLayout-_headerContent_17Fm9 {\n  color: rgba(255, 255, 255, 0.85);\n  display: -webkit-box;\n  display: flex;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu .src-layouts-BasicLayout-_headerContent_17Fm9 i {\n  font-size: calc(var(--fontSize, 14px) + 2px);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu .src-layouts-BasicLayout-_headerContent_17Fm9 > .src-layouts-BasicLayout-_left_2N7uz {\n  width: 300px;\n  margin-left: 4px;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu .src-layouts-BasicLayout-_headerContent_17Fm9 > .src-layouts-BasicLayout-_middle_2bkvy {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ > .src-layouts-BasicLayout-_basicLayout_3F4zu .src-layouts-BasicLayout-_headerContent_17Fm9 > .src-layouts-BasicLayout-_right_MHag- {\n  width: 200px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  margin-right: 14px;\n  margin-left: auto;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider {\n  background: transparent;\n  height: auto !important;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu-logo {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu {\n  padding: 0 !important;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-inline {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title,\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item {\n  margin: 0;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title i,\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item i {\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-open > .ant-menu-submenu-title {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu > .ant-menu-submenu > .ant-menu-submenu-title {\n  height: 60px;\n  line-height: 60px;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item-selected {\n  background-color: rgba(0, 0, 0, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-layout {\n  min-height: 100vh;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-layout > .ant-layout-header {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_rmGOJ .ant-layout-has-sider > .ant-layout > .ant-layout-content {\n  background: #f0f2f5;\n}\n";
-var style = {"themeWrapper":"src-layouts-BasicLayout-_themeWrapper_rmGOJ","bg":"src-layouts-BasicLayout-_bg_2V2Ya","basicLayout":"src-layouts-BasicLayout-_basicLayout_3F4zu","headerContent":"src-layouts-BasicLayout-_headerContent_17Fm9","left":"src-layouts-BasicLayout-_left_2N7uz","middle":"src-layouts-BasicLayout-_middle_2bkvy","right":"src-layouts-BasicLayout-_right_MHag-"};
+var css = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-layouts-BasicLayout-_themeWrapper_14L2Y {\n  height: 100%;\n  position: relative;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 {\n  width: 100%;\n  height: inherit;\n  overflow: hidden;\n  position: fixed;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 > .src-layouts-BasicLayout-_bg_3V-YL {\n  height: inherit;\n  background: var(--background, #1c1f87) no-repeat;\n  background-size: cover;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- {\n  width: 100%;\n  height: inherit;\n  position: absolute;\n  z-index: 1;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv {\n  color: rgba(255, 255, 255, 0.85);\n  display: -webkit-box;\n  display: flex;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_left_baV43 {\n  width: 300px;\n  margin-left: 4px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_middle_2V02B {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_right_tFiBi {\n  width: 200px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  margin-right: 14px;\n  margin-left: auto;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider {\n  background: transparent;\n  height: auto !important;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu-logo {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu {\n  padding: 0 !important;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-inline {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item {\n  margin: 0;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title i,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item i {\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-open > .ant-menu-submenu-title {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu > .ant-menu-submenu > .ant-menu-submenu-title {\n  height: 60px;\n  line-height: 60px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item-selected {\n  background-color: rgba(0, 0, 0, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout {\n  min-height: 100vh;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-header {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content {\n  background: #f0f2f5;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content > .ant-pro-basicLayout-children-content-wrap > .ant-pro-page-header-wrap {\n  padding-bottom: 24px;\n}\n";
+var styles = {"themeWrapper":"src-layouts-BasicLayout-_themeWrapper_14L2Y","bgwrapper":"src-layouts-BasicLayout-_bgwrapper_1EYE2","bg":"src-layouts-BasicLayout-_bg_3V-YL","basicLayout":"src-layouts-BasicLayout-_basicLayout_MWK9-","headerContent":"src-layouts-BasicLayout-_headerContent_3MeNv","left":"src-layouts-BasicLayout-_left_baV43","middle":"src-layouts-BasicLayout-_middle_2V02B","right":"src-layouts-BasicLayout-_right_tFiBi"};
 styleInject(css);
 
 var breadcrumb = {};
@@ -236,27 +247,23 @@ var MenuBreadcrumb = function MenuBreadcrumb(menu) {
     }
   });
   return breadcrumb;
-};
+}; // 获取antd-pro扁平化菜单keys
 
-var authRoutes = []; // 权限路由
-// 获取antd-pro扁平化菜单keys和path
 
-var getFlatMenuKeys = function getFlatMenuKeys(menuData) {
-  var keys = [];
+var getAuthRoutes = function getAuthRoutes(menuData) {
+  var authRoutes = [];
   menuData.forEach(function (item) {
     if (!item) {
       return;
     }
 
-    keys.push(item.path);
-
     if (item.children) {
-      keys = keys.concat(getFlatMenuKeys(item.children));
+      authRoutes = authRoutes.concat(getAuthRoutes(item.children));
     } else {
       authRoutes.push(item.path);
     }
   });
-  return keys;
+  return authRoutes;
 };
 
 var index = (function (_ref) {
@@ -272,35 +279,31 @@ var index = (function (_ref) {
       location = _ref.location,
       props = _objectWithoutProperties(_ref, ["children", "menuData", "leftContent", "middleContent", "rightContent", "location"]);
 
-  var _useState = useState([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      openKeys = _useState2[0],
-      setOpenKeys = _useState2[1];
-
-  useEffect(function () {
-    setOpenKeys(getFlatMenuKeys(menuData)); // 初始菜单全部展开
+  var authRoutes = useMemo(function () {
+    return getAuthRoutes(menuData);
   }, [menuData]);
   useMemo(function () {
     return MenuBreadcrumb(menuData);
   }, [menuData]);
   return React.createElement("div", {
-    className: style.themeWrapper
+    className: styles.themeWrapper
   }, React.createElement("div", {
-    className: style.bg
-  }), React.createElement(BasicLayout, _extends({
-    className: style.basicLayout,
+    className: styles.bgwrapper
+  }, React.createElement("div", {
+    className: styles.bg
+  })), React.createElement(BasicLayout, _extends({
+    className: styles.basicLayout,
     collapsed: false,
     onCollapse: false,
-    fixSiderbar: false,
     headerRender: function headerRender() {
       return React.createElement("div", {
-        className: style.headerContent
+        className: styles.headerContent
       }, React.createElement("div", {
-        className: style.left
+        className: styles.left
       }, leftContent), React.createElement("div", {
-        className: style.middle
+        className: styles.middle
       }, middleContent), React.createElement("div", {
-        className: style.right
+        className: styles.right
       }, rightContent));
     } // 菜单数据
     ,
@@ -317,13 +320,12 @@ var index = (function (_ref) {
         to: menuItemProps.path
       }, defaultDom);
     } // 菜单展开控制
-    ,
-    menuProps: {
-      openKeys: openKeys,
-      onOpenChange: function onOpenChange(e) {
-        setOpenKeys(e);
-      }
-    } // 面包屑数据
+    // openKeys={openKeys}
+    // onOpenChange={e => {
+    //   console.log(e)
+    //   // setOpenKeys(e)
+    // }}
+    // 面包屑数据
     ,
     breadcrumbRender: function breadcrumbRender() {
       var routers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -341,13 +343,15 @@ var index = (function (_ref) {
     disableMobile: true,
     disableContentMargin: true
   }, props), React.createElement(Auth, {
-    pathname: location.pathname
+    pathname: location.pathname,
+    authRoutes: authRoutes
   }, children)));
 }); // 权限控制(只有返回菜单对应的路由有权限访问)
 
 var Auth = function Auth(_ref2) {
   var children = _ref2.children,
-      pathname = _ref2.pathname;
+      pathname = _ref2.pathname,
+      authRoutes = _ref2.authRoutes;
   if (authRoutes.length === 0) return React.createElement("div", {
     style: {
       textAlign: 'center',
@@ -376,8 +380,8 @@ var index$1 = (function (_ref) {
   }, props), children);
 });
 
-var css$1 = ".src-components-UserMenu-_userMenu_21mks {\n  padding: 0 10px;\n  color: rgba(255, 255, 255, 0.65);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  color: #fff;\n}\n.src-components-UserMenu-_userMenu_21mks .src-components-UserMenu-_user_3_bwN {\n  margin-left: 10px;\n}\n";
-var style$1 = {"userMenu":"src-components-UserMenu-_userMenu_21mks","user":"src-components-UserMenu-_user_3_bwN"};
+var css$1 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-UserMenu-_userMenu_21mks {\n  padding: 0 10px;\n  color: rgba(255, 255, 255, 0.65);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  color: rgba(255, 255, 255, 0.85);\n}\n.src-components-UserMenu-_userMenu_21mks .src-components-UserMenu-_user_3_bwN {\n  margin-left: 10px;\n}\n";
+var style = {"userMenu":"src-components-UserMenu-_userMenu_21mks","user":"src-components-UserMenu-_user_3_bwN"};
 styleInject(css$1);
 
 var index$2 = (function (_ref) {
@@ -401,18 +405,18 @@ var index$2 = (function (_ref) {
       }
     }, "\u9000\u51FA\u7CFB\u7EDF"))
   }, React.createElement("div", {
-    className: style$1.userMenu
+    className: style.userMenu
   }, React.createElement(_Avatar, {
     size: 25,
     src: user.avatar,
     icon: "user"
   }), React.createElement("span", {
-    className: style$1.user
+    className: style.user
   }, user.name))) : null;
 });
 
-var css$2 = ".src-components-SwitchTheme-_switchTheme_2NlmH {\n  width: 40px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchTheme-_switchTheme_2NlmH:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.src-components-SwitchTheme-_themePanel_lS4sL {\n  width: 350px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U {\n  padding: 8px 0;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_title_ih_Lm {\n  font-size: 16px;\n  font-weight: bold;\n  padding-top: 16px;\n  padding-left: 16px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_fontList_3BbaH {\n  padding: 16px 40px;\n  display: -webkit-box;\n  display: flex;\n  border-bottom: 1px solid #e8e8e8;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_fontList_3BbaH > label:nth-child(n + 2) {\n  margin-left: 30px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS {\n  padding: 16px 40px;\n  display: -webkit-box;\n  display: flex;\n  border-bottom: 1px solid #e8e8e8;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS:last-child {\n  border-bottom: none;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_icon_1YsIK {\n  color: #fff;\n  font-size: 13px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_circle__yMWJ {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_rectangle_cSkzQ {\n  width: 60px;\n  height: 40px;\n  background-size: cover;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n";
-var style$2 = {"switchTheme":"src-components-SwitchTheme-_switchTheme_2NlmH","themePanel":"src-components-SwitchTheme-_themePanel_lS4sL","wrapper":"src-components-SwitchTheme-_wrapper_2a73U","title":"src-components-SwitchTheme-_title_ih_Lm","fontList":"src-components-SwitchTheme-_fontList_3BbaH","bgList":"src-components-SwitchTheme-_bgList_2NcxS","icon":"src-components-SwitchTheme-_icon_1YsIK","circle":"src-components-SwitchTheme-_circle__yMWJ","rectangle":"src-components-SwitchTheme-_rectangle_cSkzQ"};
+var css$2 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-SwitchTheme-_switchTheme_2NlmH {\n  width: 40px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchTheme-_switchTheme_2NlmH:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-SwitchTheme-_switchTheme_2NlmH > i {\n  font-size: calc(var(--fontSize, 14px) + 2px);\n}\n.src-components-SwitchTheme-_themePanel_lS4sL {\n  width: 350px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U {\n  padding: 8px 0;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_title_ih_Lm {\n  font-size: 16px;\n  font-weight: bold;\n  padding-top: 16px;\n  padding-left: 16px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_fontList_3BbaH {\n  padding: 16px 40px;\n  display: -webkit-box;\n  display: flex;\n  border-bottom: 1px solid #d9d9d9;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_fontList_3BbaH > label:nth-child(n + 2) {\n  margin-left: 30px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS {\n  padding: 16px 40px;\n  display: -webkit-box;\n  display: flex;\n  border-bottom: 1px solid #d9d9d9;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS:last-child {\n  border-bottom: none;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_icon_1YsIK {\n  color: #fff;\n  font-size: 13px;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_circle__yMWJ {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchTheme-_themePanel_lS4sL .src-components-SwitchTheme-_wrapper_2a73U .src-components-SwitchTheme-_bgList_2NcxS .src-components-SwitchTheme-_rectangle_cSkzQ {\n  width: 60px;\n  height: 40px;\n  background-size: cover;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n";
+var style$1 = {"switchTheme":"src-components-SwitchTheme-_switchTheme_2NlmH","themePanel":"src-components-SwitchTheme-_themePanel_lS4sL","wrapper":"src-components-SwitchTheme-_wrapper_2a73U","title":"src-components-SwitchTheme-_title_ih_Lm","fontList":"src-components-SwitchTheme-_fontList_3BbaH","bgList":"src-components-SwitchTheme-_bgList_2NcxS","icon":"src-components-SwitchTheme-_icon_1YsIK","circle":"src-components-SwitchTheme-_circle__yMWJ","rectangle":"src-components-SwitchTheme-_rectangle_cSkzQ"};
 styleInject(css$2);
 
 var themeData = {
@@ -455,14 +459,11 @@ setTheme('--fontSize', defaultTheme.fontSize);
 setTheme('--background', defaultTheme.background);
 var index$3 = (function () {
   return React.createElement(_Dropdown, {
-    overlayClassName: style$2.themePanel,
+    overlayClassName: style$1.themePanel,
     overlay: React.createElement(Content, null),
-    trigger: ['click'],
-    getPopupContainer: function getPopupContainer(trigger) {
-      return trigger.parentNode;
-    }
+    trigger: ['click']
   }, React.createElement("div", {
-    className: style$2.switchTheme
+    className: style$1.switchTheme
   }, React.createElement(_Icon, {
     type: "skin"
   })));
@@ -478,11 +479,11 @@ var Content = function Content() {
       setBg = _useState2[1];
 
   return React.createElement("div", {
-    className: style$2.wrapper
+    className: style$1.wrapper
   }, React.createElement("div", {
-    className: style$2.title
+    className: style$1.title
   }, "\u5B57\u4F53\u5927\u5C0F"), React.createElement(_Radio.Group, {
-    className: style$2.fontList,
+    className: style$1.fontList,
     defaultValue: defaultTheme.fontSize
   }, fontSize.map(function (item, index) {
     return React.createElement(_Radio, {
@@ -496,13 +497,13 @@ var Content = function Content() {
     return React.createElement(Fragment, {
       key: index
     }, React.createElement("div", {
-      className: style$2.title
+      className: style$1.title
     }, item.title), React.createElement("div", {
-      className: style$2.bgList
+      className: style$1.bgList
     }, item.value.map(function (v, i) {
       return React.createElement("div", {
         key: i,
-        className: style$2.circle,
+        className: style$1.circle,
         style: {
           background: v
         },
@@ -512,20 +513,20 @@ var Content = function Content() {
         }
       }, bg === v && React.createElement(_Icon, {
         type: "check",
-        className: style$2.icon
+        className: style$1.icon
       }));
     })));
   }), background.slice(2).map(function (item, index) {
     return React.createElement(Fragment, {
       key: index
     }, React.createElement("div", {
-      className: style$2.title
+      className: style$1.title
     }, item.title), React.createElement("div", {
-      className: style$2.bgList
+      className: style$1.bgList
     }, item.value.map(function (v, i) {
       return React.createElement("div", {
         key: i,
-        className: style$2.rectangle,
+        className: style$1.rectangle,
         style: {
           backgroundImage: v
         },
@@ -535,271 +536,298 @@ var Content = function Content() {
         }
       }, bg === v && React.createElement(_Icon, {
         type: "check",
-        className: style$2.icon
+        className: style$1.icon
       }));
     })));
   }));
 };
 
-var css$3 = ".src-components-Notification-_notification_74A_h {\n  width: 40px;\n  text-align: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-Notification-_notification_74A_h:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.src-components-Notification-_notification_74A_h .ant-badge-count {\n  min-width: 16px;\n  height: 16px;\n  line-height: 16px;\n  padding: 0 5px;\n  box-shadow: none;\n  top: -2px;\n  right: -2px;\n}\n.src-components-Notification-_notiPanel_H0MdY {\n  width: 340px;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n.src-components-Notification-_notiPanel_H0MdY .ant-tabs > .ant-tabs-bar {\n  margin: 0;\n}\n.src-components-Notification-_notiPanel_H0MdY .ant-tabs > .ant-tabs-bar .ant-tabs-nav-scroll {\n  text-align: center;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 {\n  max-height: 360px;\n  overflow-x: hidden;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 .src-components-Notification-_empty_3GOE1 {\n  padding: 30px 0;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 .src-components-Notification-_empty_3GOE1 img {\n  margin-bottom: 20px;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 .src-components-Notification-_listItem_2d1Ch {\n  padding: 12px 22px 12px 25px;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 .src-components-Notification-_listItem_2d1Ch:hover {\n  background: #e6f7ff;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_list_1Ojo6 .src-components-Notification-_description_27bZD > p {\n  margin: 0;\n}\n.src-components-Notification-_notiPanel_H0MdY .src-components-Notification-_clear_32z2J {\n  height: 60px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  border-top: 1px solid #e8e8e8;\n  cursor: pointer;\n}\n";
-var style$3 = {"notification":"src-components-Notification-_notification_74A_h","notiPanel":"src-components-Notification-_notiPanel_H0MdY","list":"src-components-Notification-_list_1Ojo6","empty":"src-components-Notification-_empty_3GOE1","listItem":"src-components-Notification-_listItem_2d1Ch","description":"src-components-Notification-_description_27bZD","clear":"src-components-Notification-_clear_32z2J"};
+var css$3 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-Notification-_notification_74A_h {\n  width: 40px;\n  text-align: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-Notification-_notification_74A_h:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-Notification-_notification_74A_h .ant-badge-count {\n  min-width: 16px;\n  height: 16px;\n  line-height: 16px;\n  padding: 0 5px;\n  box-shadow: none;\n  top: -2px;\n  right: -2px;\n}\n.src-components-Notification-_notification_74A_h i {\n  font-size: calc(var(--fontSize, 14px) + 2px);\n}\n";
+var style$2 = {"notification":"src-components-Notification-_notification_74A_h"};
 styleInject(css$3);
 
-var TabPane = _Tabs.TabPane;
-var prompts = [{
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}, {
-  description: '张然  的合同已经到期，请及时处理',
-  time: '10分钟前'
-}];
-var notifications = [{
-  avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-  title: '您提交的评价已通过审核',
-  name: '赵某人',
-  event: '多次违反工地规定，并拒不悔改…',
-  time: '5 分钟前'
-}, {
-  avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-  title: '您提交的评价已通过审核',
-  name: '赵某人',
-  event: '多次违反工地规定，并拒不悔改…',
-  time: '5 分钟前'
-}, {
-  avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-  title: '您提交的评价已通过审核',
-  name: '赵某人',
-  event: '多次违反工地规定，并拒不悔改…',
-  time: '5 分钟前'
-}, {
-  avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-  title: '您提交的评价已通过审核',
-  name: '赵某人',
-  event: '多次违反工地规定，并拒不悔改…',
-  time: '5 分钟前'
-}];
 var index$4 = (function () {
-  var _useState = useState(notifications),
-      _useState2 = _slicedToArray(_useState, 2),
-      noti = _useState2[0],
-      setNoti = _useState2[1];
-
-  var _useState3 = useState(prompts),
-      _useState4 = _slicedToArray(_useState3, 2),
-      pro = _useState4[0],
-      setPro = _useState4[1];
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      className = _ref.className,
+      _ref$content = _ref.content,
+      content = _ref$content === void 0 ? React.createElement(React.Fragment, null) : _ref$content,
+      _ref$count = _ref.count,
+      count = _ref$count === void 0 ? 0 : _ref$count;
 
   return React.createElement(_Dropdown, {
-    overlayClassName: style$3.notiPanel,
-    overlay: React.createElement(Content$1, {
-      prompts: pro,
-      notifications: noti,
-      setNotifications: setNoti,
-      setPrompts: setPro
+    overlayClassName: className,
+    overlay: content,
+    trigger: ['click'],
+    getPopupContainer: function getPopupContainer(trigger) {
+      return trigger.parentNode;
+    }
+  }, React.createElement("div", {
+    className: style$2.notification
+  }, React.createElement(_Badge, {
+    count: count
+  }, React.createElement(_Icon, {
+    type: "bell"
+  }))));
+});
+
+var css$4 = ".src-components-SearchTree-_tree_DcH_W {\n  height: 100%;\n}\n.src-components-SearchTree-_tree_DcH_W .src-components-SearchTree-_search_1iJ0D {\n  margin-bottom: 8px;\n}\n.src-components-SearchTree-_tree_DcH_W .src-components-SearchTree-_searchTree_3JpDE {\n  overflow: auto;\n  height: calc(100% - 32px - 8px);\n}\n";
+var styles$1 = {"tree":"src-components-SearchTree-_tree_DcH_W","search":"src-components-SearchTree-_search_1iJ0D","searchTree":"src-components-SearchTree-_searchTree_3JpDE"};
+styleInject(css$4);
+
+var TreeNode = _Tree.TreeNode;
+var Search = _Input.Search; // 默认展开第一项
+
+var defaultExpended = function defaultExpended() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var keyName = arguments.length > 1 ? arguments[1] : undefined;
+  var innerKey = '';
+  var d = data;
+
+  while (d[0] && d[0].children) {
+    d = d[0].children;
+    innerKey = d[0].id;
+  }
+
+  var parentKey = getParentKey(innerKey, data, keyName);
+  return [parentKey];
+}; // 获取父节点
+
+
+var getParentKey = function getParentKey(key, tree, keyName) {
+  var parentKey;
+
+  for (var i = 0; i < tree.length; i++) {
+    var node = tree[i];
+
+    if (node.children) {
+      if (node.children.some(function (item) {
+        return item[keyName] === key;
+      })) {
+        parentKey = node[keyName];
+      } else if (getParentKey(key, node.children, keyName)) {
+        parentKey = getParentKey(key, node.children, keyName);
+      }
+    }
+  }
+
+  return parentKey;
+}; // 生成树节点
+
+
+var generateTreeNode = function generateTreeNode(tree, keyName, onlySelectLeaf) {
+  return tree.map(function (v) {
+    var title = v.name;
+
+    if (v.children) {
+      return React.createElement(TreeNode, {
+        icon: React.createElement(_Icon, {
+          type: "bank"
+        }),
+        title: title,
+        key: v[keyName],
+        selectable: !onlySelectLeaf
+      }, generateTreeNode(v.children, keyName, onlySelectLeaf));
+    } else {
+      return React.createElement(TreeNode, {
+        icon: React.createElement(_Icon, {
+          type: "apartment"
+        }),
+        title: title,
+        key: v[keyName]
+      });
+    }
+  });
+}; // 生成key列表
+
+
+var generateList = function generateList(tree, keyName) {
+  var dataList = [];
+  tree.forEach(function (v) {
+    dataList.push(v);
+
+    if (v.children) {
+      dataList.push.apply(dataList, _toConsumableArray(generateList(v.children)));
+    }
+  });
+  return dataList;
+};
+/**
+ * @description: 带搜索框的Tree
+ * @param data:Array
+ */
+
+
+var SearchTree = (function (_ref) {
+  var _ref$data = _ref.data,
+      data = _ref$data === void 0 ? [] : _ref$data,
+      _ref$searchName = _ref.searchName,
+      searchName = _ref$searchName === void 0 ? 'name' : _ref$searchName,
+      _ref$keyName = _ref.keyName,
+      keyName = _ref$keyName === void 0 ? 'id' : _ref$keyName,
+      _ref$onlySelectLeaf = _ref.onlySelectLeaf,
+      onlySelectLeaf = _ref$onlySelectLeaf === void 0 ? false : _ref$onlySelectLeaf,
+      className = _ref.className,
+      style = _ref.style,
+      params = _objectWithoutProperties(_ref, ["data", "searchName", "keyName", "onlySelectLeaf", "className", "style"]);
+
+  var _useState = useState(defaultExpended(data, keyName)),
+      _useState2 = _slicedToArray(_useState, 2),
+      expand = _useState2[0],
+      setExpand = _useState2[1];
+
+  var _useState3 = useState(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      autoExpandParent = _useState4[0],
+      setAutoExpandParent = _useState4[1];
+
+  var TreeChildren = useMemo(function () {
+    return generateTreeNode(data, keyName, onlySelectLeaf);
+  }, [data]);
+  var nodeList = useMemo(function () {
+    return generateList(data);
+  }, [data]); // SearchChanged
+
+  var onChange = function onChange(e) {
+    var value = e.target.value;
+    var expandList = nodeList.filter(function (v) {
+      return v[searchName].indexOf(value) > -1;
+    }).map(function (v) {
+      return v[keyName];
+    });
+    setExpand(expandList);
+    setAutoExpandParent(true);
+  }; // TreeExpanded
+
+
+  var onExpand = function onExpand(expandedKeys) {
+    setExpand(expandedKeys);
+    setAutoExpandParent(false);
+  };
+
+  return React.createElement("div", {
+    className: classnames(styles$1.tree, className),
+    style: style
+  }, React.createElement(Search, {
+    className: styles$1.search,
+    placeholder: "\u8BF7\u8F93\u5165...",
+    onChange: onChange
+  }), React.createElement(_Tree, _extends({
+    showLine: true,
+    showIcon: true,
+    switcherIcon: React.createElement(_Icon, {
+      type: "down"
+    }),
+    className: classnames(styles$1.searchTree, 'hide-file-icon'),
+    expandedKeys: expand,
+    onExpand: onExpand,
+    autoExpandParent: autoExpandParent
+  }, params), TreeChildren));
+});
+
+var css$5 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-SwitchSystems-_switchSystems_3kM06 {\n  display: -webkit-box;\n  display: flex;\n  height: 100%;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_switcher_16HpC {\n  width: 40px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_switcher_16HpC:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_switcher_16HpC > i {\n  font-size: calc(var(--fontSize, 14px) + 2px);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI {\n  width: 480px;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .src-components-SwitchSystems-_system_3PhNy {\n  width: 160px;\n  height: 160px;\n  float: left;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .src-components-SwitchSystems-_system_3PhNy:hover {\n  background: #e6f7ff;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_icon_34cax {\n  width: 64px;\n  height: 64px;\n  border-radius: 4px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_icon_34cax > .src-components-SwitchSystems-_i_14TSf {\n  color: #fff;\n  font-size: 35px;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_title_2MJZ0 {\n  margin-top: 18px;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_appPanel_3BTMI .ant-card-body {\n  padding: 0;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_project_3gjlo {\n  width: 250px;\n  padding: 0 20px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_project_3gjlo:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_projPanel_ldtpW {\n  width: 350px;\n  padding: 10px;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n";
+var style$3 = {"switchSystems":"src-components-SwitchSystems-_switchSystems_3kM06","switcher":"src-components-SwitchSystems-_switcher_16HpC","appPanel":"src-components-SwitchSystems-_appPanel_3BTMI","system":"src-components-SwitchSystems-_system_3PhNy","icon":"src-components-SwitchSystems-_icon_34cax","i":"src-components-SwitchSystems-_i_14TSf","title":"src-components-SwitchSystems-_title_2MJZ0","project":"src-components-SwitchSystems-_project_3gjlo","projPanel":"src-components-SwitchSystems-_projPanel_ldtpW"};
+styleInject(css$5);
+
+var index$5 = (function (_ref) {
+  var _ref$currentProject = _ref.currentProject,
+      currentProject = _ref$currentProject === void 0 ? React.createElement(React.Fragment, null) : _ref$currentProject,
+      _ref$applications = _ref.applications,
+      applications = _ref$applications === void 0 ? [] : _ref$applications,
+      _ref$companys = _ref.companys,
+      companys = _ref$companys === void 0 ? [] : _ref$companys,
+      _ref$tree = _ref.tree,
+      tree = _ref$tree === void 0 ? [] : _ref$tree,
+      props = _objectWithoutProperties(_ref, ["currentProject", "applications", "companys", "tree"]);
+
+  return React.createElement("div", {
+    className: style$3.switchSystems
+  }, React.createElement(_Dropdown, {
+    overlayClassName: style$3.appPanel,
+    overlay: React.createElement(App, {
+      applications: applications,
+      companys: companys
     }),
     trigger: ['click'],
     getPopupContainer: function getPopupContainer(trigger) {
       return trigger.parentNode;
     }
   }, React.createElement("div", {
-    className: style$3.notification
-  }, React.createElement(_Badge, {
-    count: noti.length + pro.length
+    className: style$3.switcher
   }, React.createElement(_Icon, {
-    type: "bell"
-  }))));
-});
-
-var Content$1 = function Content(_ref) {
-  var notifications = _ref.notifications,
-      prompts = _ref.prompts,
-      setNotifications = _ref.setNotifications,
-      setPrompts = _ref.setPrompts;
-  var nl = notifications.length;
-  var pl = prompts.length;
-  return React.createElement(_Tabs, null, React.createElement(TabPane, {
-    tab: "\u901A\u77E5".concat(nl > 0 ? ' (' + nl + ')' : ''),
-    key: "1"
-  }, React.createElement(_List, {
-    className: style$3.list,
-    dataSource: notifications,
-    locale: {
-      emptyText: React.createElement("div", {
-        className: style$3.empty
-      }, React.createElement("img", {
-        src: "https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg",
-        alt: ""
-      }), React.createElement("div", null, "\u60A8\u5DF2\u8BFB\u5B8C\u6240\u6709\u6D88\u606F"))
-    },
-    renderItem: function renderItem(item) {
-      return React.createElement(_List.Item, {
-        className: style$3.listItem
-      }, React.createElement(_List.Item.Meta, {
-        avatar: React.createElement(_Avatar, {
-          src: item.avatar
-        }),
-        title: item.title,
-        description: React.createElement("div", {
-          className: style$3.description
-        }, React.createElement("p", null, "\u59D3\u540D\uFF1A", item.name), React.createElement("p", null, "\u4E8B\u4EF6\uFF1A", item.event), React.createElement("p", null, item.time))
-      }));
-    }
-  }), React.createElement("div", {
-    className: style$3.clear,
-    onClick: function onClick() {
-      setNotifications([]);
-    }
-  }, "\u6E05\u7A7A\u6D88\u606F")), React.createElement(TabPane, {
-    tab: "\u63D0\u9192".concat(pl > 0 ? ' (' + pl + ')' : ''),
-    key: "2"
-  }, React.createElement(_List, {
-    className: style$3.list,
-    dataSource: prompts,
-    locale: {
-      emptyText: React.createElement("div", {
-        className: style$3.empty
-      }, React.createElement("img", {
-        src: "https://gw.alipayobjects.com/zos/rmsportal/sAuJeJzSKbUmHfBQRzmZ.svg",
-        alt: ""
-      }), React.createElement("div", null, "\u60A8\u5DF2\u8BFB\u5B8C\u6240\u6709\u6D88\u606F"))
-    },
-    renderItem: function renderItem(item) {
-      return React.createElement(_List.Item, {
-        className: style$3.listItem
-      }, React.createElement(_List.Item.Meta, {
-        title: item.description,
-        description: item.time
-      }));
-    }
-  }), React.createElement("div", {
-    className: style$3.clear,
-    onClick: function onClick() {
-      setPrompts([]);
-    }
-  }, "\u6E05\u7A7A\u6D88\u606F")));
-};
-
-var css$4 = ".src-components-SwitchSystems-_switchSystems_3kM06 {\n  display: -webkit-box;\n  display: flex;\n  height: 100%;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_switcher_16HpC {\n  width: 40px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_switcher_16HpC:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_systems__3wzQ {\n  padding: 0 10px;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB {\n  width: 480px;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .src-components-SwitchSystems-_system_3PhNy {\n  width: 160px;\n  height: 160px;\n  float: left;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .src-components-SwitchSystems-_system_3PhNy:hover {\n  background: #e6f7ff;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_icon_34cax {\n  width: 64px;\n  height: 64px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#71bbff), to(#1890ff));\n  background: linear-gradient(180deg, #71bbff 0%, #1890ff 100%);\n  border-radius: 4px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_icon_34cax > .src-components-SwitchSystems-_i_14TSf {\n  color: #fff;\n  font-size: 35px;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .src-components-SwitchSystems-_system_3PhNy .src-components-SwitchSystems-_title_2MJZ0 {\n  margin-top: 18px;\n}\n.src-components-SwitchSystems-_switchSystems_3kM06 .src-components-SwitchSystems-_sysPanel_2aZvB .ant-card-body {\n  padding: 0;\n}\n";
-var style$4 = {"switchSystems":"src-components-SwitchSystems-_switchSystems_3kM06","switcher":"src-components-SwitchSystems-_switcher_16HpC","systems":"src-components-SwitchSystems-_systems__3wzQ","sysPanel":"src-components-SwitchSystems-_sysPanel_2aZvB","system":"src-components-SwitchSystems-_system_3PhNy","icon":"src-components-SwitchSystems-_icon_34cax","i":"src-components-SwitchSystems-_i_14TSf","title":"src-components-SwitchSystems-_title_2MJZ0"};
-styleInject(css$4);
-
-var systems = [{
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(113,187,255,1) 0%,rgba(24,144,255,1) 100%)',
-  title: '项目综合管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(255,188,190,1) 0%,rgba(247,121,125,1) 100%)',
-  title: '通行证管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(95,226,255,1) 0%,rgba(18,194,233,1) 100%)',
-  title: '视频监控管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(181,181,255,1) 0%,rgba(127,127,213,1) 100%)',
-  title: '质量安全监管系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(255,224,153,1) 0%,rgba(254,182,20,1) 100%)',
-  title: '物料管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(148,148,148,1) 0%,rgba(51,51,51,1) 100%)',
-  title: '设备管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(61,243,87,1) 0%,rgba(39,198,62,1) 100%)',
-  title: '环境管理系统'
-}, {
-  icon: 'appstore',
-  background: 'linear-gradient(180deg,rgba(180,255,250,1) 0%,rgba(111,216,209,1) 100%)',
-  title: '项目进度管理系统'
-}];
-var index$5 = (function (_ref) {
-  var currentSystem = _ref.currentSystem;
-  return React.createElement("div", {
-    className: style$4.switchSystems
-  }, React.createElement(_Dropdown, {
-    overlayClassName: style$4.sysPanel,
-    overlay: React.createElement(Content$2, null),
+    type: "appstore"
+  }))), React.createElement(_Dropdown, {
+    overlayClassName: style$3.projPanel,
+    overlay: React.createElement(Project, _extends({
+      tree: tree
+    }, props)),
     trigger: ['click'],
     getPopupContainer: function getPopupContainer(trigger) {
       return trigger.parentNode;
     }
-  }, React.createElement("div", {
-    className: style$4.switcher
-  }, React.createElement(_Icon, {
-    type: "appstore"
-  }))), currentSystem && React.createElement("div", {
-    className: style$4.systems
-  }, currentSystem));
-});
+  }, currentProject && React.createElement("div", {
+    className: style$3.project
+  }, currentProject)));
+}); // 应用中心
 
-var Content$2 = function Content() {
+var App = function App(_ref2) {
+  var applications = _ref2.applications,
+      companys = _ref2.companys;
   return React.createElement(_Card, {
-    title: "\u5357\u901A\u4E8C\u5EFA\u96C6\u56E2\u6709\u9650\u516C\u53F8",
-    bordered: false
-  }, systems.map(function (v, i) {
+    title: "\u5E94\u7528\u4E2D\u5FC3",
+    bordered: false,
+    extra: React.createElement(_Select, {
+      defaultValue: companys[0].value,
+      style: {
+        width: '200px'
+      }
+    }, companys.map(function (v, i) {
+      return React.createElement(_Select.Option, {
+        value: v.value,
+        key: i
+      }, v.value);
+    }))
+  }, applications.map(function (v, i) {
     return React.createElement("div", {
-      className: style$4.system,
+      className: style$3.system,
       key: i
     }, React.createElement("div", {
-      className: style$4.icon,
+      className: style$3.icon,
       style: {
         background: v.background
       }
     }, React.createElement(_Icon, {
       type: v.icon,
-      className: style$4.i
+      className: style$3.i
     })), React.createElement("div", {
-      className: style$4.title
+      className: style$3.title
     }, v.title));
   }));
+}; // 项目
+
+
+var Project = function Project(_ref3) {
+  var tree = _ref3.tree,
+      onSelect = _ref3.onSelect;
+  return React.createElement(SearchTree, {
+    data: tree,
+    style: {
+      height: '505px'
+    },
+    onlySelectLeaf: true,
+    onSelect: onSelect
+  });
 };
 
-var css$5 = ".src-components-SystemsNav-_systemsNav_1wVbj {\n  font-size: calc(var(--font-size, 14px) + 2px);\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span {\n  padding: 0 17px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span > i {\n  margin-right: 8px;\n}\n";
-var style$5 = {"systemsNav":"src-components-SystemsNav-_systemsNav_1wVbj"};
-styleInject(css$5);
+var css$6 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-SystemsNav-_systemsNav_1wVbj {\n  font-size: calc(var(--fontSize, 14px) + 2px);\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span {\n  padding: 0 17px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-SystemsNav-_systemsNav_1wVbj > span > i {\n  margin-right: 8px;\n}\n";
+var style$4 = {"systemsNav":"src-components-SystemsNav-_systemsNav_1wVbj"};
+styleInject(css$6);
 
-var systems$1 = [{
-  icon: 'appstore',
-  title: '物料'
-}, {
-  icon: 'appstore',
-  title: '设备'
-}, {
-  icon: 'appstore',
-  title: '质量'
-}, {
-  icon: 'appstore',
-  title: '视频'
-}, {
-  icon: 'appstore',
-  title: '综合'
-}, {
-  icon: 'appstore',
-  title: '环境'
-}];
-var index$6 = (function () {
+var index$6 = (function (_ref) {
+  var _ref$systemsNav = _ref.systemsNav,
+      systemsNav = _ref$systemsNav === void 0 ? [] : _ref$systemsNav;
   return React.createElement("div", {
-    className: style$5.systemsNav
-  }, systems$1.map(function (v, i) {
+    className: style$4.systemsNav
+  }, systemsNav.map(function (v, i) {
     return React.createElement("span", {
       key: i
     }, React.createElement(_Icon, {
@@ -808,4 +836,309 @@ var index$6 = (function () {
   }));
 });
 
-export { index as BasicLayout, index$4 as Notification, index$1 as PageHeaderWrapper, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$2 as UserMenu };
+var css$7 = ".src-components-ConfigForm-_configForm_3tPHv {\n  overflow: hidden;\n}\n.src-components-ConfigForm-_configForm_3tPHv .src-components-ConfigForm-_inline_1P-O0 .ant-form-item {\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-ConfigForm-_configForm_3tPHv .ant-calendar-picker {\n  width: 100%;\n}\n.src-components-ConfigForm-_configForm_3tPHv .ant-form-item-control-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n";
+var style$5 = {"configForm":"src-components-ConfigForm-_configForm_3tPHv","inline":"src-components-ConfigForm-_inline_1P-O0"};
+styleInject(css$7);
+
+var index$7 = _Form.create()(function (_ref) {
+  var _ref$data = _ref.data,
+      data = _ref$data === void 0 ? [] : _ref$data,
+      width = _ref.width,
+      column = _ref.column,
+      form = _ref.form,
+      _ref$style = _ref.style,
+      formStyle = _ref$style === void 0 ? {} : _ref$style,
+      formClassName = _ref.className,
+      inline = _ref.inline,
+      itemWidth = _ref.itemWidth,
+      rest = _objectWithoutProperties(_ref, ["data", "width", "column", "form", "style", "className", "inline", "itemWidth"]);
+
+  var getFieldDecorator = form.getFieldDecorator;
+
+  if (typeof itemWidth !== "number") {
+    itemWidth = width;
+  }
+
+  var colSpan = 0;
+  var cols = Math.floor(width / itemWidth); // 列数
+
+  var gutter = (width - itemWidth * cols) / (cols - 1 || 1); // 间距
+
+  return React.createElement(_Form, _extends({
+    style: Object.assign({
+      width: width
+    }, formStyle),
+    className: classnames(formClassName, style$5.configForm)
+  }, rest), data.map(function (_ref2, i) {
+    var name = _ref2.name,
+        label = _ref2.label,
+        component = _ref2.component,
+        rules = _ref2.rules,
+        initialValue = _ref2.initialValue,
+        span = _ref2.span,
+        itemStyle = _ref2.style,
+        itemClassName = _ref2.className;
+    var currentSpan = span || 1;
+    colSpan += currentSpan;
+    var hasGutter = colSpan !== cols;
+
+    if (!hasGutter) {
+      colSpan = 0;
+    }
+
+    return React.createElement(_Col, {
+      key: i,
+      style: {
+        float: "left",
+        width: "".concat(itemWidth * currentSpan + (currentSpan - 1) * gutter, "px"),
+        marginRight: "".concat(hasGutter && gutter, "px")
+      }
+    }, React.createElement(_Form.Item, {
+      label: label,
+      style: Object.assign(inline ? {
+        display: "flex"
+      } : {}, _objectSpread2({}, itemStyle)),
+      className: itemClassName
+    }, component && getFieldDecorator(name || label, {
+      initialValue: initialValue,
+      rules: rules,
+      validateTrigger: false
+    })(component)));
+  }));
+});
+
+var css$8 = ".src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D {\n  display: table;\n  margin: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D .src-components-CustomCard-_iconFix_2YP0n {\n  font-weight: normal;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-size: 1.2em;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D span {\n  vertical-align: middle;\n}\n";
+var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","title":"src-components-CustomCard-_title_1B-5D","iconFix":"src-components-CustomCard-_iconFix_2YP0n"};
+styleInject(css$8);
+
+var index$8 = (function (_ref) {
+  var icon = _ref.icon,
+      title = _ref.title,
+      className = _ref.className,
+      children = _ref.children,
+      gap = _ref.gap;
+  return React.createElement(_Card, {
+    className: classnames(style$6.customCard, className),
+    style: gap && {
+      marginTop: "24px"
+    },
+    title: typeof title === "string" ? React.createElement("p", {
+      className: style$6.title
+    }, React.createElement("i", {
+      className: classnames("iconfont ".concat(icon), style$6.iconFix)
+    }), React.createElement("span", null, title)) : title
+  }, children);
+});
+
+var css$9 = ".react-resizable {\n  position: relative;\n  background-clip: padding-box;\n}\n.react-resizable-handle {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  bottom: 0;\n  right: -5px;\n  cursor: col-resize;\n  z-index: 1;\n}\n";
+styleInject(css$9);
+
+var ResizeableTitle = function ResizeableTitle(_ref) {
+  var onResize = _ref.onResize,
+      width = _ref.width,
+      restProps = _objectWithoutProperties(_ref, ["onResize", "width"]);
+
+  if (!width) {
+    return React.createElement("th", restProps);
+  }
+
+  return React.createElement(Resizable, {
+    width: width,
+    height: 0,
+    onResize: onResize,
+    draggableOpts: {
+      enableUserSelectHack: false
+    }
+  }, React.createElement("th", restProps));
+};
+
+var components = {
+  header: {
+    cell: ResizeableTitle
+  }
+};
+var index$9 = (function (_ref2) {
+  var scale = _ref2.scale,
+      _ref2$pagination = _ref2.pagination,
+      pagination = _ref2$pagination === void 0 ? false : _ref2$pagination,
+      columns = _ref2.columns,
+      props = _objectWithoutProperties(_ref2, ["scale", "pagination", "columns"]);
+
+  var _useState = useState(columns),
+      _useState2 = _slicedToArray(_useState, 2),
+      myColumns = _useState2[0],
+      setMyColumns = _useState2[1];
+
+  var handleResize = function handleResize(index) {
+    return function (e, _ref3) {
+      var size = _ref3.size;
+      setMyColumns(function (oldColumns) {
+        var nextColumns = _toConsumableArray(oldColumns);
+
+        nextColumns[index] = _objectSpread2({}, nextColumns[index], {
+          width: size.width
+        });
+        return nextColumns;
+      });
+    };
+  };
+
+  columns = scale ? myColumns.map(function (col, index) {
+    return _objectSpread2({}, col, {
+      onHeaderCell: function onHeaderCell(column) {
+        return {
+          width: column.width,
+          onResize: handleResize(index)
+        };
+      }
+    });
+  }) : columns;
+  return React.createElement(_Table, _extends({
+    columns: columns,
+    pagination: pagination,
+    bordered: true,
+    components: scale && components
+  }, props));
+});
+
+var saveInputStyle = {
+  width: "32px",
+  marginRight: "10px"
+};
+var number = 6;
+var index$a = forwardRef(function (_ref, ref) {
+  var _ref$value = _ref.value,
+      value = _ref$value === void 0 ? new Array(number).fill("") : _ref$value,
+      onChange = _ref.onChange;
+  var inputRef = useRef([]);
+
+  var handleChange = function handleChange(e, index) {
+    value[index] = e ? e.target.value : "";
+    onChange(value);
+  };
+
+  var focusInputNext = function focusInputNext(i) {
+    if (i < number - 1) {
+      inputRef.current[i + 1].focus();
+    }
+  };
+
+  var focusInputPrev = function focusInputPrev(i) {
+    if (i > 0) {
+      inputRef.current[i - 1].focus();
+    }
+  };
+
+  var inputArray = value.map(function (_, i) {
+    return React.createElement(_Input, {
+      style: saveInputStyle,
+      onChange: function onChange(e) {
+        handleChange(e, i);
+        focusInputNext(i);
+      },
+      value: value[i],
+      onFocus: function onFocus() {
+        handleChange("", i);
+      },
+      onKeyUp: function onKeyUp(e) {
+        if (e.keyCode === 8) {
+          handleChange("", i);
+          focusInputPrev(i);
+        }
+      },
+      maxLength: 1,
+      ref: function ref(e) {
+        inputRef.current[i] = e;
+      }
+    });
+  });
+  return React.createElement(_Input.Group, null, inputArray.map(function (v, i) {
+    return React.createElement(Fragment, {
+      key: i
+    }, v);
+  }));
+});
+
+var css$a = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-TimeWeather-_timeWeather_2LmXD {\n  position: relative;\n  height: 100%;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV {\n  position: absolute;\n  width: 460px;\n  height: 32px;\n  border-radius: 16px;\n  line-height: 30px;\n  text-align: center;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  border: 1px solid #d9d9d9;\n  padding: 0 30px;\n  font-size: var(--fontSize, 14px);\n  color: #d9d9d9;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV span:not(:last-child) {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e > i {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container {\n  color: #d9d9d9;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container .sw-typography {\n  font-size: var(--fontSize, 14px);\n}\n";
+var style$7 = {"timeWeather":"src-components-TimeWeather-_timeWeather_2LmXD","wrapper":"src-components-TimeWeather-_wrapper_3nZoV","iconWrapper":"src-components-TimeWeather-_iconWrapper_71V2e","weather":"src-components-TimeWeather-_weather_1gHYK"};
+styleInject(css$a);
+
+var index$b = (function () {
+  var _useState = useState(new Date()),
+      _useState2 = _slicedToArray(_useState, 2),
+      calendar = _useState2[0],
+      setCalendar = _useState2[1];
+
+  useEffect(function () {
+
+    (function (a, h, g, f, e, d, c, b) {
+      b = function b() {
+        d = h.createElement(g);
+        c = h.getElementsByTagName(g)[0];
+        d.src = e;
+        d.charset = 'utf-8';
+        d.async = 1;
+        c.parentNode.insertBefore(d, c);
+      };
+
+      a['SeniverseWeatherWidgetObject'] = f;
+      a[f] || (a[f] = function () {
+        (a[f].q = a[f].q || []).push(arguments);
+      });
+      a[f].l = +new Date();
+
+      if (a.attachEvent) {
+        a.attachEvent('onload', b);
+      } else {
+        a.addEventListener('load', b, false);
+      }
+    })(window, document, 'script', 'SeniverseWeatherWidget', '//cdn.sencdn.com/widget2/static/js/bundle.js?t=' + parseInt((new Date().getTime() / 100000000).toString(), 10));
+  }, []);
+  useEffect(function () {
+    // 心知天气服务
+    window.SeniverseWeatherWidget('show', {
+      flavor: 'slim',
+      location: 'WTW3SJ5ZBJUY',
+      geolocation: true,
+      language: 'zh-Hans',
+      unit: 'c',
+      theme: 'dark',
+      token: 'd541121a-748b-4b47-82cf-e73f928f9766',
+      hover: 'enabled',
+      container: 'tp-weather-widget'
+    }); // 日期
+
+    var timeout = setTimeout(function () {
+      setCalendar(new Date());
+    }, 500);
+    return function () {
+      clearTimeout(timeout);
+    };
+  });
+  var date = moment(calendar);
+  var week = date.format('ddd');
+  var day = date.format('YYYY年MM月DD日');
+  var time = date.format('hh:mm:ss');
+  return React.createElement("div", {
+    className: style$7.timeWeather
+  }, React.createElement("div", {
+    className: style$7.wrapper
+  }, React.createElement("div", {
+    className: style$7.iconWrapper
+  }, React.createElement(_Icon, {
+    type: "schedule"
+  }), React.createElement("span", null, week), React.createElement("span", null, day)), React.createElement("div", {
+    className: style$7.iconWrapper
+  }, React.createElement(_Icon, {
+    type: "clock-circle"
+  }), React.createElement("span", null, time)), React.createElement("div", {
+    className: style$7.iconWrapper
+  }, React.createElement(_Icon, {
+    type: "environment"
+  }), React.createElement("div", {
+    id: "tp-weather-widget",
+    className: style$7.weather
+  }))));
+});
+
+export { index as BasicLayout, index$7 as ConfigForm, index$8 as CustomCard, index$4 as Notification, index$1 as PageHeaderWrapper, index$a as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$9 as Table, index$b as TimeWeather, index$2 as UserMenu };

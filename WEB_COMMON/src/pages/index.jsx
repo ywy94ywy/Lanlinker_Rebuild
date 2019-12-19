@@ -1,7 +1,7 @@
 /**
  * @description 公共组件测试页面
  */
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BasicLayout,
   UserMenu,
@@ -9,6 +9,7 @@ import {
   SwitchTheme,
   SwitchSystems,
   SystemsNav,
+  TimeWeather,
 } from '@/'
 
 const fakeMenu = [
@@ -50,6 +51,18 @@ const fakeMenu = [
   },
 ]
 
+const companys = [
+  {
+    value: '123',
+  },
+  {
+    value: '122223',
+  },
+  {
+    value: '144423',
+  },
+]
+
 const fakeUser = {
   name: '贾亚军',
   avatar:
@@ -58,122 +71,200 @@ const fakeUser = {
   post: '劳务管理员',
 }
 
-let p = [
+const fakeTree = [
   {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: false,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: false,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: false,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: false,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: false,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: true,
-  },
-  {
-    description: '张然  的合同已经到期，请及时处理',
-    time: '10分钟前',
-    readed: true,
+    id: '1',
+    name: '123',
+    children: [
+      {
+        id: '2',
+        name: '222',
+        children: [
+          {
+            id: '3',
+            name: '333',
+          },
+          {
+            id: '4',
+            name: '333',
+          },
+          {
+            id: '5',
+            name: '333',
+          },
+          {
+            id: '67',
+            name: '333',
+          },
+        ],
+      },
+      {
+        id: '22',
+        name: '222',
+      },
+      {
+        id: '11',
+        name: '1111',
+      },
+      {
+        id: '111',
+        name: '1111',
+        children: [
+          {
+            id: '6',
+            name: '6',
+          },
+          {
+            id: '66',
+            name: '66',
+          },
+          {
+            id: '666',
+            name: '666',
+          },
+        ],
+      },
+      {
+        id: '1111',
+        name: '1111',
+        children: [
+          {
+            id: '7',
+            name: '7',
+          },
+          {
+            id: '77',
+            name: '77',
+          },
+          {
+            id: '777',
+            name: '777',
+          },
+        ],
+      },
+      {
+        id: '11112',
+        name: '1111',
+      },
+    ],
   },
 ]
 
-let n = [
+const applications = [
   {
-    avatar:
-      'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-    title: '您提交的评价已通过审核',
-    name: '赵某人',
-    event: '多次违反工地规定，并拒不悔改…',
-    time: '5 分钟前',
-    readed: false,
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(113,187,255,1) 0%,rgba(24,144,255,1) 100%)',
+    title: '项目综合管理系统',
   },
   {
-    avatar:
-      'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-    title: '您提交的评价已通过审核',
-    name: '赵某人',
-    event: '多次违反工地规定，并拒不悔改…',
-    time: '5 分钟前',
-    readed: false,
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(255,188,190,1) 0%,rgba(247,121,125,1) 100%)',
+    title: '通行证管理系统',
   },
   {
-    avatar:
-      'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-    title: '您提交的评价已通过审核',
-    name: '赵某人',
-    event: '多次违反工地规定，并拒不悔改…',
-    time: '5 分钟前',
-    readed: true,
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(95,226,255,1) 0%,rgba(18,194,233,1) 100%)',
+    title: '视频监控管理系统',
   },
   {
-    avatar:
-      'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-    title: '您提交的评价已通过审核',
-    name: '赵某人',
-    event: '多次违反工地规定，并拒不悔改…',
-    time: '5 分钟前',
-    readed: true,
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(181,181,255,1) 0%,rgba(127,127,213,1) 100%)',
+    title: '质量安全监管系统',
+  },
+  {
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(255,224,153,1) 0%,rgba(254,182,20,1) 100%)',
+    title: '物料管理系统',
+  },
+  {
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(148,148,148,1) 0%,rgba(51,51,51,1) 100%)',
+    title: '设备管理系统',
+  },
+  {
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(61,243,87,1) 0%,rgba(39,198,62,1) 100%)',
+    title: '环境管理系统',
+  },
+  {
+    icon: 'appstore',
+    background:
+      'linear-gradient(180deg,rgba(180,255,250,1) 0%,rgba(111,216,209,1) 100%)',
+    title: '项目进度管理系统',
+  },
+]
+
+const systemsNav = [
+  {
+    icon: 'appstore',
+    title: '物料',
+  },
+  {
+    icon: 'appstore',
+    title: '设备',
+  },
+  {
+    icon: 'appstore',
+    title: '质量',
+  },
+  {
+    icon: 'appstore',
+    title: '视频',
+  },
+  {
+    icon: 'appstore',
+    title: '综合',
+  },
+  {
+    icon: 'appstore',
+    title: '环境',
   },
 ]
 
 export default ({ children, ...props }) => {
   const [menuData, setMenuData] = useState([])
   const [user, setUser] = useState([])
-  const [notifications, setNotifications] = useState([])
-  const [prompts, setPrompts] = useState([])
+  const [tree, setTree] = useState([])
+  const [currentProject, setCurrentProject] = useState(' ')
 
   useEffect(() => {
     setTimeout(() => {
       setMenuData(fakeMenu)
       setUser(fakeUser)
-      setNotifications(n)
-      setPrompts(p)
+      setTree(fakeTree)
+      setCurrentProject(fakeTree[0].name)
     }, 0)
   }, [])
-
-  const notificationsLength = useMemo(
-    () => notifications.filter(v => !v.readed).length,
-    [notifications],
-  )
-  const promptsLength = useMemo(() => prompts.filter(v => !v.readed).length, [
-    prompts,
-  ])
 
   return (
     <BasicLayout
       menuData={menuData}
-      leftContent={<SwitchSystems currentSystem='吾悦广场1～7号楼住宅楼项目' />}
-      middleContent={<SystemsNav />}
+      leftContent={
+        <SwitchSystems
+          applications={applications}
+          companys={companys}
+          currentProject={currentProject}
+          tree={tree}
+          onSelect={(e, b) => {
+            setCurrentProject(b.node.props.title)
+          }}
+        />
+      }
+      middleContent={
+        <TimeWeather/>
+        // <SystemsNav systemsNav={systemsNav} />
+      }
       rightContent={
         <>
           <SwitchTheme />
-          <Notification
-            prompts={prompts}
-            notifications={notifications}
-            setNotifications={setNotifications}
-            setPrompts={setPrompts}
-            notificationsLength={notificationsLength}
-            promptsLength={promptsLength}
-          />
+          <Notification />
           <UserMenu user={user} />
         </>
       }

@@ -1,10 +1,24 @@
 import React from 'react'
+import { PageHeaderWrapper } from '@/'
+import { Card } from 'antd'
 
 const index = () => {
   return (
-    <div>
-      test2
-    </div>
+    <PageHeaderWrapper>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+      <Card>123</Card>
+    </PageHeaderWrapper>
   )
 }
 

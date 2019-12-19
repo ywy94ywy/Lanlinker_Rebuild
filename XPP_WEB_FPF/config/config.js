@@ -89,20 +89,32 @@ export default {
       component: '../layouts/BasicLayout',
       routes: [
         {
-          path: '/',
-          redirect: '/home',
-        },
-        {
           path: '/home',
-          name: 'welcome',
-          icon: 'smile',
           component: './home',
         },
         {
           path: '/manual',
-          name: 'admin',
-          icon: 'crown',
           component: './manual',
+        },
+        {
+          path: '/userInfo',
+          component: './userInfo',
+        },
+        {
+          path: '/userSecurity',
+          component: './userSecurity',
+        },
+        {
+          path: '/userAuth',
+          component: './userAuth',
+        },
+        {
+          path: '/userOrganization',
+          component: './userOrganization',
+        },
+        {
+          path: '/userLicense',
+          component: './userLicense',
         },
         {
           component: './404',

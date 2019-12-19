@@ -1,9 +1,9 @@
-@import '../../../styles/variables.less';
+@import '../../../style/index.less';
 
 .notification {
   width: 40px;
   text-align: center;
-  .hover-background-white;
+  .background-dark-hover;
   .center;
   :global {
     .ant-badge-count {
@@ -16,48 +16,7 @@
       right: -2px;
     }
   }
-}
-.notiPanel {
-  width: 340px;
-  .dropdown-panel;
-  :global {
-    .ant-tabs {
-      > .ant-tabs-bar {
-        margin: 0;
-        .ant-tabs-nav-scroll {
-          text-align: center;
-        }
-      }
-    }
-  }
-  .list {
-    max-height: 360px;
-    overflow-x: hidden;
-    .empty {
-      padding: 30px 0;
-      img {
-        margin-bottom: 20px;
-      }
-    }
-    .itemReaded {
-      opacity: 0.4;
-    }
-    .listItem {
-      padding: 12px 22px 12px 25px;
-      .hover-background;
-    }
-    .description {
-      > p {
-        margin: 0;
-      }
-    }
-  }
-  .clear {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: @border-2;
-    cursor: pointer;
+  i {
+    font-size: calc(var(--fontSize, 14px) + 2px);
   }
 }

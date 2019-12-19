@@ -1,0 +1,46 @@
+@import '~lanlinker/style/index.less';
+
+.notiPanel {
+  width: 340px;
+  .header-panel;
+  :global {
+    .ant-tabs {
+      > .ant-tabs-bar {
+        margin: 0;
+        .ant-tabs-nav-scroll {
+          text-align: center;
+        }
+      }
+    }
+  }
+  .list {
+    max-height: 360px;
+    overflow-x: hidden;
+    .empty {
+      padding: 30px 0;
+      img {
+        margin-bottom: 20px;
+      }
+    }
+    .itemReaded {
+      opacity: 0.4;
+    }
+    .listItem {
+      padding: 12px 22px 12px 25px;
+      .hover-background;
+    }
+    .description {
+      > p {
+        margin: 0;
+      }
+    }
+  }
+  .clear {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: @border-width-base @border-style-base @border-color-split;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,21 @@
+.configForm {
+  overflow: hidden;
+
+  .inline {
+    :global {
+      .ant-form-item {
+        display: flex;
+      }
+    }
+  }
+
+  // antd-components's width fixed
+  :global {
+    .ant-calendar-picker {
+      width: 100%;
+    }
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+}

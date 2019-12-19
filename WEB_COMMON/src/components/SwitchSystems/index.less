@@ -1,19 +1,19 @@
-@import '../../../styles/variables.less';
+@import '../../../style/index.less';
 
 .switchSystems {
   display: flex;
   height: 100%;
   .switcher {
     width: 40px;
-    .hover-background-white;
+    .background-dark-hover;
     .center;
+    > i {
+      font-size: calc(var(--fontSize, 14px) + 2px);
+    }
   }
-  .systems {
-    padding: 0 10px;
-  }
-  .sysPanel {
+  .appPanel {
     width: 480px;
-    .dropdown-panel;
+    .header-panel;
     .system {
       width: 160px;
       height: 160px;
@@ -23,17 +23,10 @@
       justify-content: center;
       align-items: center;
       transition: all 0.3s;
-      &:hover {
-        .hover-background;
-      }
+      .hover-background;
       .icon {
         width: 64px;
         height: 64px;
-        background: linear-gradient(
-          180deg,
-          rgb(113, 187, 255) 0%,
-          rgb(24, 144, 255) 100%
-        );
         border-radius: 4px;
         display: flex;
         align-items: center;
@@ -52,5 +45,15 @@
         padding: 0;
       }
     }
+  }
+  .project {
+    width: 250px;
+    padding:0 20px;
+    .background-dark-hover;
+  }
+  .projPanel {
+    width: 350px;
+    padding: 10px;
+    .header-panel;
   }
 }

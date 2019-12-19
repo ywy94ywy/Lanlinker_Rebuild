@@ -1,8 +1,12 @@
-import React, { useMemo, useState, useEffect } from 'react'
+/**
+ * @module 后台管理系统主要布局
+ * @todo 菜单默认展开
+ */
+import React, { useMemo } from 'react'
 import { BasicLayout } from '@ant-design/pro-layout'
 import { Result, Spin } from 'antd'
 import Link from 'umi/link'
-import style from './index.less'
+import styles from './style.less'
 
 // 面包屑处理（由菜单生成）
 const breadcrumb = {}
@@ -18,8 +22,7 @@ const MenuBreadcrumb = (menu, arr = []) => {
   return breadcrumb
 }
 
-const authRoutes = [] // 权限路由
-// 获取antd-pro扁平化菜单keys和path
+// 获取antd-pro扁平化菜单keys
 const getFlatMenuKeys = menuData => {
   let keys = []
   menuData.forEach(item => {
@@ -29,11 +32,24 @@ const getFlatMenuKeys = menuData => {
     keys.push(item.path)
     if (item.children) {
       keys = keys.concat(getFlatMenuKeys(item.children))
+    }
+  })
+  return keys
+}
+// 获取扁平化菜单path
+const getAuthRoutes = menuData => {
+  let authRoutes = []
+  menuData.forEach(item => {
+    if (!item) {
+      return
+    }
+    if (item.children) {
+      authRoutes = authRoutes.concat(getAuthRoutes(item.children))
     } else {
       authRoutes.push(item.path)
     }
   })
-  return keys
+  return authRoutes
 }
 
 export default ({
@@ -45,30 +61,24 @@ export default ({
   location,
   ...props
 }) => {
-  const [openKeys, setOpenKeys] = useState([])
-
-  useEffect(() => {
-    setOpenKeys(getFlatMenuKeys(menuData)) // 初始菜单全部展开
-  }, [menuData])
-
+  const authRoutes = useMemo(() => getAuthRoutes(menuData), [menuData])
   useMemo(() => MenuBreadcrumb(menuData), [menuData])
 
   return (
-    <div className={style.themeWrapper}>
-      <div className={style.bgwrapper}>
-        <div className={style.bg}></div>
+    <div className={styles.themeWrapper}>
+      <div className={styles.bgwrapper}>
+        <div className={styles.bg}></div>
       </div>
       <BasicLayout
-        className={style.basicLayout}
+        className={styles.basicLayout}
         collapsed={false}
         onCollapse={false}
-        fixSiderbar={false}
         headerRender={() => {
           return (
-            <div className={style.headerContent}>
-              <div className={style.left}>{leftContent}</div>
-              <div className={style.middle}>{middleContent}</div>
-              <div className={style.right}>{rightContent}</div>
+            <div className={styles.headerContent}>
+              <div className={styles.left}>{leftContent}</div>
+              <div className={styles.middle}>{middleContent}</div>
+              <div className={styles.right}>{rightContent}</div>
             </div>
           )
         }}
@@ -82,12 +92,11 @@ export default ({
           return <Link to={menuItemProps.path}>{defaultDom}</Link>
         }}
         // 菜单展开控制
-        menuProps={{
-          openKeys,
-          onOpenChange(e) {
-            setOpenKeys(e)
-          },
-        }}
+        // openKeys={openKeys}
+        // onOpenChange={e => {
+        //   console.log(e)
+        //   // setOpenKeys(e)
+        // }}
         // 面包屑数据
         breadcrumbRender={(routers = []) => {
           if (routers[0]) {
@@ -102,14 +111,16 @@ export default ({
         disableContentMargin
         {...props}
       >
-        <Auth pathname={location.pathname}>{children}</Auth>
+        <Auth pathname={location.pathname} authRoutes={authRoutes}>
+          {children}
+        </Auth>
       </BasicLayout>
     </div>
   )
 }
 
 // 权限控制(只有返回菜单对应的路由有权限访问)
-const Auth = ({ children, pathname }) => {
+const Auth = ({ children, pathname, authRoutes }) => {
   if (authRoutes.length === 0)
     return (
       <div style={{ textAlign: 'center', paddingTop: '200px' }}>

@@ -1,10 +1,14 @@
-import request from '@/utils/request';
+import axios from '@/utils/request';
+
 export async function query() {
-  return request('/api/users');
+  return axios.get('/users');
 }
 export async function queryCurrent() {
-  return request('/api/currentUser');
+  return axios.get('/currentUser');
 }
 export async function queryNotices() {
-  return request('/api/notices');
+  return axios.get('/notices');
+}
+export async function queryUserInfo() {
+  return axios.post('/userInfo');
 }

@@ -4,6 +4,136 @@ function getFakeCaptcha(req, res) {
 
 export default {
   // 支持值为 Object 和 Array
+  '/api/userInfo': {
+    menu: [
+      {
+        path: '/主页管理',
+        name: '主页管理',
+        icon: 'skin',
+        children: [
+          {
+            path: '/home',
+            name: '首页',
+            icon: 'skin',
+          },
+          {
+            path: '/manual',
+            name: '操作手册',
+            icon: 'skin',
+          },
+        ],
+      },
+      {
+        path: '/业务管理',
+        name: '业务管理',
+        icon: 'skin',
+        children: [
+          {
+            path: '/userInfo',
+            name: '用户信息管理',
+            icon: 'skin',
+          },
+          {
+            path: '/userSecurity',
+            name: '用户安全管理',
+            icon: 'skin',
+          },
+          {
+            path: '/userAuth',
+            name: '用户认证管理',
+            icon: 'skin',
+          },
+          {
+            path: '/userOrganization',
+            name: '用户组织管理',
+            icon: 'skin',
+          },
+          {
+            path: '/userLicense',
+            name: '用户执照管理',
+            icon: 'skin',
+          },
+        ],
+      },
+    ],
+    userInfo: {
+      name: '贾亚军',
+      avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+      userid: '00000001',
+      post: '劳务管理员',
+    },
+    notifications: [
+      {
+        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        title: '您提交的评价已通过审核',
+        name: '赵某人',
+        event: '多次违反工地规定，并拒不悔改…',
+        time: '5 分钟前',
+        readed: false,
+      },
+      {
+        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        title: '您提交的评价已通过审核',
+        name: '赵某人',
+        event: '多次违反工地规定，并拒不悔改…',
+        time: '5 分钟前',
+        readed: false,
+      },
+      {
+        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        title: '您提交的评价已通过审核',
+        name: '赵某人',
+        event: '多次违反工地规定，并拒不悔改…',
+        time: '5 分钟前',
+        readed: true,
+      },
+      {
+        avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
+        title: '您提交的评价已通过审核',
+        name: '赵某人',
+        event: '多次违反工地规定，并拒不悔改…',
+        time: '5 分钟前',
+        readed: true,
+      },
+    ],
+    prompts: [
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: false,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: false,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: false,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: false,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: false,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: true,
+      },
+      {
+        description: '张然  的合同已经到期，请及时处理',
+        time: '10分钟前',
+        readed: true,
+      },
+    ],
+  },
   'GET /api/currentUser': {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
