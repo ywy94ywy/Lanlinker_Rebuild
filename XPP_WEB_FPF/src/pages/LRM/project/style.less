@@ -1,0 +1,77 @@
+@import '~lanlinker/style/index.less';
+
+.project {
+  padding: @card-padding-base;
+  :global {
+    .ant-card-head {
+      background-color: @primary-color;
+      color: @heading-color-dark;
+    }
+  }
+  > .left {
+    width: 380px;
+    margin-right: @card-padding-base;
+    > .gallery {
+      background-color: @menu-bg;
+      margin-top: 8px;
+      padding: @card-padding-base;
+      > img {
+        width: 100%;
+        cursor: pointer;
+        &:nth-child(n + 2) {
+          margin-top: @card-padding-base;
+        }
+        &:hover {
+          box-shadow: @shadow-2;
+        }
+      }
+    }
+  }
+  > .right {
+    flex: 1;
+    :global {
+      .ant-card {
+        > .ant-card-body {
+          > .ant-tabs {
+            > .ant-tabs-bar {
+              padding: 0 16px;
+              // 撑满时有bug
+              .ant-tabs-nav {
+                width: 100%;
+                > div {
+                  display: flex;
+                  > .ant-tabs-tab {
+                    flex: 1;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+            > .ant-tabs-content {
+              .ant-tabs-tabpane {
+                padding: 0 @card-padding-base @card-padding-base;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .wrapper {
+      padding-bottom: calc(@card-padding-base - 10px);
+      &:nth-child(n + 2) {
+        padding-top: calc(@card-padding-base - 10px);
+        border-top: @border-width-base @border-style-base @border-color-split;
+      }
+      :global {
+        .ant-form-item {
+          flex: 1;
+          max-width: 400px;
+        }
+        .ant-form-item-label {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
