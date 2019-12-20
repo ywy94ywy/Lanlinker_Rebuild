@@ -19,7 +19,7 @@ export default () => {
   return (
     <PageHeaderWrapper>
       <div className={style.userOrganization}>
-        <CustomCard icon="iconyonghuxinxiguanli" title="搜索组织名称">
+        <CustomCard icon="icon-shortcut" title="搜索组织名称">
           <Row>
             <span>公司全名:</span>
             <Input placeholder="请输入公司名称查询" style={{ margin: '0 15px', width: '200px' }} />
@@ -52,7 +52,7 @@ export default () => {
             ))}
           </Row>
         </CustomCard>
-        <CustomCard icon="iconyonghuxinxiguanli" title="已关联组织" gap>
+        <CustomCard icon="icon-shortcut" title="已关联组织" gap>
           <Table columns={columns} dataSource={dataSource}></Table>
         </CustomCard>
       </div>

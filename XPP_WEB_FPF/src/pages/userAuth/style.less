@@ -1,5 +1,5 @@
 .userAuth {
-  .wrapper1 {
+  .infoCard {
     padding-bottom: 20px;
     :global {
       .ant-card-body {
@@ -10,6 +10,24 @@
     .title {
       padding: 0 20px;
       margin-bottom: 30px;
+    }
+    .idCard {
+      max-width: 1300px;
+      margin: 0 auto;
+      > .front {
+        .identityWrapper;
+        background-image: url('./imgs/front.png');
+        background-size: 510px 330px;
+      }
+      > .back {
+        .identityWrapper;
+        padding-top: 205px;
+        background-image: url('./imgs/back.png');
+        background-size: 510px 330px;
+        > p {
+          justify-content: center;
+        }
+      }
     }
     .identityWrapper {
       width: 510px;
@@ -48,19 +66,11 @@
         height: 140px;
       }
     }
-    .front {
-      .identityWrapper;
-      background-image: url('./imgs/front.png');
-      background-size: 510px 330px;
-    }
-    .back {
-      .identityWrapper;
-      padding-top: 205px;
-      background-image: url('./imgs/back.png');
-      background-size: 510px 330px;
-      > p {
-        justify-content: center;
-      }
-    }
+  }
+  .companyInfo {
+    margin: 0 auto;
+    width: 710px;
+    height: 1040px;
+    background: url(./imgs/license.png) center/100% no-repeat;
   }
 }

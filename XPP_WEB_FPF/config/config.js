@@ -117,6 +117,18 @@ export default {
           component: './userLicense',
         },
         {
+          path: '/lrmHome',
+          component: './LRM/home',
+        },
+        {
+          path: '/lrmManual',
+          component: './LRM/manual',
+        },
+        {
+          path: '/lrmProject',
+          component: './LRM/project',
+        },
+        {
           component: './404',
         },
       ],

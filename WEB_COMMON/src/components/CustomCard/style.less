@@ -1,15 +1,25 @@
+@import '../../../style/index.less';
+
 .customCard {
   .title {
-    display: table;
+    display: flex;
     margin: 0;
+    align-items: center;
     .iconFix {
       font-weight: normal;
       vertical-align: middle;
       margin-right: 8px;
       font-size: 1.2em;
     }
-    span {
-      vertical-align: middle;
+  }
+  :global {
+    .ant-card-extra {
+      padding: 0;
     }
+  }
+}
+.customCardMargin {
+  && {
+    margin-top: @padding-lg;
   }
 }

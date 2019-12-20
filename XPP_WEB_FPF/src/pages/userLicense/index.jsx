@@ -2,12 +2,11 @@
  * @module 用户执照管理
  */
 import { PageHeaderWrapper } from 'lanlinker';
-import { Card, Collapse, Icon, Row, Col, Menu } from 'antd';
+import { Card, Collapse, Icon, Row, Col, List, Menu, Avatar } from 'antd';
 import { Link } from 'umi';
 import { useState } from 'react';
 import style from './style.less';
 import applied from './imgs/applied.png';
-import notApplied from './imgs/notApplied.png';
 
 const systems = [
   {
@@ -28,19 +27,19 @@ const systems = [
     cards: [
       {
         title: '劳务实名制管理系统_2013-84号地块一期（A3-02）工程',
-        icon: notApplied,
+        icon: applied,
       },
       {
         title: '劳务实名制管理系统_首创国际项目',
-        icon: notApplied,
+        icon: applied,
       },
       {
         title: '劳务实名制管理系统_2013-84号地块一期（A3-02）工程',
-        icon: notApplied,
+        icon: applied,
       },
       {
         title: '劳务实名制管理系统_首创国际项目',
-        icon: notApplied,
+        icon: applied,
       },
     ],
   },
@@ -101,17 +100,10 @@ export default () => {
                 <Row type="flex">
                   {item.cards.map((v, i) => (
                     <Col key={i} className={style.cardWrapper}>
-                      <Card className={style.cardContent}>
-                        <Row type="flex">
-                          <Col className={style.icon}>
-                            <img src={v.icon} alt="icon" />
-                          </Col>
-                          <Col className={style.title}>
-                            <p>{v.title}</p>
-                            <p>单位系统执照编号：88888888</p>
-                          </Col>
-                        </Row>
-                      </Card>
+                      <SysytemCard
+                        data={v}
+                        type={item.name === '已申请系统' ? 'applied' : 'notApplied'}
+                      ></SysytemCard>
                       <div className={style.cardBottom}>
                         {item.name === '已申请系统' ? (
                           <Row>
@@ -139,5 +131,19 @@ export default () => {
         </Collapse>
       </div>
     </PageHeaderWrapper>
+  );
+};
+
+const SysytemCard = ({ data, type = 'applied' }) => {
+  return (
+    <div className={style.cardContent}>
+      <List.Item className={type === 'notApplied' && style.notApplied}>
+        <List.Item.Meta
+          avatar={<Avatar src={data.icon} size={48} />}
+          title={data.title}
+          description="单位系统执照编号：88888888"
+        />
+      </List.Item>
+    </div>
   );
 };

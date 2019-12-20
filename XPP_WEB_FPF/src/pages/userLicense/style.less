@@ -5,7 +5,7 @@
   .type {
     display: flex;
     .title {
-      flex: 0 0 100px;
+      width: 100px;
     }
     .items {
       flex: 1;
@@ -50,13 +50,19 @@
     margin-right: 8px;
     margin-bottom: 8px;
     &:hover {
-      box-shadow: 0 0 13px #d9d9d9;
+      box-shadow: 0 0 13px @normal-color;
     }
     .cardContent {
       width: 360px;
-      min-height: 132px;
-      padding: 6px;
+      height: 135px;
+      padding: 18px 30px 6px;
+      background: @menu-bg;
       border: none;
+      :global {
+        .ant-list-item-meta-title {
+          .h4;
+        }
+      }
       .icon {
         margin-right: 20px;
       }
@@ -78,20 +84,25 @@
     .cardBottom {
       width: 360px;
       height: 48px;
-      background: #f7f9fa;
+      background: @descriptions-bg;
       .btn {
         text-align: center;
         line-height: 48px;
-        &:nth-child(2n)::after {
+        cursor: pointer;
+        &:nth-child(n + 2)::before {
           content: '';
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
           left: -1px;
           height: 20px;
-          border-right: 1px solid #d9d9d9;
+          border-right: @border-width-base @border-style-base @border-color-base;
         }
       }
     }
+  }
+  .notApplied {
+    opacity: 0.5;
+    filter: grayscale(1);
   }
 }

@@ -914,8 +914,17 @@ var index$7 = _Form.create()(function (_ref) {
   }));
 });
 
-var css$8 = ".src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D {\n  display: table;\n  margin: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D .src-components-CustomCard-_iconFix_2YP0n {\n  font-weight: normal;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-size: 1.2em;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D span {\n  vertical-align: middle;\n}\n";
-var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","title":"src-components-CustomCard-_title_1B-5D","iconFix":"src-components-CustomCard-_iconFix_2YP0n"};
+var config = {
+  baseURL: 'https://nei.netease.com/api/apimock/20677609c2af996c88be2cd3244301ba/api',
+  iconfont: '//at.alicdn.com/t/font_1430257_mtq8pi4rree.js'
+};
+
+var IconFont = _Icon.createFromIconfontCN({
+  scriptUrl: config.iconfont
+});
+
+var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D {\n  display: -webkit-box;\n  display: flex;\n  margin: 0;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D .src-components-CustomCard-_iconFix_2YP0n {\n  font-weight: normal;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-size: 1.2em;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCardMargin_1XYMy.src-components-CustomCard-_customCardMargin_1XYMy {\n  margin-top: 24px;\n}\n";
+var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","title":"src-components-CustomCard-_title_1B-5D","iconFix":"src-components-CustomCard-_iconFix_2YP0n","customCardMargin":"src-components-CustomCard-_customCardMargin_1XYMy"};
 styleInject(css$8);
 
 var index$8 = (function (_ref) {
@@ -923,18 +932,18 @@ var index$8 = (function (_ref) {
       title = _ref.title,
       className = _ref.className,
       children = _ref.children,
-      gap = _ref.gap;
-  return React__default.createElement(_Card, {
-    className: classnames(style$6.customCard, className),
-    style: gap && {
-      marginTop: "24px"
-    },
-    title: typeof title === "string" ? React__default.createElement("p", {
-      className: style$6.title
-    }, React__default.createElement("i", {
-      className: classnames("iconfont ".concat(icon), style$6.iconFix)
-    }), React__default.createElement("span", null, title)) : title
-  }, children);
+      gap = _ref.gap,
+      props = _objectWithoutProperties(_ref, ["icon", "title", "className", "children", "gap"]);
+
+  return React__default.createElement(_Card, _extends(_defineProperty({
+    className: classnames(style$6.customCard, className, gap && style$6.customCardMargin),
+    title: "123"
+  }, "title", typeof title === 'string' ? React__default.createElement("span", {
+    className: style$6.title
+  }, icon && React__default.createElement(IconFont, {
+    className: style$6.iconFix,
+    type: icon
+  }), React__default.createElement("span", null, title)) : title), props), children);
 });
 
 var css$9 = ".react-resizable {\n  position: relative;\n  background-clip: padding-box;\n}\n.react-resizable-handle {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  bottom: 0;\n  right: -5px;\n  cursor: col-resize;\n  z-index: 1;\n}\n";
@@ -1151,6 +1160,7 @@ var index$b = (function () {
 exports.BasicLayout = index;
 exports.ConfigForm = index$7;
 exports.CustomCard = index$8;
+exports.IconFont = IconFont;
 exports.Notification = index$4;
 exports.PageHeaderWrapper = index$1;
 exports.SafeNumberInput = index$a;
