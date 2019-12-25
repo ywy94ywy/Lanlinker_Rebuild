@@ -93,10 +93,10 @@ export default ({
         }}
         // 菜单展开控制
         // openKeys={openKeys}
-        // onOpenChange={e => {
-        //   console.log(e)
-        //   // setOpenKeys(e)
-        // }}
+        onOpenChange={e => {
+          console.log(e)
+          // setOpenKeys(e)
+        }}
         // 面包屑数据
         breadcrumbRender={(routers = []) => {
           if (routers[0]) {
@@ -106,6 +106,9 @@ export default ({
         }}
         // 面包屑渲染
         itemRender={route => <span>{route.breadcrumbName}</span>}
+        menuProps={{
+          defaultOpenAll: true,
+        }}
         // siderWidth={230}
         disableMobile
         disableContentMargin

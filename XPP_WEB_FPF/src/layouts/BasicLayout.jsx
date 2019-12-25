@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BasicLayout, UserMenu, SwitchTheme, SwitchSystems, TimeWeather } from 'lanlinker';
 import { connect } from 'dva';
+import { router } from 'umi';
 import Notification from '@/components/Notification';
+import logo from '@/assets/logo.png';
 
 const fakeTree = [
   {
@@ -145,7 +147,9 @@ export default connect(({ user: { menu, userInfo } }) => ({
   useEffect(() => {
     dispatch({ type: 'user/fetchUserInfo' });
   }, []);
-
+  if (window.location.pathname === '/' && menu.length > 0) {
+    router.push(menu[0].children[0].path);
+  }
   // todo delete
   useEffect(() => {
     setTimeout(() => {
@@ -156,6 +160,7 @@ export default connect(({ user: { menu, userInfo } }) => ({
 
   return (
     <BasicLayout
+      menuHeaderRender={() => <img src={logo} alt="logo"></img>}
       menuData={menu}
       leftContent={
         <SwitchSystems

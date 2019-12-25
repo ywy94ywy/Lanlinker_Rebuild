@@ -35,47 +35,74 @@
       padding-bottom: 14px;
     }
   }
-  // .card {
-  //   min-height: @height;
-  //   .row {
-  //     min-height: @height;
-  //   }
-  //   .left {
-  //     width: 210px;
-  //     border-right: @border-1;
-  //     box-sizing: border-box;
-  //   }
-  //   .right {
-  //     flex: 1;
-  //   }
-  //   :global {
-  //     .ant-card-body {
-  //       min-height: @height;
-  //       padding-left: 0;
-  //       .ant-menu {
-  //         border-right: none;
-  //         .ant-menu-item {
-  //           height: 50px;
-  //           line-height: 50px;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // .management {
-  //   padding-left: 30px;
-  //   .manageCard {
-  //     height: 60px;
-  //     border-bottom: @border-2;
-  //     margin-bottom: 20px;
-  //     &:first-of-type {
-  //       margin-top: 18px;
-  //     }
-  //     .strong {
-  //       color: @strong-color;
-  //     }
-  //   }
-  // }
+}
+
+.formlayout() {
+  margin: 20px auto 0;
+  width: 420px;
+}
+.loginPasswordModal {
+  .form {
+    .formlayout;
+  }
+}
+.securityPasswordModal {
+  .tabs {
+    text-align: center;
+  }
+}
+.questionsModal {
+  .content {
+    width: 600px;
+    margin: 0 auto;
+    min-height: 450px;
+    .form {
+      .formlayout;
+      margin-top: 40px;
+    }
+    .form0 {
+      margin-top: 170px;
+    }
+    .success {
+      margin: 90px 0;
+    }
+  }
+}
+.phoneModal {
+  .form {
+    .formlayout;
+    .verify {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: @input-height-lg;
+      .input {
+        flex: 1;
+      }
+      .btn {
+        margin-left: 10px;
+        flex: 0 0 102px;
+      }
+    }
+  }
+}
+.emailModal {
+  .form {
+    .formlayout;
+    .verify {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: @input-height-lg;
+      .input {
+        flex: 1;
+      }
+      .btn {
+        margin-left: 10px;
+        flex: 0 0 102px;
+      }
+    }
+  }
 }
 
 // 密码强度

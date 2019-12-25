@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 export default {
   routes: [
     {
@@ -8,14 +8,17 @@ export default {
         {
           path: '/test222',
           component: './test2',
+          key: 'test222',
         },
         {
           path: '/test333',
           component: './test3',
+          key: 'test333',
         },
         {
           path: '/test444',
           component: './test4',
+          key: 'test444',
         },
         {
           component: './404',
@@ -30,5 +33,4 @@ export default {
   targets: {
     ie: 11,
   },
-};
-
+}

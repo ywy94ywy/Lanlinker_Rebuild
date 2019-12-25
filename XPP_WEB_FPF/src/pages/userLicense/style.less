@@ -60,7 +60,12 @@
       border: none;
       :global {
         .ant-list-item-meta-title {
-          .h4;
+          > span {
+            .h4;
+          }
+          > a {
+            color: @primary-color;
+          }
         }
       }
       .icon {
@@ -101,8 +106,24 @@
       }
     }
   }
-  .notApplied {
+  .greyfilter() {
     opacity: 0.5;
     filter: grayscale(1);
+  }
+
+  .notApplied {
+    :global {
+      .ant-list-item-meta-avatar,
+      .ant-list-item-meta-description {
+        .greyfilter;
+      }
+      .ant-list-item-meta-content {
+        .ant-list-item-meta-title {
+          > span {
+            .greyfilter;
+          }
+        }
+      }
+    }
   }
 }

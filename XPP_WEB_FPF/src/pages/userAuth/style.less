@@ -11,25 +11,7 @@
       padding: 0 20px;
       margin-bottom: 30px;
     }
-    .idCard {
-      max-width: 1300px;
-      margin: 0 auto;
-      > .front {
-        .identityWrapper;
-        background-image: url('./imgs/front.png');
-        background-size: 510px 330px;
-      }
-      > .back {
-        .identityWrapper;
-        padding-top: 205px;
-        background-image: url('./imgs/back.png');
-        background-size: 510px 330px;
-        > p {
-          justify-content: center;
-        }
-      }
-    }
-    .identityWrapper {
+    .identityWrapper() {
       width: 510px;
       height: 330px;
       background-size: cover;
@@ -64,6 +46,51 @@
         right: 30px;
         width: 100px;
         height: 140px;
+      }
+    }
+    .idCard {
+      max-width: 1300px;
+      margin: 0 auto;
+      > .front {
+        .identityWrapper;
+        background-image: url('./imgs/front.png');
+        background-size: 510px 330px;
+      }
+      > .back {
+        .identityWrapper;
+        padding-top: 205px;
+        background-image: url('./imgs/back.png');
+        background-size: 510px 330px;
+        > p {
+          justify-content: center;
+        }
+      }
+    }
+    .idCard2 {
+      max-width: 1300px;
+      margin: 0 auto;
+      > .front {
+        .identityWrapper;
+        background-image: url('./imgs/front_2.png');
+        background-size: 510px 330px;
+        > p {
+          margin-bottom: 6px;
+          &:nth-of-type(n + 2) {
+            margin-top: 6px;
+          }
+          > strong {
+            margin-right: 10px;
+            &:nth-of-type(n + 1) {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+      > .back {
+        .identityWrapper;
+        padding-top: 205px;
+        background-image: url('./imgs/back_2.png');
+        background-size: 510px 330px;
       }
     }
   }

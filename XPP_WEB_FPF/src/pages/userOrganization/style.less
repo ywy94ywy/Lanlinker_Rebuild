@@ -1,58 +1,24 @@
 @import '~lanlinker/style/index.less';
 
 .userOrganization {
-  .cards {
-    margin-top: 30px;
-  }
-  // todo 样式与userlicense耦合
-  .cardWrapper {
-    margin-right: 8px;
-    margin-bottom: 8px;
-    outline: @border-width-base @border-style-base @border-color-base;
-    &:hover {
-      box-shadow: 0 0 13px @normal-color;
-    }
-    .cardContent {
-      width: 360px;
-      min-height: 132px;
-      padding: 6px;
-      border: none;
-      .icon {
-        margin-right: 20px;
+  .list {
+    .listItem {
+      width: 335px;
+      display: inline-block;
+      border: @border-width-base @border-style-base @border-color-base;
+      padding: 0;
+      margin-right: 10px;
+      margin-top: 20px;
+      > .top {
+        padding: 25px 25px 0;
       }
-      .title {
-        width: 232px;
-        p:nth-of-type(1) {
-          font-size: 16px;
-          font-weight: bold;
-        }
-        p:nth-of-type(2) {
-          margin-top: 14px;
-        }
-      }
-      img {
-        width: 48px;
+      > .bottom {
         height: 48px;
-      }
-    }
-    .cardBottom {
-      width: 360px;
-      height: 48px;
-      background: #f7f9fa;
-      border-top: @border-width-base @border-style-base @border-color-base;
-      .btn {
-        text-align: center;
-        line-height: 48px;
-        &:nth-child(2n)::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: -1px;
-          height: 20px;
-          border-right: 1px solid #d9d9d9;
-        }
+        background: @descriptions-bg;
+        border-top: @border-width-base @border-style-base @border-color-base;
+        .center;
       }
     }
   }
+ 
 }

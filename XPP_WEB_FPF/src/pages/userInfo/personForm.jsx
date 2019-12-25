@@ -36,12 +36,20 @@ export default ({ userName, userSex } = {}) => {
       component: <Input></Input>,
     },
     {
+      label: '',
+      component: null,
+    },
+    {
       label: '个人邮编',
       component: <Input></Input>,
     },
     {
       label: '个人电话',
       component: <Input></Input>,
+    },
+    {
+      label: '',
+      component: null,
     },
     {
       label: '个人邮箱（已绑定）',
@@ -52,12 +60,20 @@ export default ({ userName, userSex } = {}) => {
       component: <Input disabled></Input>,
     },
     {
+      label: '',
+      component: null,
+    },
+    {
       label: '个人微信',
       component: <Input></Input>,
     },
     {
       label: '个人QQ',
       component: <Input></Input>,
+    },
+    {
+      label: '',
+      component: null,
     },
     {
       label: '个人网址',

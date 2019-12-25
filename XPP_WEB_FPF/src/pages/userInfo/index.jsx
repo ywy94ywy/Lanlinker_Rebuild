@@ -1,18 +1,23 @@
 /**
  * @module 用户信息管理
  * @author DesYang
+ * @todo UI：头像上传
  */
 import { useRef, useEffect, useState } from 'react';
-import { PageHeaderWrapper, CustomCard, ConfigForm } from 'lanlinker';
-import { Button, Row, Col, Card, Avatar } from 'antd';
-import style from './index.less';
+import { PageHeaderWrapper, ConfigForm } from 'lanlinker';
+import { Button, Card, Avatar, Tabs } from 'antd';
+import CustomModal from '@/components/CustomModal';
+import styles from './index.less';
 import personForm from './personForm';
 import managerForm from './managerForm';
+
+const { TabPane } = Tabs;
 
 export default () => {
   const personFormRef = useRef();
   const managerFormRef = useRef();
   const [formData, setFormData] = useState({});
+  const [uploadModal, setUploadModal] = useState(false);
 
   useEffect(() => {
     const a = setTimeout(() => {
@@ -30,30 +35,79 @@ export default () => {
 
   return (
     <>
-      <PageHeaderWrapper content={<UserInfoHeader />}>
-        <div className={style.userInfo}>
-          <CustomCard icon="iconyonghuxinxiguanli" title="个人基本信息">
-            <ConfigForm
-              width={1020}
-              itemWidth={320}
-              data={personForm(formData)}
-              ref={personFormRef}
-            ></ConfigForm>
-          </CustomCard>
-          <CustomCard icon="iconyonghuzhanghaoguanli" title="负责人信息" gap>
-            <ConfigForm
-              width={1020}
-              itemWidth={320}
-              data={managerForm()}
-              ref={managerFormRef}
-            ></ConfigForm>
-          </CustomCard>
+      <PageHeaderWrapper>
+        <div className={styles.userInfo}>
+          <Tabs size="large" className={styles.userTabs}>
+            <TabPane tab="个人基本信息" key="个人基本信息">
+              <div className={styles.layout}>
+                <ConfigForm
+                  width={1020}
+                  itemWidth={300}
+                  data={personForm(formData)}
+                  ref={personFormRef}
+                ></ConfigForm>
+                <div className={styles.user}>
+                  <Avatar
+                    src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+                    size={180}
+                  ></Avatar>
+                  <Button
+                    icon="upload"
+                    className={styles.upload}
+                    onClick={() => {
+                      setUploadModal(true);
+                    }}
+                  >
+                    更换头像
+                  </Button>
+                  <CustomModal
+                    title="上传头像"
+                    visible={uploadModal}
+                    onCancel={() => {
+                      setUploadModal(false);
+                    }}
+                  >
+                    暂无页面
+                  </CustomModal>
+                  <div className={styles.info}>
+                    <p>
+                      <span>数字帐号：</span>
+                      <span>1234566</span>
+                    </p>
+                    <p>
+                      <span>手机帐号：</span>
+                      <span>13812345678</span>
+                    </p>
+                    <p>
+                      <span>昵称帐号：</span>
+                      <span>江苏南通二建集团有限公司</span>
+                    </p>
+                    <p>
+                      <span>邮箱帐号：</span>
+                      <span>123@nt2j.cn</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </TabPane>
+            <TabPane tab="工作信息" key="工作信息">
+              <ConfigForm
+                width={1020}
+                itemWidth={300}
+                data={managerForm()}
+                ref={managerFormRef}
+              ></ConfigForm>
+            </TabPane>
+          </Tabs>
         </div>
       </PageHeaderWrapper>
-      <Card className={style.userInfoFooter}>
+      <Card className={styles.userInfoFooter}>
+        <Button className={styles.btn} onClick={() => {}}>
+          取消
+        </Button>
         <Button
           type="primary"
-          className={style.btn}
+          className={styles.btn}
           onClick={() => {
             submit();
           }}
@@ -62,25 +116,5 @@ export default () => {
         </Button>
       </Card>
     </>
-  );
-};
-
-const UserInfoHeader = () => {
-  return (
-    <Row type="flex" className={style.userInfoHeader}>
-      <Col className={style.headLeft}>
-        <p>数字帐号：1234566</p>
-        <p>手机帐号：13812345678</p>
-        <p>昵称帐号：江苏南通二建集团有限公司</p>
-        <p>邮箱帐号：123@nt2j.cn</p>
-      </Col>
-      <Col className={style.headRight}>
-        <Avatar
-          src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
-          size={90}
-        ></Avatar>
-        <Button icon="upload">更换头像</Button>
-      </Col>
-    </Row>
   );
 };

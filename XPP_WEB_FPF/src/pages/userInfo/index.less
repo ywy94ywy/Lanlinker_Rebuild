@@ -1,38 +1,62 @@
 @import '~lanlinker/style/index.less';
 
 .userInfo {
-  .sex {
-    margin-right: 70px;
-  }
-}
-
-.userInfoHeader {
-  padding: 30px 0 25px 50px;
-  .headLeft {
-    width: 445px;
-    p {
-      .h4;
-      height: 42px;
-      line-height: 42px;
-      margin-bottom: 0;
+  .userTabs {
+    background: @menu-bg;
+    :global {
+      .ant-tabs-bar {
+        padding: 0 16px;
+      }
+      .ant-tabs-content {
+        > .ant-tabs-tabpane {
+          padding: 0 @card-padding-base @card-padding-base;
+        }
+      }
     }
-  }
-  .headRight {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    img {
-      cursor: pointer;
+    .layout {
+      width: 1020px;
+      position: relative;
+      > .user {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 530px;
+        border-left: 1px solid @border-color-base;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        > .upload {
+          margin-top: 20px;
+        }
+        > .info {
+          width: 220px;
+          margin-top: 20px;
+          p {
+            .h4;
+            display: flex;
+            > span {
+              &:first-child {
+                flex: 0 0 80px;
+              }
+            }
+          }
+        }
+      }
     }
-    button {
-      margin: 20px 0 10px 0;
+    .sex {
+      margin-right: 70px;
     }
   }
 }
 
 .userInfoFooter {
-  .btn {
-    float: right;
+  display: flex;
+  justify-content: flex-end;
+  button{
+    margin-left: 20px;
   }
+  // .btn {
+  //   float: right;
+  // }
 }
