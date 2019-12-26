@@ -1,4 +1,4 @@
-import { Card, Col, Icon, Row, Table, Tooltip } from 'antd';
+import { Card, Col, Row, Table } from 'antd';
 import React from 'react';
 import numeral from 'numeral';
 import { MiniArea } from './Charts';
@@ -8,25 +8,25 @@ import styles from '../style.less';
 
 const columns = [
   {
-    title: 'Rank',
+    title: '排名',
     dataIndex: 'index',
     key: 'index',
   },
   {
-    title: 'Search keyword',
+    title: '系统名称',
     dataIndex: 'keyword',
     key: 'keyword',
     render: text => <a href="/">{text}</a>,
   },
   {
-    title: 'Users',
+    title: '用户数',
     dataIndex: 'count',
     key: 'count',
     sorter: (a, b) => a.count - b.count,
     className: styles.alignRight,
   },
   {
-    title: 'Weekly Range',
+    title: '周涨幅',
     dataIndex: 'range',
     key: 'range',
     sorter: (a, b) => a.range - b.range,
@@ -45,15 +45,7 @@ const columns = [
 ];
 
 const TopSearch = ({ loading, visitData2, searchData, dropdownGroup }) => (
-  <Card
-    loading={loading}
-    bordered={false}
-    title="Online Top Search"
-    extra={dropdownGroup}
-    style={{
-      height: '100%',
-    }}
-  >
+  <Card loading={loading} bordered={false} title="用户日活量">
     <Row gutter={68} type="flex">
       <Col
         sm={12}
@@ -63,23 +55,11 @@ const TopSearch = ({ loading, visitData2, searchData, dropdownGroup }) => (
         }}
       >
         <NumberInfo
-          subTitle={
-            <span>
-              search users
-              <Tooltip title="introduce">
-                <Icon
-                  style={{
-                    marginLeft: 8,
-                  }}
-                  type="info-circle-o"
-                />
-              </Tooltip>
-            </span>
-          }
+          subTitle={<span>当日活跃用户量</span>}
           gap={8}
           total={numeral(12321).format('0,0')}
           status="up"
-          subTotal={17.1}
+          subTotal="17.1%"
         />
         <MiniArea line height={45} data={visitData2} />
       </Col>
@@ -91,22 +71,10 @@ const TopSearch = ({ loading, visitData2, searchData, dropdownGroup }) => (
         }}
       >
         <NumberInfo
-          subTitle={
-            <span>
-              Per Capita Search
-              <Tooltip title="introduce">
-                <Icon
-                  style={{
-                    marginLeft: 8,
-                  }}
-                  type="info-circle-o"
-                />
-              </Tooltip>
-            </span>
-          }
+          subTitle={<span>当日登录用户量</span>}
           total={2.7}
           status="down"
-          subTotal={26.2}
+          subTotal="26.2%"
           gap={8}
         />
         <MiniArea line height={45} data={visitData2} />
@@ -114,9 +82,9 @@ const TopSearch = ({ loading, visitData2, searchData, dropdownGroup }) => (
     </Row>
     <Table
       rowKey={record => record.index}
-      size="small"
       columns={columns}
       dataSource={searchData}
+      bordered
       pagination={{
         style: {
           marginBottom: 0,

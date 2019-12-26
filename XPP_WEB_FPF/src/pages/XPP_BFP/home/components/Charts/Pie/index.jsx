@@ -2,7 +2,7 @@ import { Chart, Coord, Geom, Tooltip } from 'bizcharts';
 import React, { Component } from 'react';
 import { DataView } from '@antv/data-set';
 import Debounce from 'lodash.debounce';
-import { Divider } from 'antd';
+import { Divider, Row, Col } from 'antd';
 import ReactFitText from 'react-fittext';
 import classNames from 'classnames';
 import autoHeight from '../autoHeight';
@@ -248,28 +248,57 @@ class Pie extends Component {
         </ReactFitText>
 
         {hasLegend && (
-          <ul className={styles.legend}>
-            {legendData.map((item, i) => (
-              <li key={item.x} onClick={() => this.handleLegendClick(item, i)}>
-                <span
-                  className={styles.dot}
-                  style={{
-                    backgroundColor: !item.checked ? '#aaa' : item.color,
-                  }}
-                />
-                <span className={styles.legendTitle}>{item.x}</span>
-                <Divider type="vertical" />
-                <span className={styles.percent}>
-                  {`${(Number.isNaN(item.percent) ? 0 : item.percent * 100).toFixed(2)}%`}
-                </span>
-                <span className={styles.value}>{valueFormat ? valueFormat(item.y) : item.y}</span>
-              </li>
-            ))}
-          </ul>
+          <Row type="flex" justify="center" style={{ marginTop: 24 }}>
+            <Row type="flex">
+              {/* <ul className={styles.legend}>
+                {legendData.slice(0, 3).map((item, i) => (
+                  <li key={item.x} onClick={() => this.handleLegendClick(item, i)}>
+                    <span
+                      className={styles.dot}
+                      style={{
+                        backgroundColor: !item.checked ? '#aaa' : item.color,
+                      }}
+                    />
+                    <span className={styles.legendTitle}>{item.x}</span>
+                    <Divider type="vertical" />
+                    <span className={styles.percent}>
+                      {`${(Number.isNaN(item.percent) ? 0 : item.percent * 100).toFixed(2)}%`}
+                    </span>
+                    <span className={styles.value}>
+                      {valueFormat ? valueFormat(item.y) : item.y}
+                    </span>
+                  </li>
+                ))}
+              </ul> */}
+              {legendHalf(legendData.slice(0, 3), this.handleLegendClick)}
+              {legendHalf(legendData.slice(3, 6), this.handleLegendClick)}
+            </Row>
+          </Row>
         )}
       </div>
     );
   }
 }
+
+const legendHalf = (legendData, handleLegendClick) => (
+  <ul className={styles.legend}>
+    {legendData.map((item, i) => (
+      <li key={item.x} onClick={() => handleLegendClick(item, i + 3)}>
+        <span
+          className={styles.dot}
+          style={{
+            backgroundColor: !item.checked ? '#aaa' : item.color,
+          }}
+        />
+        <span className={styles.legendTitle}>{item.x}</span>
+        <Divider type="vertical" />
+        <span className={styles.percent}>
+          {`${(Number.isNaN(item.percent) ? 0 : item.percent * 100).toFixed(2)}%`}
+        </span>
+        <span className={styles.value}>{'¥ ' + item.y}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 export default autoHeight()(Pie);

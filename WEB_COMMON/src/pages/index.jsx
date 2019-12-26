@@ -229,45 +229,45 @@ const systemsNav = [
 ]
 
 export default ({ children, ...props }) => {
-  const [menuData, setMenuData] = useState([])
+  const [menuData, setMenuData] = useState()
   const [user, setUser] = useState([])
   const [tree, setTree] = useState([])
   const [currentProject, setCurrentProject] = useState(' ')
 
   useEffect(() => {
-    setTimeout(() => {
-      setMenuData(fakeMenu)
-      setUser(fakeUser)
-      setTree(fakeTree)
-      setCurrentProject(fakeTree[0].name)
-    }, 0)
+    // setTimeout(() => {
+    setMenuData(fakeMenu)
+    // setUser(fakeUser)
+    // setTree(fakeTree)
+    // setCurrentProject(fakeTree[0].name)
+    // }, 0)
   }, [])
 
   return (
     <BasicLayout
       menuData={menuData}
-      leftContent={
-        <SwitchSystems
-          applications={applications}
-          companys={companys}
-          currentProject={currentProject}
-          tree={tree}
-          onSelect={(e, b) => {
-            setCurrentProject(b.node.props.title)
-          }}
-        />
-      }
-      middleContent={
-        <TimeWeather/>
-        // <SystemsNav systemsNav={systemsNav} />
-      }
-      rightContent={
-        <>
-          <SwitchTheme />
-          <Notification />
-          <UserMenu user={user} />
-        </>
-      }
+      // leftContent={
+      //   <SwitchSystems
+      //     applications={applications}
+      //     companys={companys}
+      //     currentProject={currentProject}
+      //     tree={tree}
+      //     onSelect={(e, b) => {
+      //       setCurrentProject(b.node.props.title)
+      //     }}
+      //   />
+      // }
+      // middleContent={
+      //   <TimeWeather />
+      //   // <SystemsNav systemsNav={systemsNav} />
+      // }
+      // rightContent={
+      //   <>
+      //     <SwitchTheme />
+      //     <Notification />
+      //     <UserMenu user={user} />
+      //   </>
+      // }
       {...props}
     >
       {children}

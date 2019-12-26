@@ -3,34 +3,24 @@ import React from 'react';
 import numeral from 'numeral';
 import { ChartCard, MiniArea, MiniBar, MiniProgress, Field } from './Charts';
 import Trend from './Trend';
-import Yuan from '../utils/Yuan';
 import styles from '../style.less';
 
-const topColResponsiveProps = {
-  xs: 24,
-  sm: 12,
-  md: 12,
-  lg: 12,
-  xl: 6,
-  style: {
-    marginBottom: 24,
-  },
-};
+const commaDigital = number => numeral(number).format('0,0');
 
 const IntroduceRow = ({ loading, visitData }) => (
   <Row gutter={24} type="flex">
     <Col span={6}>
       <ChartCard
         bordered={false}
-        title="Total Sales"
+        title="注册用户数据量"
         action={
-          <Tooltip title="Introduce">
+          <Tooltip title="介绍">
             <Icon type="info-circle-o" />
           </Tooltip>
         }
         loading={loading}
-        total={() => <Yuan>126560</Yuan>}
-        footer={<Field label="Daily Sales" value={`￥${numeral(12423).format('0,0')}`} />}
+        total={commaDigital(126560)}
+        footer={<Field label="日均注册用户量" value={commaDigital(12423)} />}
         contentHeight={46}
       >
         <Trend
@@ -39,28 +29,27 @@ const IntroduceRow = ({ loading, visitData }) => (
             marginRight: 16,
           }}
         >
-          Weekly Changes
+          周同比
           <span className={styles.trendText}>12%</span>
         </Trend>
         <Trend flag="down">
-          Daily Changes
+          日环比
           <span className={styles.trendText}>11%</span>
         </Trend>
       </ChartCard>
     </Col>
-
     <Col span={6}>
       <ChartCard
         bordered={false}
         loading={loading}
-        title="Visits"
+        title="访问量"
         action={
-          <Tooltip title="Introduce">
+          <Tooltip title="介绍">
             <Icon type="info-circle-o" />
           </Tooltip>
         }
-        total={numeral(8846).format('0,0')}
-        footer={<Field label="Daily Visits" value={numeral(1234).format('0,0')} />}
+        total={commaDigital(8846)}
+        footer={<Field label="日访问量" value={commaDigital(1234)} />}
         contentHeight={46}
       >
         <MiniArea color="#975FE4" data={visitData} />
@@ -70,14 +59,14 @@ const IntroduceRow = ({ loading, visitData }) => (
       <ChartCard
         bordered={false}
         loading={loading}
-        title="Payments"
+        title="日点击量"
         action={
-          <Tooltip title="Introduce">
+          <Tooltip title="介绍">
             <Icon type="info-circle-o" />
           </Tooltip>
         }
-        total={numeral(6560).format('0,0')}
-        footer={<Field label="Conversion Rate" value="60%" />}
+        total={commaDigital(6560)}
+        footer={<Field label="平均日点击量" value={commaDigital(1234)} />}
         contentHeight={46}
       >
         <MiniBar data={visitData} />
@@ -87,9 +76,9 @@ const IntroduceRow = ({ loading, visitData }) => (
       <ChartCard
         loading={loading}
         bordered={false}
-        title="Operational Effect"
+        title="各系统购买率"
         action={
-          <Tooltip title="Introduce">
+          <Tooltip title="介绍">
             <Icon type="info-circle-o" />
           </Tooltip>
         }
@@ -107,18 +96,18 @@ const IntroduceRow = ({ loading, visitData }) => (
                 marginRight: 16,
               }}
             >
-              Weekly Changes
+              周同比
               <span className={styles.trendText}>12%</span>
             </Trend>
             <Trend flag="down">
-              Weekly Changes
+              日环比
               <span className={styles.trendText}>11%</span>
             </Trend>
           </div>
         }
         contentHeight={46}
       >
-        <MiniProgress percent={78} strokeWidth={8} target={80} color="#13C2C2" />
+        <MiniProgress percent={78} strokeWidth={12} target={80} />
       </ChartCard>
     </Col>
   </Row>

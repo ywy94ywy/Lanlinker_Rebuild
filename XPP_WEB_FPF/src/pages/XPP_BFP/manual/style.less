@@ -1,0 +1,102 @@
+@import '~lanlinker/style/index.less';
+
+.manual {
+  width: 900px;
+  background: @menu-bg;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > img {
+    width: inherit;
+  }
+  > .subtitle {
+    width: 440px;
+    margin-top: 16px;
+    margin-bottom: 47px;
+    .text-lg;
+  }
+  > .content {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 57px;
+    > .icon {
+      width: 23px;
+      height: 23px;
+      background: grey;
+      color: #fff;
+      border-radius: 50%;
+      .center;
+      margin: 0 auto;
+    }
+    > .btn {
+      width: 210px;
+      height: 80px;
+      background: @primary-color;
+      border-radius: 8px;
+      .h1;
+      .center;
+      color: #fff;
+    }
+    .verticleLine {
+      width: 1px;
+      background: @border-color-base;
+      margin: 0 auto;
+    }
+    .block {
+      display: flex;
+      align-items: flex-start;
+      width: 741px;
+      .textWrapper {
+        width: 300px;
+        margin-top: 62px;
+        border-bottom: 1px solid @border-color-base;
+        display: flex;
+        margin-left: 70px;
+        justify-content: flex-end;
+        > .text {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          > .title {
+            .h3;
+          }
+          > .description {
+            width: 210px;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            text-align: right;
+            .text-base;
+          }
+        }
+        > .icon {
+          width: 44px;
+          padding: 2px 10px 0;
+          > span {
+            background: @primary-color;
+          }
+        }
+      }
+
+      .imgWrapper {
+        height: 268px;
+        padding-left: 20px;
+        border-left: 1px solid @border-color-base;
+        border-bottom: 1px solid @border-color-base;
+        > div {
+          width: 350px;
+          height: inherit;
+          background: blueviolet;
+          > img {
+            width: inherit;
+            height: inherit;
+          }
+        }
+      }
+    }
+  }
+}

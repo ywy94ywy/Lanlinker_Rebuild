@@ -26,14 +26,23 @@ const renderTotal = total => {
   return totalDom;
 };
 
-class ChartCard extends React.Component {
-  renderContent = () => {
-    const { contentHeight, title, avatar, action, total, footer, children, loading } = this.props;
+export default props => {
+  const {
+    contentHeight,
+    title,
+    avatar,
+    action,
+    total,
+    footer,
+    children,
+    loading = false,
+    ...rest
+  } = props;
 
+  const renderContent = () => {
     if (loading) {
       return false;
     }
-
     return (
       <div className={styles.chartCard}>
         <div
@@ -73,30 +82,15 @@ class ChartCard extends React.Component {
     );
   };
 
-  render() {
-    const {
-      loading = false,
-      contentHeight,
-      title,
-      avatar,
-      action,
-      total,
-      footer,
-      children,
-      ...rest
-    } = this.props;
-    return (
-      <Card
-        loading={loading}
-        bodyStyle={{
-          padding: '20px 24px 8px 24px',
-        }}
-        {...rest}
-      >
-        {this.renderContent()}
-      </Card>
-    );
-  }
-}
-
-export default ChartCard;
+  return (
+    <Card
+      loading={loading}
+      bodyStyle={{
+        padding: '20px 24px 8px',
+      }}
+      {...rest}
+    >
+      {renderContent()}
+    </Card>
+  );
+};

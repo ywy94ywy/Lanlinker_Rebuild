@@ -1,6 +1,6 @@
 /**
  * @module 后台管理系统主要布局
- * @todo 菜单默认展开
+ * @todo 菜单默认展开,权限控制
  */
 import React, { useMemo } from 'react'
 import { BasicLayout } from '@ant-design/pro-layout'
@@ -52,6 +52,46 @@ const getAuthRoutes = menuData => {
   return authRoutes
 }
 
+const fakeMenu = [
+  {
+    path: '/test1',
+    name: 'test1',
+    icon: 'skin',
+    key: 't',
+    children: [
+      {
+        path: '/test3333',
+        name: 'test33',
+        icon: 'skin',
+        children: [
+          {
+            path: '/test333',
+            name: 'test3',
+            icon: 'skin',
+          },
+          {
+            path: '/test444',
+            name: 'test4',
+            icon: 'skin',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/test2222',
+    name: 'test22',
+    icon: 'skin',
+    children: [
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+    ],
+  },
+]
+
 export default ({
   children,
   menuData = [],
@@ -63,7 +103,7 @@ export default ({
 }) => {
   const authRoutes = useMemo(() => getAuthRoutes(menuData), [menuData])
   useMemo(() => MenuBreadcrumb(menuData), [menuData])
-
+  console.log(menuData)
   return (
     <div className={styles.themeWrapper}>
       <div className={styles.bgwrapper}>
@@ -83,6 +123,7 @@ export default ({
           )
         }}
         // 菜单数据
+        // menuDataRender={() => fakeMenu}
         menuDataRender={() => menuData}
         // 菜单渲染
         menuItemRender={(menuItemProps, defaultDom) => {
@@ -90,12 +131,6 @@ export default ({
             return defaultDom
           }
           return <Link to={menuItemProps.path}>{defaultDom}</Link>
-        }}
-        // 菜单展开控制
-        // openKeys={openKeys}
-        onOpenChange={e => {
-          console.log(e)
-          // setOpenKeys(e)
         }}
         // 面包屑数据
         breadcrumbRender={(routers = []) => {
@@ -106,17 +141,15 @@ export default ({
         }}
         // 面包屑渲染
         itemRender={route => <span>{route.breadcrumbName}</span>}
-        menuProps={{
-          defaultOpenAll: true,
-        }}
-        // siderWidth={230}
+        menu={{ defaultOpenAll: true }}
+        siderWidth={230}
         disableMobile
         disableContentMargin
         {...props}
       >
-        <Auth pathname={location.pathname} authRoutes={authRoutes}>
-          {children}
-        </Auth>
+        {/* <Auth pathname={location.pathname} authRoutes={authRoutes}> */}
+        {children}
+        {/* </Auth> */}
       </BasicLayout>
     </div>
   )
