@@ -91,37 +91,50 @@ export default {
         {
           path: '/home',
           component: './home',
-          key: 'home',
         },
         {
           path: '/manual',
           component: './manual',
-          key: 'manual',
         },
         {
           path: '/userInfo',
           component: './userInfo',
-          key: 'userInfo',
         },
         {
           path: '/userSecurity',
           component: './userSecurity',
-          key: 'userSecurity',
         },
         {
           path: '/userAuth',
           component: './userAuth',
-          key: 'userAuth',
         },
         {
           path: '/userOrganization',
           component: './userOrganization',
-          key: 'userOrganization',
         },
         {
           path: '/userLicense',
           component: './userLicense',
-          key: 'userLicense',
+        },
+        {
+          path: '/xpphome',
+          component: './XPP_BFP/home',
+        },
+        {
+          path: '/xppmanual',
+          component: './XPP_BFP/manual',
+        },
+        {
+          path: '/xppuser',
+          component: './XPP_BFP/user',
+        },
+        {
+          path: '/xppmodule',
+          component: './XPP_BFP/module',
+        },
+        {
+          path: '/xppauth',
+          component: './XPP_BFP/auth',
         },
         {
           path: '/lrmHome',
@@ -134,14 +147,6 @@ export default {
         {
           path: '/lrmProject',
           component: './LRM/project',
-        },
-        {
-          path: '/xpphome',
-          component: './XPP_BFP/home',
-        },
-        {
-          path: '/xppmanual',
-          component: './XPP_BFP/manual',
         },
         {
           component: './404',

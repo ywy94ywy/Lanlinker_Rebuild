@@ -1,6 +1,6 @@
 /**
  * @module 后台管理系统主要布局
- * @todo 菜单默认展开,权限控制
+ * @todo 权限控制，左侧菜单长度过长问题，默认展开待商榷
  */
 import React, { useMemo } from 'react'
 import { BasicLayout } from '@ant-design/pro-layout'
@@ -22,20 +22,6 @@ const MenuBreadcrumb = (menu, arr = []) => {
   return breadcrumb
 }
 
-// 获取antd-pro扁平化菜单keys
-const getFlatMenuKeys = menuData => {
-  let keys = []
-  menuData.forEach(item => {
-    if (!item) {
-      return
-    }
-    keys.push(item.path)
-    if (item.children) {
-      keys = keys.concat(getFlatMenuKeys(item.children))
-    }
-  })
-  return keys
-}
 // 获取扁平化菜单path
 const getAuthRoutes = menuData => {
   let authRoutes = []
@@ -52,46 +38,6 @@ const getAuthRoutes = menuData => {
   return authRoutes
 }
 
-const fakeMenu = [
-  {
-    path: '/test1',
-    name: 'test1',
-    icon: 'skin',
-    key: 't',
-    children: [
-      {
-        path: '/test3333',
-        name: 'test33',
-        icon: 'skin',
-        children: [
-          {
-            path: '/test333',
-            name: 'test3',
-            icon: 'skin',
-          },
-          {
-            path: '/test444',
-            name: 'test4',
-            icon: 'skin',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    path: '/test2222',
-    name: 'test22',
-    icon: 'skin',
-    children: [
-      {
-        path: '/test222',
-        name: 'test2',
-        icon: 'skin',
-      },
-    ],
-  },
-]
-
 export default ({
   children,
   menuData = [],
@@ -103,7 +49,7 @@ export default ({
 }) => {
   const authRoutes = useMemo(() => getAuthRoutes(menuData), [menuData])
   useMemo(() => MenuBreadcrumb(menuData), [menuData])
-  console.log(menuData)
+
   return (
     <div className={styles.themeWrapper}>
       <div className={styles.bgwrapper}>
@@ -123,7 +69,6 @@ export default ({
           )
         }}
         // 菜单数据
-        // menuDataRender={() => fakeMenu}
         menuDataRender={() => menuData}
         // 菜单渲染
         menuItemRender={(menuItemProps, defaultDom) => {
@@ -147,9 +92,9 @@ export default ({
         disableContentMargin
         {...props}
       >
-        {/* <Auth pathname={location.pathname} authRoutes={authRoutes}> */}
-        {children}
-        {/* </Auth> */}
+        <Auth pathname={location.pathname} authRoutes={authRoutes}>
+          {children}
+        </Auth>
       </BasicLayout>
     </div>
   )

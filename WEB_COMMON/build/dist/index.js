@@ -41,6 +41,10 @@ require('antd/lib/table/style');
 var _Table = _interopDefault(require('antd/lib/table'));
 var reactResizable = require('react-resizable');
 var moment = _interopDefault(require('moment'));
+require('antd/lib/modal/style');
+var _Modal = _interopDefault(require('antd/lib/modal'));
+require('antd/lib/button/style');
+var _Button = _interopDefault(require('antd/lib/button'));
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -234,7 +238,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-layouts-BasicLayout-_themeWrapper_14L2Y {\n  height: 100%;\n  position: relative;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 {\n  width: 100%;\n  height: inherit;\n  overflow: hidden;\n  position: fixed;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 > .src-layouts-BasicLayout-_bg_3V-YL {\n  height: inherit;\n  background: var(--background, #1c1f87) no-repeat;\n  background-size: cover;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- {\n  width: 100%;\n  height: inherit;\n  position: absolute;\n  z-index: 1;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv {\n  color: rgba(255, 255, 255, 0.85);\n  display: -webkit-box;\n  display: flex;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_left_baV43 {\n  width: 300px;\n  margin-left: 4px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_middle_2V02B {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_right_tFiBi {\n  width: 200px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  margin-right: 14px;\n  margin-left: auto;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider {\n  background: transparent;\n  height: auto !important;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu-logo {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu {\n  padding: 0 !important;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-inline {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item {\n  margin: 0;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title i,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item i {\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-open > .ant-menu-submenu-title {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu > .ant-menu-submenu > .ant-menu-submenu-title {\n  height: 60px;\n  line-height: 60px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item-selected {\n  background-color: rgba(0, 0, 0, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout {\n  min-height: 100vh;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-header {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content {\n  background: #f0f2f5;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content > .ant-pro-basicLayout-children-content-wrap > .ant-pro-page-header-wrap {\n  padding-bottom: 24px;\n}\n";
+var css = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-layouts-BasicLayout-_themeWrapper_14L2Y {\n  height: 100%;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 {\n  width: 100%;\n  height: 100vh;\n  position: fixed;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_bgwrapper_1EYE2 > .src-layouts-BasicLayout-_bg_3V-YL {\n  height: inherit;\n  background: var(--background, #1c1f87) no-repeat;\n  background-size: cover;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- {\n  height: inherit;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv {\n  color: rgba(255, 255, 255, 0.85);\n  display: -webkit-box;\n  display: flex;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_left_baV43 {\n  width: 300px;\n  margin-left: 4px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_middle_2V02B {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y > .src-layouts-BasicLayout-_basicLayout_MWK9- .src-layouts-BasicLayout-_headerContent_3MeNv > .src-layouts-BasicLayout-_right_tFiBi {\n  width: 200px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n  margin-right: 14px;\n  margin-left: auto;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu-logo {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu {\n  padding: 0 !important;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-inline {\n  background: transparent;\n  box-shadow: none;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item {\n  margin: 0;\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-title i,\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item i {\n  font-size: var(--fontSize, 14px);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-submenu-open > .ant-menu-submenu-title {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu > .ant-menu-submenu > .ant-menu-submenu-title {\n  height: 60px;\n  line-height: 60px;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-pro-sider-menu-sider > .ant-layout-sider-children > .ant-pro-sider-menu .ant-menu-item-selected {\n  background-color: rgba(0, 0, 0, 0.15);\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout {\n  min-height: 100vh;\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-header {\n  background: transparent;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content {\n  background: #f0f2f5;\n}\n.src-layouts-BasicLayout-_themeWrapper_14L2Y .ant-layout-has-sider > .ant-layout > .ant-layout-content > .ant-pro-basicLayout-children-content-wrap > .ant-pro-page-header-wrap {\n  padding-bottom: 24px;\n}\n";
 var styles = {"themeWrapper":"src-layouts-BasicLayout-_themeWrapper_14L2Y","bgwrapper":"src-layouts-BasicLayout-_bgwrapper_1EYE2","bg":"src-layouts-BasicLayout-_bg_3V-YL","basicLayout":"src-layouts-BasicLayout-_basicLayout_MWK9-","headerContent":"src-layouts-BasicLayout-_headerContent_3MeNv","left":"src-layouts-BasicLayout-_left_baV43","middle":"src-layouts-BasicLayout-_middle_2V02B","right":"src-layouts-BasicLayout-_right_tFiBi"};
 styleInject(css);
 
@@ -254,7 +258,7 @@ var MenuBreadcrumb = function MenuBreadcrumb(menu) {
     }
   });
   return breadcrumb;
-}; // 获取antd-pro扁平化菜单keys
+}; // 获取扁平化菜单path
 
 
 var getAuthRoutes = function getAuthRoutes(menuData) {
@@ -326,13 +330,7 @@ var index = (function (_ref) {
       return React__default.createElement(Link, {
         to: menuItemProps.path
       }, defaultDom);
-    } // 菜单展开控制
-    // openKeys={openKeys}
-    // onOpenChange={e => {
-    //   console.log(e)
-    //   // setOpenKeys(e)
-    // }}
-    // 面包屑数据
+    } // 面包屑数据
     ,
     breadcrumbRender: function breadcrumbRender() {
       var routers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -345,8 +343,11 @@ var index = (function (_ref) {
     ,
     itemRender: function itemRender(route) {
       return React__default.createElement("span", null, route.breadcrumbName);
-    } // siderWidth={230}
-    ,
+    },
+    menu: {
+      defaultOpenAll: true
+    },
+    siderWidth: 230,
     disableMobile: true,
     disableContentMargin: true
   }, props), React__default.createElement(Auth, {
@@ -378,13 +379,13 @@ var Auth = function Auth(_ref2) {
 var index$1 = (function (_ref) {
   var children = _ref.children,
       style = _ref.style,
-      props = _objectWithoutProperties(_ref, ["children", "style"]);
+      rest = _objectWithoutProperties(_ref, ["children", "style"]);
 
   return React__default.createElement(proLayout.PageHeaderWrapper, _extends({
     style: _objectSpread2({
       margin: '0'
     }, style)
-  }, props), children);
+  }, rest), children);
 });
 
 var css$1 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-UserMenu-_userMenu_21mks {\n  padding: 0 10px;\n  color: rgba(255, 255, 255, 0.65);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  cursor: pointer;\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  background: rgba(255, 255, 255, 0.15);\n}\n.src-components-UserMenu-_userMenu_21mks:hover {\n  color: rgba(255, 255, 255, 0.85);\n}\n.src-components-UserMenu-_userMenu_21mks .src-components-UserMenu-_user_3_bwN {\n  margin-left: 10px;\n}\n";
@@ -933,17 +934,17 @@ var index$8 = (function (_ref) {
       className = _ref.className,
       children = _ref.children,
       gap = _ref.gap,
-      props = _objectWithoutProperties(_ref, ["icon", "title", "className", "children", "gap"]);
+      rest = _objectWithoutProperties(_ref, ["icon", "title", "className", "children", "gap"]);
 
-  return React__default.createElement(_Card, _extends(_defineProperty({
+  return React__default.createElement(_Card, _extends({
     className: classnames(style$6.customCard, className, gap && style$6.customCardMargin),
-    title: "123"
-  }, "title", typeof title === 'string' ? React__default.createElement("span", {
-    className: style$6.title
-  }, icon && React__default.createElement(IconFont, {
-    className: style$6.iconFix,
-    type: icon
-  }), React__default.createElement("span", null, title)) : title), props), children);
+    title: typeof title === 'string' ? React__default.createElement("span", {
+      className: style$6.title
+    }, icon && React__default.createElement(IconFont, {
+      className: style$6.iconFix,
+      type: icon
+    }), React__default.createElement("span", null, title)) : title
+  }, rest), children);
 });
 
 var css$9 = ".react-resizable {\n  position: relative;\n  background-clip: padding-box;\n}\n.react-resizable-handle {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  bottom: 0;\n  right: -5px;\n  cursor: col-resize;\n  z-index: 1;\n}\n";
@@ -1075,7 +1076,7 @@ var index$a = React.forwardRef(function (_ref, ref) {
   }));
 });
 
-var css$a = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-TimeWeather-_timeWeather_2LmXD {\n  position: relative;\n  height: 100%;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV {\n  position: absolute;\n  width: 460px;\n  height: 32px;\n  border-radius: 16px;\n  line-height: 30px;\n  text-align: center;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  border: 1px solid #d9d9d9;\n  padding: 0 30px;\n  font-size: var(--fontSize, 14px);\n  color: #d9d9d9;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV span:not(:last-child) {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e > i {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container {\n  color: #d9d9d9;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container .sw-typography {\n  font-size: var(--fontSize, 14px);\n}\n";
+var css$a = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-TimeWeather-_timeWeather_2LmXD {\n  position: relative;\n  height: 100%;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV {\n  position: absolute;\n  width: calc(460px + (var(--fontSize, 14px) - 14px) * 10);\n  height: 32px;\n  border-radius: 16px;\n  line-height: 30px;\n  text-align: center;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  border: 1px solid #d9d9d9;\n  padding: 0 30px;\n  font-size: var(--fontSize, 14px);\n  color: #d9d9d9;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV span:not(:last-child) {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e > i {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container {\n  color: #d9d9d9;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container .sw-typography {\n  font-size: var(--fontSize, 14px);\n}\n";
 var style$7 = {"timeWeather":"src-components-TimeWeather-_timeWeather_2LmXD","wrapper":"src-components-TimeWeather-_wrapper_3nZoV","iconWrapper":"src-components-TimeWeather-_iconWrapper_71V2e","weather":"src-components-TimeWeather-_weather_1gHYK"};
 styleInject(css$a);
 
@@ -1157,9 +1158,30 @@ var index$b = (function () {
   }))));
 });
 
+var index$c = (function (_ref) {
+  var onOk = _ref.onOk,
+      onCancel = _ref.onCancel,
+      props = _objectWithoutProperties(_ref, ["onOk", "onCancel"]);
+
+  return React__default.createElement(_Modal, _extends({
+    footer: React__default.createElement("div", null, React__default.createElement(_Button, {
+      type: "primary",
+      onClick: function onClick() {
+        onOk && onOk();
+      }
+    }, "\u786E\u5B9A"), React__default.createElement(_Button, {
+      onClick: function onClick() {
+        onCancel && onCancel();
+      }
+    }, "\u53D6\u6D88")),
+    onCancel: onCancel
+  }, props));
+});
+
 exports.BasicLayout = index;
 exports.ConfigForm = index$7;
 exports.CustomCard = index$8;
+exports.CustomModal = index$c;
 exports.IconFont = IconFont;
 exports.Notification = index$4;
 exports.PageHeaderWrapper = index$1;

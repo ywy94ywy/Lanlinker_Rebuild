@@ -2,11 +2,9 @@
 
 .themeWrapper {
   height: 100%;
-  position: relative;
   > .bgwrapper {
     width: 100%;
-    height: inherit;
-    overflow: hidden;
+    height: 100vh;
     position: fixed;
     > .bg {
       height: inherit;
@@ -17,10 +15,7 @@
     }
   }
   > .basicLayout {
-    width: 100%;
     height: inherit;
-    position: absolute;
-    z-index: 1;
     .headerContent {
       color: @text-color-dark;
       display: flex;
@@ -44,7 +39,6 @@
   :global {
     .ant-layout-has-sider {
       background: transparent;
-      height: auto !important;
       > .ant-pro-sider-menu-sider {
         background: transparent;
         box-shadow: none;
@@ -86,7 +80,6 @@
       }
       > .ant-layout {
         min-height: 100vh;
-        height: fit-content;
         background: transparent;
         > .ant-layout-header {
           background: transparent;

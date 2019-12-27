@@ -4,12 +4,11 @@
  * @todo UI-卡片、选择、优化
  */
 import { useState } from 'react';
-import { PageHeaderWrapper, SearchTree } from 'lanlinker';
+import { PageHeaderWrapper, SearchTree, CustomModal } from 'lanlinker';
 import { Card, Collapse, Icon, Row, Col, List, Avatar } from 'antd';
 import { Link } from 'umi';
 import style from './style.less';
 import applied from './imgs/applied.png';
-import CustomModal from '@/components/CustomModal';
 
 const systems = [
   {

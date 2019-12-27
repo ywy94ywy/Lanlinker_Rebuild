@@ -4,9 +4,8 @@
  * @todo UI：头像上传
  */
 import { useRef, useEffect, useState } from 'react';
-import { PageHeaderWrapper, ConfigForm } from 'lanlinker';
+import { PageHeaderWrapper, ConfigForm,CustomModal } from 'lanlinker';
 import { Button, Card, Avatar, Tabs } from 'antd';
-import CustomModal from '@/components/CustomModal';
 import styles from './index.less';
 import personForm from './personForm';
 import managerForm from './managerForm';

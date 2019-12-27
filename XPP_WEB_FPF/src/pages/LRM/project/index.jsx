@@ -1,5 +1,10 @@
+/**
+ * @module 项目信息
+ * @author DesYang
+ * @todo 未完成
+ */
 import React from 'react';
-import { Card, Row, Tabs, Form, Col } from 'antd';
+import { Card, Row, Tabs, Form } from 'antd';
 import License from '@/components/License';
 import styles from './style.less';
 const { TabPane } = Tabs;

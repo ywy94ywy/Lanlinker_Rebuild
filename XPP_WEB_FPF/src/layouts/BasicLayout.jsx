@@ -160,7 +160,11 @@ export default connect(({ user: { menu, userInfo } }) => ({
 
   return (
     <BasicLayout
-      menuHeaderRender={() => <img src={logo} alt="logo"></img>}
+      menuHeaderRender={() => (
+        <a href="/">
+          <img src={logo} alt="logo"></img>
+        </a>
+      )}
       menuData={menu}
       leftContent={
         <SwitchSystems

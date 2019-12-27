@@ -64,7 +64,7 @@ export default connect(({ xppBfpAndhome, loading }) => ({
       </Dropdown>
     </span>
   );
-console.log(salesPieData)
+
   return (
     <PageHeaderWrapper>
       <IntroduceRow loading={loading} visitData={visitData} />

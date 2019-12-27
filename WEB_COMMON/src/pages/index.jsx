@@ -49,6 +49,158 @@ const fakeMenu = [
       },
     ],
   },
+  {
+    path: '/test2222',
+    name: 'test22',
+    icon: 'skin',
+    children: [
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+      {
+        path: '/test222',
+        name: 'test2',
+        icon: 'skin',
+      },
+    ],
+  },
 ]
 
 const companys = [
@@ -235,39 +387,39 @@ export default ({ children, ...props }) => {
   const [currentProject, setCurrentProject] = useState(' ')
 
   useEffect(() => {
-    // setTimeout(() => {
-    setMenuData(fakeMenu)
-    // setUser(fakeUser)
-    // setTree(fakeTree)
-    // setCurrentProject(fakeTree[0].name)
-    // }, 0)
+    setTimeout(() => {
+      setMenuData(fakeMenu)
+      setUser(fakeUser)
+      setTree(fakeTree)
+      setCurrentProject(fakeTree[0].name)
+    }, 0)
   }, [])
 
   return (
     <BasicLayout
       menuData={menuData}
-      // leftContent={
-      //   <SwitchSystems
-      //     applications={applications}
-      //     companys={companys}
-      //     currentProject={currentProject}
-      //     tree={tree}
-      //     onSelect={(e, b) => {
-      //       setCurrentProject(b.node.props.title)
-      //     }}
-      //   />
-      // }
-      // middleContent={
-      //   <TimeWeather />
-      //   // <SystemsNav systemsNav={systemsNav} />
-      // }
-      // rightContent={
-      //   <>
-      //     <SwitchTheme />
-      //     <Notification />
-      //     <UserMenu user={user} />
-      //   </>
-      // }
+      leftContent={
+        <SwitchSystems
+          applications={applications}
+          companys={companys}
+          currentProject={currentProject}
+          tree={tree}
+          onSelect={(e, b) => {
+            setCurrentProject(b.node.props.title)
+          }}
+        />
+      }
+      middleContent={
+        <TimeWeather />
+        // <SystemsNav systemsNav={systemsNav} />
+      }
+      rightContent={
+        <>
+          <SwitchTheme />
+          <Notification />
+          <UserMenu user={user} />
+        </>
+      }
       {...props}
     >
       {children}

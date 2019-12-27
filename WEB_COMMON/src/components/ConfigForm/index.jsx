@@ -4,7 +4,7 @@
  */
 
 import { Form, Col } from "antd";
-import classnames from "classnames";
+import classNames from "classnames";
 import style from "./style.less";
 
 export default Form.create()(
@@ -31,7 +31,7 @@ export default Form.create()(
     return (
       <Form
         style={Object.assign({ width: width }, formStyle)}
-        className={classnames(formClassName, style.configForm)}
+        className={classNames(formClassName, style.configForm)}
         {...rest}
       >
         {data.map(

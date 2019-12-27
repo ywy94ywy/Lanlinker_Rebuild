@@ -3,9 +3,8 @@
  * @author DesYang
  */
 import { useState, useEffect } from 'react';
-import { PageHeaderWrapper, SafeNumberInput } from 'lanlinker';
+import { PageHeaderWrapper, SafeNumberInput, CustomModal } from 'lanlinker';
 import { Menu, Alert, Form, Input, Steps, List, Modal, Button, Select, Result } from 'antd';
-import CustomModal from '@/components/CustomModal';
 import classNames from 'classnames';
 import styles from './style.less';
 

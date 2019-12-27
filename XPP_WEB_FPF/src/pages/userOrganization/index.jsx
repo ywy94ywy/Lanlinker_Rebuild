@@ -2,8 +2,8 @@
  * @module 用户组织管理
  * @author DesYang
  */
-import { PageHeaderWrapper,CustomCard } from 'lanlinker';
-import { Input, Button, Table, List, Avatar ,Typography} from 'antd';
+import { PageHeaderWrapper, CustomCard } from 'lanlinker';
+import { Input, Button, Table, List, Avatar, Typography } from 'antd';
 import styles from './style.less';
 import applied from './imgs/applied.png';
 
@@ -74,7 +74,7 @@ export default () => {
           />
         </CustomCard>
         <CustomCard title="已关联组织" gap>
-          <Table columns={columns} dataSource={dataSource} bordered></Table>
+          <Table rowKey={(v, i) => i} columns={columns} dataSource={dataSource} bordered></Table>
         </CustomCard>
       </div>
     </PageHeaderWrapper>

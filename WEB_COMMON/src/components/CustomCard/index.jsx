@@ -1,17 +1,16 @@
 import { Card } from 'antd'
 import IconFont from '../IconFont'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import style from './style.less'
 
-export default ({ icon, title, className, children, gap, ...props }) => {
+export default ({ icon, title, className, children, gap, ...rest }) => {
   return (
     <Card
-      className={classnames(
+      className={classNames(
         style.customCard,
         className,
         gap && style.customCardMargin,
       )}
-      title='123'
       title={
         typeof title === 'string' ? (
           <span className={style.title}>
@@ -24,7 +23,7 @@ export default ({ icon, title, className, children, gap, ...props }) => {
           title
         )
       }
-      {...props}
+      {...rest}
     >
       {children}
     </Card>
