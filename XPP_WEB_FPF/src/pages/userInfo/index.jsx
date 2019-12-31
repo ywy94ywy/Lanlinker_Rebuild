@@ -4,7 +4,7 @@
  * @todo UI：头像上传
  */
 import { useRef, useEffect, useState } from 'react';
-import { PageHeaderWrapper, ConfigForm,CustomModal } from 'lanlinker';
+import { PageHeaderWrapper, ConfigForm, CustomModal } from 'lanlinker';
 import { Button, Card, Avatar, Tabs } from 'antd';
 import styles from './index.less';
 import personForm from './personForm';
@@ -22,7 +22,9 @@ export default () => {
     const a = setTimeout(() => {
       setFormData({ userName: '娃哈哈', userSex: '1' });
     }, 1000);
-    return () => clearTimeout(a);
+    return () => {
+      clearTimeout(a);
+    };
   }, []);
 
   const submit = () => {

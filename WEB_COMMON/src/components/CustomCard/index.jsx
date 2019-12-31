@@ -1,31 +1,38 @@
-import { Card } from 'antd'
-import IconFont from '../IconFont'
+/**
+ * @module 自定义Card
+ * @description 1、简化margin; 2、Tabs型Card
+ * @todo 不知道为什么CustomCard和CustomCardTabs没有死循环
+ */
+import { Card, Tabs } from 'antd'
 import classNames from 'classnames'
 import style from './style.less'
 
-export default ({ icon, title, className, children, gap, ...rest }) => {
+const CustomCard = ({ className, children, gl, gt, ...rest }) => {
   return (
     <Card
       className={classNames(
         style.customCard,
         className,
-        gap && style.customCardMargin,
+        gl && style.customCardML,
+        gt && style.customCardMT,
       )}
-      title={
-        typeof title === 'string' ? (
-          <span className={style.title}>
-            {icon && (
-              <IconFont className={style.iconFix} type={icon}></IconFont>
-            )}
-            <span>{title}</span>
-          </span>
-        ) : (
-          title
-        )
-      }
       {...rest}
     >
       {children}
     </Card>
   )
 }
+
+export const CustomCardTabs = ({ children, gt, gl, ...props }) => {
+  return (
+    <CustomCard bodyStyle={{ padding: 0 }} gt={gt} gl={gl}>
+      <Tabs size='large' {...props}>
+        {children}
+      </Tabs>
+    </CustomCard>
+  )
+}
+
+CustomCardTabs.TabPane = Tabs.TabPane
+
+export default CustomCard

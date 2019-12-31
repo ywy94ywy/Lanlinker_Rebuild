@@ -1,25 +1,40 @@
 @import '../../../style/index.less';
 
 .customCard {
-  .title {
-    display: flex;
-    margin: 0;
-    align-items: center;
-    .iconFix {
-      font-weight: normal;
-      vertical-align: middle;
-      margin-right: 8px;
-      font-size: 1.2em;
-    }
-  }
   :global {
+    .ant-card-body {
+      > .ant-tabs {
+        > .ant-tabs-bar {
+          margin-bottom: 0;
+          > .ant-tabs-extra-content {
+            padding-right: @card-padding-base;
+          }
+          > .ant-tabs-nav-container {
+            padding-left: 16px;
+            .ant-tabs-tab {
+              padding: 17px 16px;
+            }
+          }
+        }
+        > .ant-tabs-content {
+          > .ant-tabs-tabpane {
+            padding: @card-padding-base;
+          }
+        }
+      }
+    }
     .ant-card-extra {
       padding: 0;
     }
   }
 }
-.customCardMargin {
+.customCardMT {
   && {
     margin-top: @padding-lg;
+  }
+}
+.customCardML {
+  && {
+    margin-left: @padding-lg;
   }
 }

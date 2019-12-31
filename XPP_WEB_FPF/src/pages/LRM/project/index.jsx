@@ -1,7 +1,7 @@
 /**
  * @module 项目信息
  * @author DesYang
- * @todo 未完成
+ * @todo 未完成,因为表单与表格的封装，营业执照的逻辑
  */
 import React from 'react';
 import { Card, Row, Tabs, Form } from 'antd';

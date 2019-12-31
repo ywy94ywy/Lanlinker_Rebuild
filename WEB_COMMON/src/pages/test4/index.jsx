@@ -10,7 +10,7 @@ const fakeTree = [
     children: [
       {
         id: '2',
-        name: '222',
+        name: '22asfffffffffffffffffffffff2',
         children: [
           {
             id: '3',
@@ -57,29 +57,9 @@ const fakeTree = [
 const index = () => {
   return (
     <PageHeaderWrapper>
-      <SearchTree data={fakeTree}></SearchTree>
-      <Tree
-        showLine
-        defaultExpandedKeys={['0-0-0']}
-        switcherIcon={<Icon type='down' />}
-        // onSelect={this.onSelect}
-        className='hide-file-icon'
-      >
-        <TreeNode title='parent 1' key='0-0'>
-          <TreeNode title='parent 1-0' key='0-0-0'>
-            <TreeNode title='leaf' key='0-0-0-0' />
-            <TreeNode title='leaf' key='0-0-0-1' />
-            <TreeNode title='leaf' key='0-0-0-2' />
-          </TreeNode>
-          <TreeNode title='parent 1-1' key='0-0-1'>
-            <TreeNode title='leaf' key='0-0-1-0' />
-          </TreeNode>
-          <TreeNode title='parent 1-2' key='0-0-2'>
-            <TreeNode title='leaf' key='0-0-2-0' />
-            <TreeNode title='leaf' key='0-0-2-1' />
-          </TreeNode>
-        </TreeNode>
-      </Tree>
+      <div style={{ width: 200 }}>
+        <SearchTree data={fakeTree}></SearchTree>
+      </div>
     </PageHeaderWrapper>
   )
 }

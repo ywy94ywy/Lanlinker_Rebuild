@@ -1,0 +1,22 @@
+.tableActions {
+  display: flex;
+  margin-bottom: 16px;
+  > .left {
+    display: flex;
+    align-items: center;
+    > *:nth-child(n + 2) {
+      margin-left: 5px;
+    }
+  }
+  > .right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    > *:nth-last-child(n + 2) {
+      margin-right: 5px;
+    }
+  }
+}
+.tableAlert {
+  margin-bottom: 16px;
+}

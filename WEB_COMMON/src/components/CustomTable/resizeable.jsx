@@ -1,5 +1,5 @@
 /**
- * @module: antd-Table(Resizeable)
+ * @module: antd-Table(Resizeable)暂时被废弃
  * @author: DesYang
  */
 import React, { useState } from 'react'
@@ -64,3 +64,21 @@ export default ({ scale, pagination = false, columns, ...props }) => {
     />
   )
 }
+
+// less
+// :global {
+//   .react-resizable {
+//     position: relative;
+//     background-clip: padding-box;
+//   }
+
+//   .react-resizable-handle {
+//     position: absolute;
+//     width: 10px;
+//     height: 100%;
+//     bottom: 0;
+//     right: -5px;
+//     cursor: col-resize;
+//     z-index: 1;
+//   }
+// }

@@ -149,6 +149,30 @@ export default {
           component: './LRM/project',
         },
         {
+          path: '/lrmregister',
+          component: './LRM/register',
+        },
+        {
+          path: '/lrmcontract',
+          component: './LRM/contract',
+        },
+        {
+          path: '/lrmstaffinfo',
+          component: './LRM/staffInfo',
+        },
+        {
+          path: '/lrmtrain',
+          component: './LRM/train',
+        },
+        {
+          path: '/lrmattendance',
+          component: './LRM/attendance',
+        },
+        {
+          path: '/lrmsalary',
+          component: './LRM/salary',
+        },
+        {
           component: './404',
         },
       ],

@@ -30,9 +30,10 @@ import 'antd/lib/col/style';
 import _Col from 'antd/lib/col';
 import 'antd/lib/form/style';
 import _Form from 'antd/lib/form';
+import 'antd/lib/tabs/style';
+import _Tabs from 'antd/lib/tabs';
 import 'antd/lib/table/style';
 import _Table from 'antd/lib/table';
-import { Resizable } from 'react-resizable';
 import moment from 'moment';
 import 'antd/lib/modal/style';
 import _Modal from 'antd/lib/modal';
@@ -908,115 +909,83 @@ var index$7 = _Form.create()(function (_ref) {
   }));
 });
 
-var config = {
-  baseURL: 'https://nei.netease.com/api/apimock/20677609c2af996c88be2cd3244301ba/api',
-  iconfont: '//at.alicdn.com/t/font_1430257_mtq8pi4rree.js'
-};
-
-var IconFont = _Icon.createFromIconfontCN({
-  scriptUrl: config.iconfont
-});
-
-var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D {\n  display: -webkit-box;\n  display: flex;\n  margin: 0;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_title_1B-5D .src-components-CustomCard-_iconFix_2YP0n {\n  font-weight: normal;\n  vertical-align: middle;\n  margin-right: 8px;\n  font-size: 1.2em;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCardMargin_1XYMy.src-components-CustomCard-_customCardMargin_1XYMy {\n  margin-top: 24px;\n}\n";
-var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","title":"src-components-CustomCard-_title_1B-5D","iconFix":"src-components-CustomCard-_iconFix_2YP0n","customCardMargin":"src-components-CustomCard-_customCardMargin_1XYMy"};
+var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar {\n  margin-bottom: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-extra-content {\n  padding-right: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container {\n  padding-left: 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container .ant-tabs-tab {\n  padding: 17px 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-content > .ant-tabs-tabpane {\n  padding: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCardMT_1qLZi.src-components-CustomCard-_customCardMT_1qLZi {\n  margin-top: 24px;\n}\n.src-components-CustomCard-_customCardML_2YjE3.src-components-CustomCard-_customCardML_2YjE3 {\n  margin-left: 24px;\n}\n";
+var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","customCardMT":"src-components-CustomCard-_customCardMT_1qLZi","customCardML":"src-components-CustomCard-_customCardML_2YjE3"};
 styleInject(css$8);
 
-var index$8 = (function (_ref) {
-  var icon = _ref.icon,
-      title = _ref.title,
-      className = _ref.className,
+var CustomCard = function CustomCard(_ref) {
+  var className = _ref.className,
       children = _ref.children,
-      gap = _ref.gap,
-      rest = _objectWithoutProperties(_ref, ["icon", "title", "className", "children", "gap"]);
+      gl = _ref.gl,
+      gt = _ref.gt,
+      rest = _objectWithoutProperties(_ref, ["className", "children", "gl", "gt"]);
 
   return React.createElement(_Card, _extends({
-    className: classnames(style$6.customCard, className, gap && style$6.customCardMargin),
-    title: typeof title === 'string' ? React.createElement("span", {
-      className: style$6.title
-    }, icon && React.createElement(IconFont, {
-      className: style$6.iconFix,
-      type: icon
-    }), React.createElement("span", null, title)) : title
+    className: classnames(style$6.customCard, className, gl && style$6.customCardML, gt && style$6.customCardMT)
   }, rest), children);
-});
+};
 
-var css$9 = ".react-resizable {\n  position: relative;\n  background-clip: padding-box;\n}\n.react-resizable-handle {\n  position: absolute;\n  width: 10px;\n  height: 100%;\n  bottom: 0;\n  right: -5px;\n  cursor: col-resize;\n  z-index: 1;\n}\n";
+var CustomCardTabs = function CustomCardTabs(_ref2) {
+  var children = _ref2.children,
+      gt = _ref2.gt,
+      gl = _ref2.gl,
+      props = _objectWithoutProperties(_ref2, ["children", "gt", "gl"]);
+
+  return React.createElement(CustomCard, {
+    bodyStyle: {
+      padding: 0
+    },
+    gt: gt,
+    gl: gl
+  }, React.createElement(_Tabs, _extends({
+    size: "large"
+  }, props), children));
+};
+CustomCardTabs.TabPane = _Tabs.TabPane;
+
+var css$9 = ".src-components-CustomTable-_tableActions_1ymOf {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo > *:nth-child(n + 2) {\n  margin-left: 5px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A {\n  margin-left: auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A > *:nth-last-child(n + 2) {\n  margin-right: 5px;\n}\n.src-components-CustomTable-_tableAlert_2hOdf {\n  margin-bottom: 16px;\n}\n";
+var styles$2 = {"tableActions":"src-components-CustomTable-_tableActions_1ymOf","left":"src-components-CustomTable-_left_2wfVo","right":"src-components-CustomTable-_right_3_y4A","tableAlert":"src-components-CustomTable-_tableAlert_2hOdf"};
 styleInject(css$9);
 
-var ResizeableTitle = function ResizeableTitle(_ref) {
-  var onResize = _ref.onResize,
-      width = _ref.width,
-      restProps = _objectWithoutProperties(_ref, ["onResize", "width"]);
+var index$8 = (function (_ref) {
+  var _ref$bordered = _ref.bordered,
+      bordered = _ref$bordered === void 0 ? true : _ref$bordered,
+      _ref$actions = _ref.actions,
+      actions = _ref$actions === void 0 ? {
+    left: null,
+    right: null
+  } : _ref$actions,
+      _ref$alert = _ref.alert,
+      alert = _ref$alert === void 0 ? null : _ref$alert,
+      props = _objectWithoutProperties(_ref, ["bordered", "actions", "alert"]);
 
-  if (!width) {
-    return React.createElement("th", restProps);
-  }
-
-  return React.createElement(Resizable, {
-    width: width,
-    height: 0,
-    onResize: onResize,
-    draggableOpts: {
-      enableUserSelectHack: false
-    }
-  }, React.createElement("th", restProps));
-};
-
-var components = {
-  header: {
-    cell: ResizeableTitle
-  }
-};
-var index$9 = (function (_ref2) {
-  var scale = _ref2.scale,
-      _ref2$pagination = _ref2.pagination,
-      pagination = _ref2$pagination === void 0 ? false : _ref2$pagination,
-      columns = _ref2.columns,
-      props = _objectWithoutProperties(_ref2, ["scale", "pagination", "columns"]);
-
-  var _useState = useState(columns),
-      _useState2 = _slicedToArray(_useState, 2),
-      myColumns = _useState2[0],
-      setMyColumns = _useState2[1];
-
-  var handleResize = function handleResize(index) {
-    return function (e, _ref3) {
-      var size = _ref3.size;
-      setMyColumns(function (oldColumns) {
-        var nextColumns = _toConsumableArray(oldColumns);
-
-        nextColumns[index] = _objectSpread2({}, nextColumns[index], {
-          width: size.width
-        });
-        return nextColumns;
-      });
-    };
-  };
-
-  columns = scale ? myColumns.map(function (col, index) {
-    return _objectSpread2({}, col, {
-      onHeaderCell: function onHeaderCell(column) {
-        return {
-          width: column.width,
-          onResize: handleResize(index)
-        };
-      }
-    });
-  }) : columns;
-  return React.createElement(_Table, _extends({
-    columns: columns,
-    pagination: pagination,
-    bordered: true,
-    components: scale && components
+  var withActions = !!(actions.left || actions.right);
+  var T = React.createElement(_Table, _extends({
+    bordered: bordered
   }, props));
+  return withActions ? TableWithHeader(T, actions, alert) : T;
 });
+
+var TableWithHeader = function TableWithHeader(T, actions, alert) {
+  var left = actions.left,
+      right = actions.right;
+  return React.createElement(React.Fragment, null, React.createElement("div", {
+    className: styles$2.tableActions
+  }, left && React.createElement("div", {
+    className: styles$2.left
+  }, left), right && React.createElement("div", {
+    className: styles$2.right
+  }, right)), alert && React.createElement("div", {
+    className: styles$2.tableAlert
+  }, alert), T);
+};
 
 var saveInputStyle = {
   width: "32px",
   marginRight: "10px"
 };
 var number = 6;
-var index$a = forwardRef(function (_ref, ref) {
+var index$9 = forwardRef(function (_ref, ref) {
   var _ref$value = _ref.value,
       value = _ref$value === void 0 ? new Array(number).fill("") : _ref$value,
       onChange = _ref.onChange;
@@ -1073,7 +1042,7 @@ var css$a = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-a
 var style$7 = {"timeWeather":"src-components-TimeWeather-_timeWeather_2LmXD","wrapper":"src-components-TimeWeather-_wrapper_3nZoV","iconWrapper":"src-components-TimeWeather-_iconWrapper_71V2e","weather":"src-components-TimeWeather-_weather_1gHYK"};
 styleInject(css$a);
 
-var index$b = (function () {
+var index$a = (function () {
   var _useState = useState(new Date()),
       _useState2 = _slicedToArray(_useState, 2),
       calendar = _useState2[0],
@@ -1151,7 +1120,16 @@ var index$b = (function () {
   }))));
 });
 
-var index$c = (function (_ref) {
+var config = {
+  baseURL: 'https://nei.netease.com/api/apimock/20677609c2af996c88be2cd3244301ba/api',
+  iconfont: '//at.alicdn.com/t/font_1430257_mtq8pi4rree.js'
+};
+
+var IconFont = _Icon.createFromIconfontCN({
+  scriptUrl: config.iconfont
+});
+
+var index$b = (function (_ref) {
   var onOk = _ref.onOk,
       onCancel = _ref.onCancel,
       props = _objectWithoutProperties(_ref, ["onOk", "onCancel"]);
@@ -1171,4 +1149,4 @@ var index$c = (function (_ref) {
   }, props));
 });
 
-export { index as BasicLayout, index$7 as ConfigForm, index$8 as CustomCard, index$c as CustomModal, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$a as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$9 as Table, index$b as TimeWeather, index$2 as UserMenu };
+export { index as BasicLayout, index$7 as ConfigForm, CustomCard, CustomCardTabs, index$b as CustomModal, index$8 as CustomTable, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$9 as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$a as TimeWeather, index$2 as UserMenu };
