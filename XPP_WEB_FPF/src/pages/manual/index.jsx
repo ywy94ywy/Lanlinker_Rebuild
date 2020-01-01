@@ -1,12 +1,11 @@
 /**
  * @module 操作手册
  * @author DesYang
- * @todo 响应式布局
  */
 import { PageHeaderWrapper } from 'lanlinker';
 import { Card, Row, Col } from 'antd';
 import ManualTitle from '@/components/ManualTitle';
-import style from './style.less';
+import styles from './style.less';
 import step1 from './imgs/step1.png';
 import step2 from './imgs/step2.png';
 import step3 from './imgs/step3.png';
@@ -58,21 +57,21 @@ const manuals = [
 export default () => {
   return (
     <PageHeaderWrapper>
-      <Card className={style.manual}>
-        <div className={style.layout}>
+      <Card className={styles.manual}>
+        <div className={styles.layout}>
           <ManualTitle title="操作指南" subtitle={subtitle}></ManualTitle>
           {manuals.map((item, index) => {
             return (
-              <Row type="flex" justify="space-between" key={index} className={style.stepWrapper}>
-                <Col order={index % 2 !== 0 ? 3 : 1} className={style.col1}>
+              <Row type="flex" justify="space-between" key={index} className={styles.stepWrapper}>
+                <Col order={index % 2 ? 3 : 1} className={styles.col1}>
                   <h3>
-                    <img src={item.step} className={style.step}></img>
+                    <img src={item.step} className={styles.step}></img>
                     <span>{item.title}</span>
                   </h3>
                   <span>{item.description}</span>
                 </Col>
-                <Col order={2} className={style.col2}>
-                  <img src={item.manual} className={style.manualPic}></img>
+                <Col order={2} className={styles.col2}>
+                  <img src={item.manual} className={styles.manualPic}></img>
                 </Col>
               </Row>
             );

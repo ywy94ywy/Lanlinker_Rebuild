@@ -173,6 +173,22 @@ export default {
           component: './LRM/salary',
         },
         {
+          path: '/lrmpersonnel',
+          component: './LRM/personnel',
+        },
+        {
+          path: '/lrmswiping',
+          component: './LRM/swiping',
+        },
+        {
+          path: '/lrmcheck',
+          component: './LRM/check',
+        },
+        {
+          path: '/lrmpost',
+          component: './LRM/post',
+        },
+        {
           component: './404',
         },
       ],

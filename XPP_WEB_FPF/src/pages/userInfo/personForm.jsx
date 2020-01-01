@@ -1,5 +1,5 @@
 import { Input, Radio, DatePicker } from 'antd';
-import style from './index.less';
+import styles from './style.less';
 
 export default ({ userName, userSex } = {}) => {
   return [
@@ -16,7 +16,7 @@ export default ({ userName, userSex } = {}) => {
       initialValue: userSex,
       component: (
         <Radio.Group>
-          <Radio value="0" className={style.sex}>
+          <Radio value="0" className={styles.sex}>
             男
           </Radio>
           <Radio value="1">女</Radio>

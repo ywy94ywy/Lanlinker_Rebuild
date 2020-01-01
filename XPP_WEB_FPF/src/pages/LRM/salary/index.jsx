@@ -28,11 +28,12 @@ export default () => {
                     <Form.Item label="考勤月份">
                       <DatePicker></DatePicker>
                     </Form.Item>
+                    <Form.Item>
+                      <Input placeholder="请输入姓名或身份证号"></Input>
+                    </Form.Item>
                   </Form>
                 </div>
-                <div style={{ width: 250 }}>
-                  <Input placeholder="请输入姓名或身份证号"></Input>
-                </div>
+
                 <Button type="primary">查询</Button>
                 <Button type="primary">导出工资清单</Button>
               </>

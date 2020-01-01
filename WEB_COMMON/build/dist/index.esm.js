@@ -916,57 +916,60 @@ styleInject(css$8);
 var CustomCard = function CustomCard(_ref) {
   var className = _ref.className,
       children = _ref.children,
-      gl = _ref.gl,
-      gt = _ref.gt,
-      rest = _objectWithoutProperties(_ref, ["className", "children", "gl", "gt"]);
+      marginLeft = _ref.marginLeft,
+      marginTop = _ref.marginTop,
+      rest = _objectWithoutProperties(_ref, ["className", "children", "marginLeft", "marginTop"]);
 
   return React.createElement(_Card, _extends({
-    className: classnames(style$6.customCard, className, gl && style$6.customCardML, gt && style$6.customCardMT)
+    className: classnames(style$6.customCard, className, marginLeft && style$6.customCardML, marginTop && style$6.customCardMT)
   }, rest), children);
 };
 
 var CustomCardTabs = function CustomCardTabs(_ref2) {
   var children = _ref2.children,
-      gt = _ref2.gt,
-      gl = _ref2.gl,
-      props = _objectWithoutProperties(_ref2, ["children", "gt", "gl"]);
+      marginLeft = _ref2.marginLeft,
+      marginTop = _ref2.marginTop,
+      props = _objectWithoutProperties(_ref2, ["children", "marginLeft", "marginTop"]);
 
   return React.createElement(CustomCard, {
     bodyStyle: {
       padding: 0
     },
-    gt: gt,
-    gl: gl
+    marginTop: marginTop,
+    marginLeft: marginLeft
   }, React.createElement(_Tabs, _extends({
     size: "large"
   }, props), children));
 };
 CustomCardTabs.TabPane = _Tabs.TabPane;
 
-var css$9 = ".src-components-CustomTable-_tableActions_1ymOf {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo > *:nth-child(n + 2) {\n  margin-left: 5px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A {\n  margin-left: auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A > *:nth-last-child(n + 2) {\n  margin-right: 5px;\n}\n.src-components-CustomTable-_tableAlert_2hOdf {\n  margin-bottom: 16px;\n}\n";
-var styles$2 = {"tableActions":"src-components-CustomTable-_tableActions_1ymOf","left":"src-components-CustomTable-_left_2wfVo","right":"src-components-CustomTable-_right_3_y4A","tableAlert":"src-components-CustomTable-_tableAlert_2hOdf"};
+var css$9 = ".src-components-CustomTable-_tableActions_1ymOf {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo > *:nth-child(n + 2) {\n  margin-left: 5px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A {\n  margin-left: auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A > *:nth-last-child(n + 2) {\n  margin-right: 5px;\n}\n.src-components-CustomTable-_tableExtra_2WB8o {\n  margin-bottom: 16px;\n}\n";
+var styles$2 = {"tableActions":"src-components-CustomTable-_tableActions_1ymOf","left":"src-components-CustomTable-_left_2wfVo","right":"src-components-CustomTable-_right_3_y4A","tableExtra":"src-components-CustomTable-_tableExtra_2WB8o"};
 styleInject(css$9);
 
 var index$8 = (function (_ref) {
   var _ref$bordered = _ref.bordered,
       bordered = _ref$bordered === void 0 ? true : _ref$bordered,
+      _ref$pagination = _ref.pagination,
+      pagination = _ref$pagination === void 0 ? false : _ref$pagination,
       _ref$actions = _ref.actions,
       actions = _ref$actions === void 0 ? {
     left: null,
     right: null
   } : _ref$actions,
-      _ref$alert = _ref.alert,
-      alert = _ref$alert === void 0 ? null : _ref$alert,
-      props = _objectWithoutProperties(_ref, ["bordered", "actions", "alert"]);
+      _ref$extra = _ref.extra,
+      extra = _ref$extra === void 0 ? null : _ref$extra,
+      props = _objectWithoutProperties(_ref, ["bordered", "pagination", "actions", "extra"]);
 
   var withActions = !!(actions.left || actions.right);
   var T = React.createElement(_Table, _extends({
-    bordered: bordered
+    bordered: bordered,
+    pagination: TablePagination(pagination)
   }, props));
-  return withActions ? TableWithHeader(T, actions, alert) : T;
+  return withActions ? TableWithHeader(T, actions, extra) : T;
 });
 
-var TableWithHeader = function TableWithHeader(T, actions, alert) {
+var TableWithHeader = function TableWithHeader(T, actions, extra) {
   var left = actions.left,
       right = actions.right;
   return React.createElement(React.Fragment, null, React.createElement("div", {
@@ -975,9 +978,19 @@ var TableWithHeader = function TableWithHeader(T, actions, alert) {
     className: styles$2.left
   }, left), right && React.createElement("div", {
     className: styles$2.right
-  }, right)), alert && React.createElement("div", {
-    className: styles$2.tableAlert
-  }, alert), T);
+  }, right)), extra && React.createElement("div", {
+    className: styles$2.tableExtra
+  }, extra), T);
+};
+
+var TablePagination = function TablePagination(pagination) {
+  if (!pagination) {
+    return false;
+  }
+
+  return _objectSpread2({
+    showQuickJumper: true
+  }, pagination);
 };
 
 var saveInputStyle = {
@@ -1129,7 +1142,7 @@ var IconFont = _Icon.createFromIconfontCN({
   scriptUrl: config.iconfont
 });
 
-var index$b = (function (_ref) {
+var CustomModal = (function (_ref) {
   var onOk = _ref.onOk,
       onCancel = _ref.onCancel,
       props = _objectWithoutProperties(_ref, ["onOk", "onCancel"]);
@@ -1149,4 +1162,53 @@ var index$b = (function (_ref) {
   }, props));
 });
 
-export { index as BasicLayout, index$7 as ConfigForm, CustomCard, CustomCardTabs, index$b as CustomModal, index$8 as CustomTable, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$9 as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$a as TimeWeather, index$2 as UserMenu };
+var CustomButton = _Button;
+
+CustomButton.Modal = function (_ref) {
+  var _ref$buttonProps = _ref.buttonProps;
+  _ref$buttonProps = _ref$buttonProps === void 0 ? {} : _ref$buttonProps;
+
+  var _ref$buttonProps$text = _ref$buttonProps.text,
+      text = _ref$buttonProps$text === void 0 ? "" : _ref$buttonProps$text,
+      buttonRest = _objectWithoutProperties(_ref$buttonProps, ["text"]),
+      modalProps = _ref.modalProps,
+      children = _ref.children;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  return React.createElement(React.Fragment, null, React.createElement(_Button, _extends({
+    onClick: function onClick() {
+      setState(true);
+    }
+  }, buttonRest), text), React.createElement(CustomModal, _extends({
+    visible: state,
+    onCancel: function onCancel() {
+      setState(false);
+    }
+  }, modalProps), children));
+};
+
+var usePagination = function usePagination() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$defaultPageSize = _ref.defaultPageSize,
+      defaultPageSize = _ref$defaultPageSize === void 0 ? 10 : _ref$defaultPageSize,
+      _ref$defaultCurrent = _ref.defaultCurrent,
+      defaultCurrent = _ref$defaultCurrent === void 0 ? 1 : _ref$defaultCurrent;
+
+  var _useState = useState(defaultPageSize),
+      _useState2 = _slicedToArray(_useState, 2),
+      pageSize = _useState2[0],
+      setPageSize = _useState2[1];
+
+  var _useState3 = useState(defaultCurrent),
+      _useState4 = _slicedToArray(_useState3, 2),
+      current = _useState4[0],
+      setCurrent = _useState4[1];
+
+  return [pageSize, current, setCurrent];
+};
+
+export { index as BasicLayout, index$7 as ConfigForm, CustomButton, CustomCard, CustomCardTabs, CustomModal, index$8 as CustomTable, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$9 as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$a as TimeWeather, index$2 as UserMenu, usePagination };

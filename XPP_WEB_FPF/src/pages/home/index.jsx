@@ -1,12 +1,11 @@
 /**
  * @module 首页
  * @author DesYang
- * @todo 响应式布局
  */
 import { Card, Row, List, Avatar } from 'antd';
 import { PageHeaderWrapper } from 'lanlinker';
 import ManualTitle from '@/components/ManualTitle';
-import style from './style.less';
+import styles from './style.less';
 import pic1 from './imgs/1.png';
 import pic2 from './imgs/2.png';
 import pic3 from './imgs/3.png';
@@ -59,13 +58,13 @@ const data = [
 export default () => {
   return (
     <PageHeaderWrapper>
-      <Card className={style.homepage}>
+      <Card className={styles.homepage}>
         <ManualTitle title="我们的服务" subtitle="30秒了解子系统功能"></ManualTitle>
-        <div className={style.servers}>
+        <div className={styles.servers}>
           <ListWrapper data={data} />
         </div>
         <ManualTitle title="新手指南" subtitle="帮助您快速了解操作过程"></ManualTitle>
-        <div className={style.intros}>
+        <div className={styles.intros}>
           <img src={guide1} alt="" />
           <img src={guide2} alt="" />
           <img src={guide3} alt="" />
@@ -81,10 +80,10 @@ const ListWrapper = ({ data = [] }) => {
   for (let i = 0; i < rows; i++) {
     const ListRow = () => {
       return (
-        <Row key={i} type="flex" justify="space-between" className={style.row}>
+        <Row key={i} type="flex" justify="space-between" className={styles.row}>
           {data.slice(i * 2, (i + 1) * 2).map((item, index) => {
             return (
-              <List.Item style={style} className={style.listItem} key={index}>
+              <List.Item className={styles.listItem} key={index}>
                 <List.Item.Meta
                   avatar={<Avatar shape="square" size={90} src={item.pic} />}
                   title={item.title}

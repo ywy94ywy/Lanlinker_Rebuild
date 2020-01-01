@@ -1,22 +1,61 @@
-import React from 'react';
-import { PageHeaderWrapper, CustomCardTabs, CustomTable } from 'lanlinker';
+/**
+ * @module 培训管理
+ * @author DesYang
+ */
+import React, { useEffect } from 'react';
+import {
+  PageHeaderWrapper,
+  CustomCardTabs,
+  CustomTable,
+  CustomButton,
+  usePagination,
+} from 'lanlinker';
 import { Button, Input, DatePicker, Form, Select } from 'antd';
+import { connect } from 'dva';
+
 const { TabPane } = CustomCardTabs;
 
-export default () => {
+export default connect(({ train, loading: { effects } }) => ({
+  ...train,
+  loadingTable1: effects['train/fetchTable1'],
+}))(({ table1: { data: tableData1 = [], total: total1 = 0 }, loadingTable1, dispatch }) => {
+  const [pageSize1, current1, onChange1] = usePagination();
+
+  useEffect(() => {
+    dispatch({
+      type: 'train/fetchTable1',
+      payload: { pageSize: pageSize1, current: current1 },
+    });
+  }, [current1]);
+
   return (
     <PageHeaderWrapper>
       <CustomCardTabs>
         <TabPane tab="培训汇总记录" key="1">
           <CustomTable
             columns={columns}
-            dataSource={data}
+            dataSource={tableData1}
+            loading={loadingTable1}
             rowKey={(v, i) => i}
             actions={{
               left: (
                 <>
-                  <Button type="primary">新增</Button>
-                  <Button type="danger">删除</Button>
+                  <CustomButton.Modal
+                    buttonProps={{
+                      text: '新增',
+                      type: 'primary',
+                    }}
+                  >
+                    hello
+                  </CustomButton.Modal>
+                  <CustomButton.Modal
+                    buttonProps={{
+                      text: '删除',
+                      type: 'danger',
+                    }}
+                  >
+                    hello
+                  </CustomButton.Modal>
                 </>
               ),
               right: (
@@ -40,13 +79,19 @@ export default () => {
                 </>
               ),
             }}
+            pagination={{
+              pageSize: pageSize1,
+              current: current1,
+              total: total1,
+              onChange: onChange1,
+            }}
           ></CustomTable>
         </TabPane>
         <TabPane tab="培训明细记录" key="2"></TabPane>
       </CustomCardTabs>
     </PageHeaderWrapper>
   );
-};
+});
 
 const columns = [
   {
@@ -80,62 +125,5 @@ const columns = [
   {
     title: '操作',
     render: () => <a href="/">修改</a>,
-  },
-];
-
-const data = [
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
-  },
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
-  },
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
-  },
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
-  },
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
-  },
-  {
-    a: '三级安全培训',
-    b: '安全教育',
-    c: '孙琼',
-    d: '2019-10-11',
-    e: '7',
-    f: '安全项目部',
-    g: '上海市嘉定区德园南路',
   },
 ];

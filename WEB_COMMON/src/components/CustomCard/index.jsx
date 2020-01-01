@@ -3,36 +3,51 @@
  * @description 1、简化margin; 2、Tabs型Card
  * @todo 不知道为什么CustomCard和CustomCardTabs没有死循环
  */
-import { Card, Tabs } from 'antd'
-import classNames from 'classnames'
-import style from './style.less'
+import { Card, Tabs } from "antd";
+import classNames from "classnames";
+import styles from "./style.less";
 
-const CustomCard = ({ className, children, gl, gt, ...rest }) => {
+const CustomCard = ({
+  className,
+  children,
+  marginLeft,
+  marginTop,
+  ...rest
+}) => {
   return (
     <Card
       className={classNames(
-        style.customCard,
+        styles.customCard,
         className,
-        gl && style.customCardML,
-        gt && style.customCardMT,
+        marginLeft && styles.customCardML,
+        marginTop && styles.customCardMT
       )}
       {...rest}
     >
       {children}
     </Card>
-  )
-}
+  );
+};
 
-export const CustomCardTabs = ({ children, gt, gl, ...props }) => {
+export const CustomCardTabs = ({
+  children,
+  marginLeft,
+  marginTop,
+  ...props
+}) => {
   return (
-    <CustomCard bodyStyle={{ padding: 0 }} gt={gt} gl={gl}>
-      <Tabs size='large' {...props}>
+    <CustomCard
+      bodyStyle={{ padding: 0 }}
+      marginTop={marginTop}
+      marginLeft={marginLeft}
+    >
+      <Tabs size="large" {...props}>
         {children}
       </Tabs>
     </CustomCard>
-  )
-}
+  );
+};
 
-CustomCardTabs.TabPane = Tabs.TabPane
+CustomCardTabs.TabPane = Tabs.TabPane;
 
-export default CustomCard
+export default CustomCard;
