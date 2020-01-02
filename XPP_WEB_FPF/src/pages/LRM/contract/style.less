@@ -1,46 +1,14 @@
 @import '~lanlinker/style/index.less';
 
 .contract {
-  .tabs {
-    .layout {
-      display: flex;
-      > .left {
-        flex: 1;
-        width: 0;
-        .table {
-          margin-top: 16px;
-        }
-      }
-      > .right {
-        flex: 0 0 340px;
-        margin-left: 24px;
-        padding: 16px;
-        border: 1px solid @border-color-base;
-        :global {
-          .ant-list-item-meta-title {
-            .h4;
-          }
-          .ant-list-item-meta-description {
-            // .text-sm;
-            font-size: 12px;
-          }
-        }
-        > .list {
-          position: relative;
-          padding: 0 0 16px 0;
-          border-bottom: 1px solid @border-color-base;
-          > .button {
-            position: absolute;
-            top: 0px;
-            right: 0px;
-          }
-        }
-        > .file {
-          > .title {
-            .h4;
-            margin-top: 16px;
-          }
-        }
+  .right {
+    margin-left: @card-padding-base;
+    padding: 16px;
+    border: 1px solid @border-color-base;
+    .file {
+      > .title {
+        .h4;
+        margin-top: 16px;
       }
     }
   }

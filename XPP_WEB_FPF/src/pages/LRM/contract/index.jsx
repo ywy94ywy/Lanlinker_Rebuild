@@ -1,77 +1,82 @@
-import React from 'react';
-import { Select, Card, Tabs, Input, Button, Row, Table, List, Form, DatePicker } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Select, Input, Button, Row, Layout, Form, DatePicker } from 'antd';
 import { PageHeaderWrapper, CustomCardTabs, CustomTable } from 'lanlinker';
+import LList from '@/components/LList';
 import styles from './style.less';
 
 const { TabPane } = CustomCardTabs;
+const { Sider, Content } = Layout;
 
 export default () => {
+  const [s, ss] = useState({});
+  const { a, b, c, d, e, f } = s;
+
+  useEffect(() => {
+    setTimeout(() => {
+      ss(fd);
+    }, 1000);
+  }, []);
+
   return (
     <PageHeaderWrapper
+      className={styles.contract}
       extra={
         <>
-          <span> 组织名称：</span>
+          <span>组织名称：</span>
           <Select></Select>
         </>
       }
-      className={styles.contract}
     >
       <CustomCardTabs
-        className={styles.tabs}
-        tabBarExtraContent={
-          <Row type="flex" style={{ width: 300, marginTop: '12px' }}>
-            <Input
-              placeholder="请输入姓名或身份证号"
-              style={{ width: 200, marginRight: '10px' }}
-            ></Input>
-            <Button type="primary">查询</Button>
-          </Row>
-        }
+      // tabBarExtraContent={
+      //   <Row type="flex" style={{ width: 300, marginTop: '12px' }}>
+      //     <Input
+      //       placeholder="请输入姓名或身份证号"
+      //       style={{ width: 200, marginRight: '10px' }}
+      //     ></Input>
+      //     <Button type="primary">查询</Button>
+      //   </Row>
+      // }
       >
         <TabPane tab="未签劳动合同" key="1">
-          <div className={styles.layout}>
-            <div className={styles.left}>
+          <Layout>
+            <Content>
               <CustomTable
                 dataSource={data1}
                 columns={columns1}
                 rowKey={(v, i) => i}
                 bordered
-                scroll={{ y: 400 }}
+                scroll={{ y: 500 }}
                 actions={{
-                  right: <Button type="primary">导出Excel</Button>,
+                  right: (
+                    <>
+                      <Input
+                        placeholder="请输入姓名或身份证号"
+                        style={{ width: 200, marginRight: '10px' }}
+                      ></Input>
+                      <Button type="primary">查询</Button>
+                      <Button type="primary">导出Excel</Button>
+                    </>
+                  ),
                 }}
               ></CustomTable>
-            </div>
-            <div className={styles.right}>
-              <List.Item className={styles.list}>
-                <List.Item.Meta
-                  avatar={
-                    <div style={{ width: 100, height: 125, background: 'blue' }}>
-                      <img src="" style={{ width: 100, height: 125 }} alt="头像" />
-                    </div>
-                  }
-                  title="赵建平"
-                  description={
-                    <>
-                      <p>混凝土工</p>
-                      <div>劳务公司：南通奇润建筑工程有限…</div>
-                      <div>队伍：胡志鹏队</div>
-                      <div>班组：胡志混凝土组</div>
-                    </>
-                  }
-                />
-                <div className={styles.button}>
-                  <Button type="primary" size="small">
-                    签订劳动合同
-                  </Button>
-                </div>
-              </List.Item>
+            </Content>
+            <Sider theme="light" width={340} className={styles.right}>
+              <LList.Labour
+                profile={f}
+                name={a}
+                post={b}
+                company={c}
+                team={d}
+                group={e}
+                buttonProps={{ text: '签订劳动合同' }}
+              ></LList.Labour>
               <div className={styles.file}>
                 <p className={styles.title}>合同文件</p>
                 <ContractForm></ContractForm>
               </div>
-            </div>
-          </div>
+            </Sider>
+          </Layout>
         </TabPane>
         <TabPane tab="已签劳动合同" key="2"></TabPane>
         <TabPane tab="即将到期劳动合同" key="3"></TabPane>
@@ -184,43 +189,6 @@ const columns1 = [
     title: '性别',
     dataIndex: 'b',
     width: 90,
-    filters: [
-      {
-        text: '男',
-        value: '1',
-      },
-      {
-        text: '女',
-        value: '2',
-      },
-    ],
-  },
-  {
-    title: '年龄',
-    dataIndex: 'c',
-    width: 100,
-    filters: [
-      {
-        text: '16~30',
-        value: '1',
-      },
-      {
-        text: '31~40',
-        value: '2',
-      },
-      {
-        text: '41~50',
-        value: '3',
-      },
-      {
-        text: '51~55',
-        value: '4',
-      },
-      {
-        text: '55以上',
-        value: '5',
-      },
-    ],
   },
   {
     title: '身份证号',
@@ -231,3 +199,12 @@ const columns1 = [
     dataIndex: 'e',
   },
 ];
+
+const fd = {
+  a: '赵建平',
+  b: '混凝土工',
+  c: '南通奇润建筑工程有限公司',
+  d: '胡志鹏队',
+  e: '胡志混凝土组',
+  f: 'http://b-ssl.duitang.com/uploads/item/201607/26/20160726185736_yPmrE.thumb.224_0.jpeg',
+};

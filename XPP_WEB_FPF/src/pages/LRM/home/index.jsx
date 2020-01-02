@@ -6,11 +6,12 @@
 import { Avatar, Radio, Col, Skeleton, Row, Statistic, Tabs, Table, Button } from 'antd';
 import React, { useEffect, useState, useMemo } from 'react';
 import Link from 'umi/link';
-import { PageHeaderWrapper, CustomCard, IconFont } from 'lanlinker';
+import { PageHeaderWrapper, CustomCard, CustomCardTabs, IconFont } from 'lanlinker';
 import { connect } from 'dva';
 import styles from './style.less';
 import { Chart, Geom, Axis, Tooltip } from 'bizcharts';
-const { TabPane } = Tabs;
+
+const { TabPane } = CustomCardTabs;
 const peopleColor = ['#F15D9F', '#27C63E', '#FEB614', '#1890FF'];
 const workersColor = [
   '#1890FF',
@@ -112,7 +113,7 @@ export default connect(({ lrmAndhome: { currentUser } }) => ({
     >
       <Row gutter={24}>
         <Col span={16}>
-          <CustomCard title="项目概况" extra={<Link to="/">查看更多</Link>} bordered={false}>
+          <CustomCard title="项目概况" extra={<Link to="/">查看更多</Link>}>
             <div className={styles.general}>
               <p className={styles.title}>项目人员概况</p>
               <div className={styles.content}>
@@ -130,8 +131,7 @@ export default connect(({ lrmAndhome: { currentUser } }) => ({
               </div>
             </div>
           </CustomCard>
-          <CustomCard bordered={false} bodyStyle={{ padding: 0 }} gap>
-            <Tabs className={styles.projectTable} size='large'>
+          <CustomCardTabs className={styles.projectTable} marginTop>
               <TabPane tab="项目人数" key="1">
                 <Table columns={columns} dataSource={dataSource}></Table>
               </TabPane>
@@ -142,7 +142,7 @@ export default connect(({ lrmAndhome: { currentUser } }) => ({
                 <Table columns={columns} dataSource={dataSource}></Table>
               </TabPane>
               <TabPane tab="最近7天出勤统计" key="4">
-                <Chart height={400}  padding={[ 20, 20, 30, 40]} data={data} scale={cols} forceFit>
+                <Chart height={400} padding={[20, 20, 30, 40]} data={data} scale={cols} forceFit>
                   <Axis name="year" />
                   <Axis name="sales" />
                   <Tooltip
@@ -153,14 +153,12 @@ export default connect(({ lrmAndhome: { currentUser } }) => ({
                   <Geom type="interval" position="year*sales" />
                 </Chart>
               </TabPane>
-            </Tabs>
-          </CustomCard>
+          </CustomCardTabs>
         </Col>
         <Col span={8}>
           <CustomCard
             title="快捷桌面"
             extra={<Button type="primary">添加</Button>}
-            bordered={false}
           >
             <div className={styles.shortcuts}>
               {shortcuts.map((v, i) => {
@@ -176,8 +174,7 @@ export default connect(({ lrmAndhome: { currentUser } }) => ({
           <CustomCard
             title="现场工人岗位分布"
             extra={<Link to="/">查看更多</Link>}
-            bordered={false}
-            gap
+            marginTop
           >
             <div className={styles.switchWorkers}>
               <Radio.Group

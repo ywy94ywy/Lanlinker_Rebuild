@@ -332,7 +332,7 @@ export default () => {
           </>
         )}
       </CustomCard>
-      <CustomCard title="用户实名认证情况列表" gt>
+      <CustomCard title="用户实名认证情况列表" marginTop>
         <Table columns={columns} dataSource={dataSource}></Table>
       </CustomCard>
     </PageHeaderWrapper>

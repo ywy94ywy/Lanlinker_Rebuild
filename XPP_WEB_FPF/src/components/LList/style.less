@@ -1,0 +1,29 @@
+@import '~lanlinker/style/index.less';
+
+.lList {
+  position: relative;
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid @border-color-base;
+  :global {
+    .ant-list-item-meta-title {
+      .h4;
+    }
+    .ant-list-item-meta-description {
+      .text-sm;
+    }
+  }
+  .profile {
+    width: 100px;
+    height: 125px;
+    background: url(./imgs/profile.png) center/100%;
+    > img {
+      width: inherit;
+      height: inherit;
+    }
+  }
+  > .btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+}

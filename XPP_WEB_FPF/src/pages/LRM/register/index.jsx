@@ -4,7 +4,7 @@
  * @todo 模态框，表格，搜索树
  */
 import React from 'react';
-import { Button, Tabs, Select, Input, Table, Popconfirm } from 'antd';
+import { Button, Tabs, Select, Input,  Popconfirm } from 'antd';
 import { PageHeaderWrapper, CustomCard, SearchTree, CustomTable } from 'lanlinker';
 import styles from './style.less';
 
@@ -62,7 +62,7 @@ export default () => {
           </div>
         </div>
       </CustomCard>
-      <CustomCard title="已进场员工信息" gt>
+      <CustomCard title="已进场员工信息" marginTop>
         <div className={styles.wrapper}>
           <div className={styles.left}>
             <SearchTree data={fakeTree} className={styles.treeWrapper}></SearchTree>

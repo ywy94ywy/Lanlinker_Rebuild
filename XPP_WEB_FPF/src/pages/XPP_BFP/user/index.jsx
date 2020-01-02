@@ -113,7 +113,7 @@ export default () => {
           </Card>
         </Col>
       </Row>
-      <CustomCard title="数据管理" gap>
+      <CustomCard title="数据管理" marginTop>
         <Row type="flex" justify="space-around">
           <div className={styles.optionCard}>
             <Icon type="file-done"></Icon>

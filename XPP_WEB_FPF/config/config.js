@@ -157,6 +157,10 @@ export default {
           component: './LRM/contract',
         },
         {
+          path: '/lrmcard',
+          component: './LRM/card',
+        },
+        {
           path: '/lrmstaffinfo',
           component: './LRM/staffInfo',
         },
@@ -187,6 +191,10 @@ export default {
         {
           path: '/lrmpost',
           component: './LRM/post',
+        },
+        {
+          path: '/lrmviolation',
+          component: './LRM/violation',
         },
         {
           component: './404',

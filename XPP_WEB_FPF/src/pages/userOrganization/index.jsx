@@ -73,7 +73,7 @@ export default () => {
             )}
           />
         </CustomCard>
-        <CustomCard title="已关联组织" gap>
+        <CustomCard title="已关联组织" marginTop>
           <Table rowKey={(v, i) => i} columns={columns} dataSource={dataSource} bordered></Table>
         </CustomCard>
       </div>
