@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from '../config'
+import config from '../../config'
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',

@@ -1,5 +1,5 @@
 import { Input, Radio, DatePicker } from 'antd';
-import styles from './style.less';
+import styles from '../style.less';
 
 export default ({ userName, userSex } = {}) => {
   return [
@@ -24,19 +24,17 @@ export default ({ userName, userSex } = {}) => {
       ),
     },
     {
-      label: '',
       component: null,
     },
     {
       label: '个人出生日期',
-      component: <DatePicker getPopupContainer={trigger => trigger.parentNode}></DatePicker>,
+      component: <DatePicker></DatePicker>,
     },
     {
       label: '个人地址',
       component: <Input></Input>,
     },
     {
-      label: '',
       component: null,
     },
     {
@@ -48,7 +46,6 @@ export default ({ userName, userSex } = {}) => {
       component: <Input></Input>,
     },
     {
-      label: '',
       component: null,
     },
     {
@@ -60,7 +57,6 @@ export default ({ userName, userSex } = {}) => {
       component: <Input disabled></Input>,
     },
     {
-      label: '',
       component: null,
     },
     {
@@ -72,7 +68,6 @@ export default ({ userName, userSex } = {}) => {
       component: <Input></Input>,
     },
     {
-      label: '',
       component: null,
     },
     {
@@ -82,12 +77,12 @@ export default ({ userName, userSex } = {}) => {
     {
       label: '个人简介',
       component: <Input.TextArea placeholder="可输入512字"></Input.TextArea>,
-      span: 3,
+      colSpan: 3,
     },
     {
       label: '个人备注',
       component: <Input.TextArea placeholder="可输入512字"></Input.TextArea>,
-      span: 3,
+      colSpan: 3,
     },
   ];
 };

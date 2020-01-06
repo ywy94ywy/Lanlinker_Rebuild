@@ -25,7 +25,7 @@ import 'antd/lib/input/style';
 import _Input from 'antd/lib/input';
 import 'antd/lib/tree/style';
 import _Tree from 'antd/lib/tree';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import 'antd/lib/col/style';
 import _Col from 'antd/lib/col';
 import 'antd/lib/form/style';
@@ -39,6 +39,9 @@ import 'antd/lib/modal/style';
 import _Modal from 'antd/lib/modal';
 import 'antd/lib/button/style';
 import _Button from 'antd/lib/button';
+import 'antd/lib/row/style';
+import _Row from 'antd/lib/row';
+import axios from 'axios';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -707,7 +710,7 @@ var SearchTree = (function (_ref) {
   };
 
   return React.createElement("div", {
-    className: classnames(styles$1.tree, className),
+    className: classNames(styles$1.tree, className),
     style: style
   }, React.createElement(Search, {
     className: styles$1.search,
@@ -719,7 +722,7 @@ var SearchTree = (function (_ref) {
     switcherIcon: React.createElement(_Icon, {
       type: "down"
     }),
-    className: classnames(styles$1.searchTree, 'hide-file-icon'),
+    className: classNames(styles$1.searchTree, 'hide-file-icon'),
     expandedKeys: expand,
     onExpand: onExpand,
     autoExpandParent: autoExpandParent
@@ -870,7 +873,7 @@ var index$7 = _Form.create()(function (_ref) {
     style: Object.assign({
       width: width
     }, formStyle),
-    className: classnames(formClassName, style$5.configForm)
+    className: classNames(formClassName, style$5.configForm)
   }, rest), data.map(function (_ref2, i) {
     var name = _ref2.name,
         label = _ref2.label,
@@ -910,7 +913,7 @@ var index$7 = _Form.create()(function (_ref) {
 });
 
 var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar {\n  margin-bottom: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-extra-content {\n  padding-right: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container {\n  padding-left: 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container .ant-tabs-tab {\n  padding: 17px 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-content > .ant-tabs-tabpane {\n  padding: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCardMT_1qLZi.src-components-CustomCard-_customCardMT_1qLZi {\n  margin-top: 24px;\n}\n.src-components-CustomCard-_customCardML_2YjE3.src-components-CustomCard-_customCardML_2YjE3 {\n  margin-left: 24px;\n}\n";
-var style$6 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","customCardMT":"src-components-CustomCard-_customCardMT_1qLZi","customCardML":"src-components-CustomCard-_customCardML_2YjE3"};
+var styles$2 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","customCardMT":"src-components-CustomCard-_customCardMT_1qLZi","customCardML":"src-components-CustomCard-_customCardML_2YjE3"};
 styleInject(css$8);
 
 var CustomCard = function CustomCard(_ref) {
@@ -921,7 +924,7 @@ var CustomCard = function CustomCard(_ref) {
       rest = _objectWithoutProperties(_ref, ["className", "children", "marginLeft", "marginTop"]);
 
   return React.createElement(_Card, _extends({
-    className: classnames(style$6.customCard, className, marginLeft && style$6.customCardML, marginTop && style$6.customCardMT)
+    className: classNames(styles$2.customCard, className, marginLeft && styles$2.customCardML, marginTop && styles$2.customCardMT)
   }, rest), children);
 };
 
@@ -944,14 +947,13 @@ var CustomCardTabs = function CustomCardTabs(_ref2) {
 CustomCardTabs.TabPane = _Tabs.TabPane;
 
 var css$9 = ".src-components-CustomTable-_tableActions_1ymOf {\n  display: -webkit-box;\n  display: flex;\n  margin-bottom: 16px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_left_2wfVo > *:nth-child(n + 2) {\n  margin-left: 5px;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A {\n  margin-left: auto;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-CustomTable-_tableActions_1ymOf > .src-components-CustomTable-_right_3_y4A > *:nth-last-child(n + 2) {\n  margin-right: 5px;\n}\n.src-components-CustomTable-_tableExtra_2WB8o {\n  margin-bottom: 16px;\n}\n";
-var styles$2 = {"tableActions":"src-components-CustomTable-_tableActions_1ymOf","left":"src-components-CustomTable-_left_2wfVo","right":"src-components-CustomTable-_right_3_y4A","tableExtra":"src-components-CustomTable-_tableExtra_2WB8o"};
+var styles$3 = {"tableActions":"src-components-CustomTable-_tableActions_1ymOf","left":"src-components-CustomTable-_left_2wfVo","right":"src-components-CustomTable-_right_3_y4A","tableExtra":"src-components-CustomTable-_tableExtra_2WB8o"};
 styleInject(css$9);
 
 var index$8 = (function (_ref) {
   var _ref$bordered = _ref.bordered,
       bordered = _ref$bordered === void 0 ? true : _ref$bordered,
-      _ref$pagination = _ref.pagination,
-      pagination = _ref$pagination === void 0 ? false : _ref$pagination,
+      pagination = _ref.pagination,
       _ref$actions = _ref.actions,
       actions = _ref$actions === void 0 ? {
     left: null,
@@ -973,13 +975,13 @@ var TableWithHeader = function TableWithHeader(T, actions, extra) {
   var left = actions.left,
       right = actions.right;
   return React.createElement(React.Fragment, null, React.createElement("div", {
-    className: styles$2.tableActions
+    className: styles$3.tableActions
   }, left && React.createElement("div", {
-    className: styles$2.left
+    className: styles$3.left
   }, left), right && React.createElement("div", {
-    className: styles$2.right
+    className: styles$3.right
   }, right)), extra && React.createElement("div", {
-    className: styles$2.tableExtra
+    className: styles$3.tableExtra
   }, extra), T);
 };
 
@@ -1052,7 +1054,7 @@ var index$9 = forwardRef(function (_ref, ref) {
 });
 
 var css$a = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-TimeWeather-_timeWeather_2LmXD {\n  position: relative;\n  height: 100%;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV {\n  position: absolute;\n  width: calc(460px + (var(--fontSize, 14px) - 14px) * 10);\n  height: 32px;\n  border-radius: 16px;\n  line-height: 30px;\n  text-align: center;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  border: 1px solid #d9d9d9;\n  padding: 0 30px;\n  font-size: var(--fontSize, 14px);\n  color: #d9d9d9;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV span:not(:last-child) {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_iconWrapper_71V2e > i {\n  margin-right: 8px;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container {\n  color: #d9d9d9;\n}\n.src-components-TimeWeather-_timeWeather_2LmXD .src-components-TimeWeather-_wrapper_3nZoV .src-components-TimeWeather-_weather_1gHYK .sw-container .sw-typography {\n  font-size: var(--fontSize, 14px);\n}\n";
-var style$7 = {"timeWeather":"src-components-TimeWeather-_timeWeather_2LmXD","wrapper":"src-components-TimeWeather-_wrapper_3nZoV","iconWrapper":"src-components-TimeWeather-_iconWrapper_71V2e","weather":"src-components-TimeWeather-_weather_1gHYK"};
+var style$6 = {"timeWeather":"src-components-TimeWeather-_timeWeather_2LmXD","wrapper":"src-components-TimeWeather-_wrapper_3nZoV","iconWrapper":"src-components-TimeWeather-_iconWrapper_71V2e","weather":"src-components-TimeWeather-_weather_1gHYK"};
 styleInject(css$a);
 
 var index$a = (function () {
@@ -1112,24 +1114,24 @@ var index$a = (function () {
   var day = date.format('YYYY年MM月DD日');
   var time = date.format('hh:mm:ss');
   return React.createElement("div", {
-    className: style$7.timeWeather
+    className: style$6.timeWeather
   }, React.createElement("div", {
-    className: style$7.wrapper
+    className: style$6.wrapper
   }, React.createElement("div", {
-    className: style$7.iconWrapper
+    className: style$6.iconWrapper
   }, React.createElement(_Icon, {
     type: "schedule"
   }), React.createElement("span", null, week), React.createElement("span", null, day)), React.createElement("div", {
-    className: style$7.iconWrapper
+    className: style$6.iconWrapper
   }, React.createElement(_Icon, {
     type: "clock-circle"
   }), React.createElement("span", null, time)), React.createElement("div", {
-    className: style$7.iconWrapper
+    className: style$6.iconWrapper
   }, React.createElement(_Icon, {
     type: "environment"
   }), React.createElement("div", {
     id: "tp-weather-widget",
-    className: style$7.weather
+    className: style$6.weather
   }))));
 });
 
@@ -1165,31 +1167,126 @@ var CustomModal = (function (_ref) {
 var CustomButton = _Button;
 
 CustomButton.Modal = function (_ref) {
-  var _ref$buttonProps = _ref.buttonProps;
+  var _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'button' : _ref$type,
+      _ref$text = _ref.text,
+      text = _ref$text === void 0 ? '' : _ref$text,
+      _ref$buttonProps = _ref.buttonProps;
   _ref$buttonProps = _ref$buttonProps === void 0 ? {} : _ref$buttonProps;
 
-  var _ref$buttonProps$text = _ref$buttonProps.text,
-      text = _ref$buttonProps$text === void 0 ? "" : _ref$buttonProps$text,
-      buttonRest = _objectWithoutProperties(_ref$buttonProps, ["text"]),
-      modalProps = _ref.modalProps,
+  var _onClick = _ref$buttonProps.onClick,
+      buttonRest = _objectWithoutProperties(_ref$buttonProps, ["onClick"]),
+      _ref$modalProps = _ref.modalProps;
+
+  _ref$modalProps = _ref$modalProps === void 0 ? {} : _ref$modalProps;
+
+  var _ref$modalProps$visib = _ref$modalProps.visible,
+      visible = _ref$modalProps$visib === void 0 ? null : _ref$modalProps$visib,
+      _onCancel = _ref$modalProps.onCancel,
+      modalRest = _objectWithoutProperties(_ref$modalProps, ["visible", "onCancel"]),
       children = _ref.children;
 
-  var _useState = useState(false),
+  var _useState = useState(visible),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
-  return React.createElement(React.Fragment, null, React.createElement(_Button, _extends({
+  return React.createElement(React.Fragment, null, type === 'button' && React.createElement(_Button, _extends({
     onClick: function onClick() {
-      setState(true);
+      if (visible !== null) {
+        setState(true);
+      }
+
+      if (_onClick) {
+        _onClick();
+      }
+    }
+  }, buttonRest), text), type === 'a' && React.createElement("a", _extends({
+    onClick: function onClick() {
+      if (visible !== null) {
+        setState(true);
+      }
+
+      if (_onClick) {
+        _onClick();
+      }
     }
   }, buttonRest), text), React.createElement(CustomModal, _extends({
-    visible: state,
+    visible: visible !== null ? visible : state,
     onCancel: function onCancel() {
-      setState(false);
+      if (!visible) {
+        setState(false);
+      }
+
+      if (_onCancel) {
+        _onCancel();
+      }
     }
-  }, modalProps), children));
+  }, modalRest), children));
 };
+
+var css$b = ".src-components-CustomForm-_customForm_LRxdd .ant-col-custom5 {\n  display: block;\n  -webkit-box-flex: 0;\n          flex: 0 0 auto;\n  float: left;\n}\n.src-components-CustomForm-_customForm_LRxdd .ant-calendar-picker {\n  width: 100%;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF {\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF .ant-form-item-control-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n";
+var styles$4 = {"customForm":"src-components-CustomForm-_customForm_LRxdd","inline":"src-components-CustomForm-_inline_3I9TF"};
+styleInject(css$b);
+
+var index$b = _Form.create()(function (_ref) {
+  var _ref$data = _ref.data,
+      data = _ref$data === void 0 ? [] : _ref$data,
+      className = _ref.className,
+      form = _ref.form,
+      _ref$columns = _ref.columns,
+      columns = _ref$columns === void 0 ? 1 : _ref$columns,
+      _ref$gutter = _ref.gutter,
+      gutter = _ref$gutter === void 0 ? 24 : _ref$gutter,
+      layout = _ref.layout,
+      restFormProps = _objectWithoutProperties(_ref, ["data", "className", "form", "columns", "gutter", "layout"]);
+
+  var getFieldDecorator = form.getFieldDecorator;
+  var cols = 24 / columns;
+  var five = columns === 5;
+  return React.createElement(_Form, _extends({
+    className: classNames(styles$4.customForm, className)
+  }, restFormProps), React.createElement(_Row, {
+    gutter: gutter
+  }, data.map(function (_ref2, index) {
+    var label = _ref2.label,
+        name = _ref2.name,
+        component = _ref2.component,
+        style = _ref2.style,
+        className = _ref2.className,
+        _ref2$colSpan = _ref2.colSpan,
+        colSpan = _ref2$colSpan === void 0 ? 1 : _ref2$colSpan,
+        rules = _ref2.rules,
+        initialValue = _ref2.initialValue,
+        restItemProps = _objectWithoutProperties(_ref2, ["label", "name", "component", "style", "className", "colSpan", "rules", "initialValue"]);
+
+    return component ? React.createElement(_Col, {
+      span: five ? 'custom5' : cols * colSpan,
+      key: index,
+      style: five ? _objectSpread2({
+        width: "".concat(20 * colSpan, "%")
+      }, style) : _objectSpread2({}, style),
+      className: className
+    }, React.createElement(_Form.Item, _extends({
+      label: label,
+      className: layout === 'inline' && styles$4.inline
+    }, restItemProps), getFieldDecorator(name || label, {
+      rules: rules,
+      initialValue: initialValue
+    })(component))) : React.createElement(_Col, {
+      span: five ? 'custom5' : cols * colSpan,
+      key: index,
+      style: five && {
+        width: "".concat(20 * colSpan, "%")
+      }
+    }, React.createElement(_Form.Item, {
+      label: " ",
+      style: {
+        visibility: 'hidden'
+      }
+    }, React.createElement(_Input, null)));
+  })));
+});
 
 var usePagination = function usePagination() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -1211,4 +1308,24 @@ var usePagination = function usePagination() {
   return [pageSize, current, setCurrent];
 };
 
-export { index as BasicLayout, index$7 as ConfigForm, CustomButton, CustomCard, CustomCardTabs, CustomModal, index$8 as CustomTable, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$9 as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$a as TimeWeather, index$2 as UserMenu, usePagination };
+var Axios = axios.create({
+  baseURL: config.baseURL,
+  timeout: 1000
+}); // 请求拦截
+
+Axios.interceptors.request.use(function (config) {
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+}); // 响应拦截
+
+Axios.interceptors.response.use(function (res) {
+  var status = res.status;
+  if (status === 200 && res.data) return res.data;else {
+    return res;
+  }
+}, function (error) {
+  return Promise.reject(error);
+});
+
+export { index as BasicLayout, index$7 as ConfigForm, CustomButton, CustomCard, CustomCardTabs, index$b as CustomForm, CustomModal, index$8 as CustomTable, IconFont, index$4 as Notification, index$1 as PageHeaderWrapper, index$9 as SafeNumberInput, SearchTree, index$5 as SwitchSystems, index$3 as SwitchTheme, index$6 as SystemsNav, index$a as TimeWeather, index$2 as UserMenu, Axios as request, usePagination };

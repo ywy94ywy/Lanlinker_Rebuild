@@ -1,65 +1,19 @@
 import React, { Suspense } from 'react';
 import { PageHeaderWrapper } from 'lanlinker';
-
-const resource = fetchProfileData();
+// import Test1 from './test1';
+import Test2 from './test2';
+import Test3 from './test3';
+import Test4 from './test4';
 
 export default () => {
+  console.log(123)
   return (
     <PageHeaderWrapper>
-      暂无页面
-      <Suspense fallback="...loading">
-        <ProfileDetails></ProfileDetails>
-      </Suspense>
+      <div>暂无页面</div>
+      {/* <Test1></Test1> */}
+      {/* <Test2></Test2> */}
+      <Test4></Test4>
+      {/* <Test3></Test3> */}
     </PageHeaderWrapper>
   );
 };
-
-function ProfileDetails() {
-  const user = resource.user.read();
-  return <h1>{user.name}</h1>;
-}
-
-function fetchProfileData() {
-  let userPromise = fetchUser();
-  return {
-    user: wrapPromise(userPromise),
-  };
-}
-
-function wrapPromise(promise) {
-  let status = 'pending';
-  let result;
-  let suspender = promise.then(
-    r => {
-      status = 'success';
-      result = r;
-    },
-    e => {
-      status = 'error';
-      result = e;
-    },
-  );
-  return {
-    read() {
-      if (status === 'pending') {
-        throw suspender;
-      } else if (status === 'error') {
-        throw result;
-      } else if (status === 'success') {
-        return result;
-      }
-    },
-  };
-}
-
-function fetchUser() {
-  console.log('fetch user...');
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('fetched user');
-      resolve({
-        name: 'Ringo Starr',
-      });
-    }, 1000);
-  });
-}

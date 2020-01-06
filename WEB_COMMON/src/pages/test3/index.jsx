@@ -1,77 +1,117 @@
-import React, { useState, useEffect } from "react";
-import { PageHeaderWrapper, CustomCard, CustomTable ,usePagination} from "@/";
-import axios from "../../../utils/request";
+import React, { useState, useEffect, useRef } from 'react'
+import {
+  PageHeaderWrapper,
+  CustomCard,
+  CustomForm,
+  CustomButton,
+  CustomModal,
+} from '@/'
+import { Input, Button } from 'antd'
 
 const index = () => {
-  const [a, setA] = useState({ data: [], total: 0 });
-  const [pageSize, current, onChange] = usePagination();
-
-  useEffect(() => {
-    axios
-      .post(
-        "https://nei.netease.com/api/apimock/20677609c2af996c88be2cd3244301ba/api/table",
-        {
-          pageSize,
-          current
-        }
-      )
-      .then(res => {
-        setA(res);
-      });
-  }, [current]);
-  console.log(current, a.data);
+  const [state, setstate] = useState(false)
+  const ref = useRef()
+  useEffect(() => {})
   return (
-    <PageHeaderWrapper style={{ margin: "0" }}>
+    <PageHeaderWrapper style={{ margin: '0' }}>
       <CustomCard>
-        <CustomTable
-          columns={columns}
-          dataSource={a.data}
-          rowKey={(v, i) => i}
-          pagination={{
-            total: a.total,
-            pageSize,
-            current,
-            onChange
+        <CustomButton.Modal
+          type='a'
+          text='hello '
+          buttonProps={{
+            onClick() {
+              setstate(true)
+            },
           }}
-        ></CustomTable>
+          modalProps={{
+            visible: state,
+            footer: (
+              <Button
+                onClick={() => {
+                  setstate(false)
+                }}
+              >
+                asf
+              </Button>
+            ),
+            onCancel() {
+              setstate(false)
+            },
+          }}
+        ></CustomButton.Modal>
+        <CustomForm
+          data={formData({ t2: 'hello2' })}
+          ref={ref}
+          columns={5}
+        ></CustomForm>
+        <Button
+          onClick={() => {
+            ref.current.validateFields((err, value) => {
+              console.log(value)
+            })
+          }}
+        >
+          teswt
+        </Button>
       </CustomCard>
     </PageHeaderWrapper>
-  );
-};
+  )
+}
 
-const columns = [
-  {
-    title: "培训名称",
-    dataIndex: "a"
-  },
-  {
-    title: "培训类型",
-    dataIndex: "b"
-  },
-  {
-    title: "培训老师",
-    dataIndex: "c"
-  },
-  {
-    title: "培训日期",
-    dataIndex: "d"
-  },
-  {
-    title: "培训时长（小时）",
-    dataIndex: "e"
-  },
-  {
-    title: "培训机构",
-    dataIndex: "f"
-  },
-  {
-    title: "培训地点",
-    dataIndex: "g"
-  },
-  {
-    title: "操作",
-    render: () => <a href="/">修改</a>
-  }
-];
+export default index
 
-export default index;
+const formData = ({ t2 }) => [
+  {
+    label: 'hello',
+    name: 't1',
+    component: <Input></Input>,
+    rules: [{ required: true }],
+  },
+  {
+    label: 'hello2',
+    name: 't2',
+    component: <Input></Input>,
+    initialValue: t2,
+  },
+  {
+    component: null,
+  },
+  {
+    component: null,
+  },
+  {
+    component: null,
+  },
+  {
+    component: null,
+  },
+  {
+    component: null,
+  },
+  {
+    label: 'hello4',
+    name: '1',
+    colSpan: 3,
+    component: <Input></Input>,
+  },
+  {
+    label: 'hello44',
+    name: '2',
+    component: <Input.TextArea></Input.TextArea>,
+  },
+  {
+    label: 'hello444',
+    name: '3',
+    component: <Input></Input>,
+  },
+  {
+    label: 'hello4444',
+    name: '4',
+    component: <Input></Input>,
+  },
+  {
+    label: 'hello44444',
+    name: '5',
+    component: <Input></Input>,
+  },
+]

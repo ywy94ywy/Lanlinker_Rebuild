@@ -1,37 +1,66 @@
-import React, { useState } from "react";
-import CustomModal from "../CustomModal";
-import { Button } from "antd";
+import React, { useState } from 'react'
+import CustomModal from '../CustomModal'
+import { Button } from 'antd'
 
-const CustomButton = Button;
+const CustomButton = Button
 
-export default CustomButton;
+export default CustomButton
 
 CustomButton.Modal = ({
-  buttonProps: { text = "", ...buttonRest } = {},
-  modalProps,
-  children
+  type = 'button',
+  text = '',
+  buttonProps: { onClick, ...buttonRest } = {},
+  modalProps: { visible = null, onCancel, ...modalRest } = {},
+  children,
 }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(visible)
 
   return (
     <>
-      <Button
-        onClick={() => {
-          setState(true);
-        }}
-        {...buttonRest}
-      >
-        {text}
-      </Button>
+      {type === 'button' && (
+        <Button
+          onClick={() => {
+            if (visible !== null) {
+              setState(true)
+            }
+            if (onClick) {
+              onClick()
+            }
+          }}
+          {...buttonRest}
+        >
+          {text}
+        </Button>
+      )}
+      {type === 'a' && (
+        <a
+          onClick={() => {
+            if (visible !== null) {
+              setState(true)
+            }
+            if (onClick) {
+              onClick()
+            }
+          }}
+          {...buttonRest}
+        >
+          {text}
+        </a>
+      )}
       <CustomModal
-        visible={state}
+        visible={visible !== null ? visible : state}
         onCancel={() => {
-          setState(false);
+          if (!visible) {
+            setState(false)
+          }
+          if (onCancel) {
+            onCancel()
+          }
         }}
-        {...modalProps}
+        {...modalRest}
       >
         {children}
       </CustomModal>
     </>
-  );
-};
+  )
+}
