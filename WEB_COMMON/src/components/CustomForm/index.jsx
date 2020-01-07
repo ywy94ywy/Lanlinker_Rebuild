@@ -40,18 +40,24 @@ export default Form.create()(
             ) => {
               return component ? (
                 <Col
-                  span={five ? 'custom5' : cols * colSpan}
+                  span={five ? 555 : cols * colSpan}
                   key={index}
                   style={
                     five
-                      ? { width: `${20 * colSpan}%`, ...style }
+                      ? {
+                          display: 'block',
+                          flex: '0 0 auto',
+                          float: 'left',
+                          width: `${20 * colSpan}%`,
+                          ...style,
+                        }
                       : { ...style }
                   }
                   className={className}
                 >
                   <Form.Item
                     label={label}
-                    className={layout === 'inline' && styles.inline}
+                    className={layout === 'inline' ? styles.inline : null}
                     {...restItemProps}
                   >
                     {getFieldDecorator(name || label, {
@@ -62,9 +68,16 @@ export default Form.create()(
                 </Col>
               ) : (
                 <Col
-                  span={five ? 'custom5' : cols * colSpan}
+                  span={five ? 555 : cols * colSpan}
                   key={index}
-                  style={five && { width: `${20 * colSpan}%` }}
+                  style={
+                    five && {
+                      display: 'block',
+                      flex: '0 0 auto',
+                      float: 'left',
+                      width: `${20 * colSpan}%`,
+                    }
+                  }
                 >
                   <Form.Item label=' ' style={{ visibility: 'hidden' }}>
                     <Input></Input>

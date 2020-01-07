@@ -137,6 +137,10 @@ export default {
           component: './XPP_BFP/auth',
         },
         {
+          path: '/xpplicense',
+          component: './XPP_BFP/license',
+        },
+        {
           path: '/lrmHome',
           component: './LRM/home',
         },

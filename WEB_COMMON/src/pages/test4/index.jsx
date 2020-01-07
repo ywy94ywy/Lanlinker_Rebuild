@@ -1,6 +1,6 @@
 import React from 'react'
-import { PageHeaderWrapper, SearchTree } from '@/'
-import { Tree, Icon } from 'antd'
+import { PageHeaderWrapper, SearchTree, CustomCard } from '@/'
+import { Tree, Icon, Tabs } from 'antd'
 
 const { TreeNode } = Tree
 const fakeTree = [
@@ -57,9 +57,17 @@ const fakeTree = [
 const index = () => {
   return (
     <PageHeaderWrapper>
-      <div style={{ width: 200 }}>
-        <SearchTree data={fakeTree}></SearchTree>
-      </div>
+      <CustomCard title='1231' style={{ width: '250px' }}>
+        <Tabs>
+          <Tabs.TabPane tab='1' key='1'>
+            <SearchTree
+              data={fakeTree}
+              style={{ height: '300px' }}
+            ></SearchTree>
+          </Tabs.TabPane>
+          <Tabs.TabPane tab='2' key='2'></Tabs.TabPane>
+        </Tabs>
+      </CustomCard>
     </PageHeaderWrapper>
   )
 }

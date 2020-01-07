@@ -1,3 +1,7 @@
+/**
+ * @module 首页
+ * @todo 重构
+ */
 import React, { useState, useEffect } from 'react';
 import { Col, Dropdown, Icon, Menu, Row } from 'antd';
 import { PageHeaderWrapper } from 'lanlinker';

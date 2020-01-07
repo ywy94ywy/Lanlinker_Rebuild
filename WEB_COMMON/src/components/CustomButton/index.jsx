@@ -13,14 +13,15 @@ CustomButton.Modal = ({
   modalProps: { visible = null, onCancel, ...modalRest } = {},
   children,
 }) => {
-  const [state, setState] = useState(visible)
-
+  const [state, setState] = useState(false)
+  const noVisible = visible === null
+  
   return (
     <>
       {type === 'button' && (
         <Button
           onClick={() => {
-            if (visible !== null) {
+            if (noVisible) {
               setState(true)
             }
             if (onClick) {
@@ -35,7 +36,7 @@ CustomButton.Modal = ({
       {type === 'a' && (
         <a
           onClick={() => {
-            if (visible !== null) {
+            if (noVisible) {
               setState(true)
             }
             if (onClick) {
@@ -48,9 +49,9 @@ CustomButton.Modal = ({
         </a>
       )}
       <CustomModal
-        visible={visible !== null ? visible : state}
+        visible={noVisible ? state : visible}
         onCancel={() => {
-          if (!visible) {
+          if (noVisible) {
             setState(false)
           }
           if (onCancel) {

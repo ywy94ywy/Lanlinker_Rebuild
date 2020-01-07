@@ -162,6 +162,12 @@ const fakeMenu = [
         icon: 'skin',
         key: 'Tfor4nmAnS',
       },
+      {
+        path: '/xpplicense',
+        name: '系统执照管理',
+        icon: 'skin',
+        key: 'Tfor4nmAnS2',
+      },
     ],
     key: 'hlCIZGbe5b',
   },

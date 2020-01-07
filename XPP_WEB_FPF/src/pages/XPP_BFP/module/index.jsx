@@ -1,132 +1,77 @@
 /**
  * @module 模块综合管理
  * @author DesYang
- * @todo 模态框内容、样式抽离
+ * @todo 模态框内容
  */
-import React, { useState } from 'react';
-import { Card, Row, Col, Tabs, Icon, Table, Button, Modal } from 'antd';
-import { PageHeaderWrapper, CustomCard, SearchTree, CustomModal } from 'lanlinker';
+import React from 'react';
+import { Tabs, Button, Modal } from 'antd';
+import { PageHeaderWrapper, CustomCard, SearchTree, CustomTable, CustomButton } from 'lanlinker';
+import ManageLayout from '@/components/ManageLayout';
+import DataManagement from '@/components/DataManagement';
 import styles from './style.less';
 
 const { TabPane } = Tabs;
 const { confirm } = Modal;
 
 export default () => {
-  const [addModal, setAddModal] = useState(false);
-  const [modifyModal, setModifyModal] = useState(false);
-
   return (
-    <PageHeaderWrapper className={styles.module}>
-      <Row gutter={24} type="flex" className={styles.top}>
-        <Col className={styles.left}>
-          <Card
-            title="模块组别管理"
-            bodyStyle={{ padding: 0 }}
-            className={styles.card}
-            bordered={null}
-          >
-            <Tabs tabBarGutter={6} className={styles.tabs}>
-              <TabPane tab="模块菜单分类" key="1">
-                <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
-              </TabPane>
-              <TabPane tab="模块权限标签" key="2">
-                <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
-              </TabPane>
-            </Tabs>
-          </Card>
-        </Col>
-        <Col className={styles.right}>
-          <Card title="模块详细列表" className={styles.card}>
-            <Row type="flex" justify="space-between">
-              <div className={styles.buttons}>
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    setAddModal(true);
-                  }}
-                >
-                  新增
-                </Button>
-                <CustomModal
-                  title="新增"
-                  visible={addModal}
-                  onCancel={() => {
-                    setAddModal(false);
-                  }}
-                >
-                  123
-                </CustomModal>
-                <Button
-                  type="danger"
-                  onClick={() => {
-                    confirm({
-                      title: '确定删除记录?',
-                      onOk() {
-                        console.log('OK');
-                      },
-                    });
-                  }}
-                >
-                  删除
-                </Button>
-                <Button
-                  type="primary"
-                  onClick={() => {
-                    setModifyModal(true);
-                  }}
-                >
-                  修改
-                </Button>
-                <CustomModal
-                  title="修改"
-                  visible={modifyModal}
-                  onCancel={() => {
-                    setModifyModal(false);
-                  }}
-                >
-                  123
-                </CustomModal>
-              </div>
-            </Row>
-            <Table
-              className={styles.table}
-              rowSelection={rowSelection}
-              rowKey={(v, i) => i}
-              columns={columns}
-              dataSource={data}
-              scroll={{ x: 3800, y: 400 }}
-              bordered
-            ></Table>
-          </Card>
-        </Col>
-      </Row>
+    <PageHeaderWrapper className={styles.moduleManagement}>
+      <ManageLayout>
+        <ManageLayout.LeftCard title="模块组别列表">
+          <Tabs tabBarGutter={6}>
+            <TabPane tab="模块菜单分类" key="1">
+              <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
+            </TabPane>
+            <TabPane tab="模块权限标签" key="2">
+              <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
+            </TabPane>
+          </Tabs>
+        </ManageLayout.LeftCard>
+        <ManageLayout.RightCard title="模块详细列表">
+          <CustomTable
+            rowSelection={rowSelection}
+            rowKey={(v, i) => i}
+            columns={columns}
+            dataSource={data}
+            pagination={true}
+            scroll={{ x: 3800, y: 380 }}
+            actions={{
+              left: (
+                <>
+                  <CustomButton.Modal
+                    text="新增"
+                    buttonProps={{
+                      type: 'primary',
+                    }}
+                  ></CustomButton.Modal>
+                  <Button
+                    type="danger"
+                    onClick={() => {
+                      confirm({
+                        title: '确定删除记录?',
+                        onOk() {
+                          console.log('OK');
+                        },
+                      });
+                    }}
+                  >
+                    删除
+                  </Button>
+                  <CustomButton.Modal
+                    text="修改"
+                    buttonProps={{
+                      type: 'primary',
+                    }}
+                  ></CustomButton.Modal>
+                </>
+              ),
+            }}
+          ></CustomTable>
+        </ManageLayout.RightCard>
+      </ManageLayout>
+
       <CustomCard title="数据管理" marginTop>
-        <Row type="flex" justify="space-around">
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-          <div className={styles.optionCard}>
-            <Icon type="file-done"></Icon>
-            <div className={styles.text}>导入分类数据</div>
-          </div>
-        </Row>
+        <DataManagement />
       </CustomCard>
     </PageHeaderWrapper>
   );

@@ -41,7 +41,7 @@ export const CustomCardTabs = ({
       marginTop={marginTop}
       marginLeft={marginLeft}
     >
-      <Tabs size="large" {...props}>
+      <Tabs size="large" {...props} className={styles.tabs}>
         {children}
       </Tabs>
     </CustomCard>

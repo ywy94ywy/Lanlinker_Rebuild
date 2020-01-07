@@ -919,8 +919,8 @@ var index$7 = _Form.create()(function (_ref) {
   }));
 });
 
-var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar {\n  margin-bottom: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-extra-content {\n  padding-right: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container {\n  padding-left: 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-bar > .ant-tabs-nav-container .ant-tabs-tab {\n  padding: 17px 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-body > .ant-tabs > .ant-tabs-content > .ant-tabs-tabpane {\n  padding: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCardMT_1qLZi.src-components-CustomCard-_customCardMT_1qLZi {\n  margin-top: 24px;\n}\n.src-components-CustomCard-_customCardML_2YjE3.src-components-CustomCard-_customCardML_2YjE3 {\n  margin-left: 24px;\n}\n";
-var styles$2 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","customCardMT":"src-components-CustomCard-_customCardMT_1qLZi","customCardML":"src-components-CustomCard-_customCardML_2YjE3"};
+var css$8 = "/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */\n/* stylelint-disable no-duplicate-selectors */\n/* stylelint-disable */\n/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */\n.src-components-CustomCard-_customCard_1U1Q1 .ant-card-extra {\n  padding: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_tabs_2sVqg .ant-tabs-bar {\n  margin-bottom: 0;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_tabs_2sVqg .ant-tabs-bar > .ant-tabs-extra-content {\n  padding-right: 24px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_tabs_2sVqg .ant-tabs-bar > .ant-tabs-nav-container {\n  padding-left: 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_tabs_2sVqg .ant-tabs-bar > .ant-tabs-nav-container .ant-tabs-tab {\n  padding: 17px 16px;\n}\n.src-components-CustomCard-_customCard_1U1Q1 .src-components-CustomCard-_tabs_2sVqg .ant-tabs-content > .ant-tabs-tabpane {\n  padding: 24px;\n}\n.src-components-CustomCard-_customCardMT_1qLZi.src-components-CustomCard-_customCardMT_1qLZi {\n  margin-top: 24px;\n}\n.src-components-CustomCard-_customCardML_2YjE3.src-components-CustomCard-_customCardML_2YjE3 {\n  margin-left: 24px;\n}\n";
+var styles$2 = {"customCard":"src-components-CustomCard-_customCard_1U1Q1","tabs":"src-components-CustomCard-_tabs_2sVqg","customCardMT":"src-components-CustomCard-_customCardMT_1qLZi","customCardML":"src-components-CustomCard-_customCardML_2YjE3"};
 styleInject(css$8);
 
 var CustomCard = function CustomCard(_ref) {
@@ -949,7 +949,9 @@ var CustomCardTabs = function CustomCardTabs(_ref2) {
     marginLeft: marginLeft
   }, React__default.createElement(_Tabs, _extends({
     size: "large"
-  }, props), children));
+  }, props, {
+    className: styles$2.tabs
+  }), children));
 };
 CustomCardTabs.TabPane = _Tabs.TabPane;
 
@@ -1193,14 +1195,15 @@ CustomButton.Modal = function (_ref) {
       modalRest = _objectWithoutProperties(_ref$modalProps, ["visible", "onCancel"]),
       children = _ref.children;
 
-  var _useState = React.useState(visible),
+  var _useState = React.useState(false),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
+  var noVisible = visible === null;
   return React__default.createElement(React__default.Fragment, null, type === 'button' && React__default.createElement(_Button, _extends({
     onClick: function onClick() {
-      if (visible !== null) {
+      if (noVisible) {
         setState(true);
       }
 
@@ -1210,7 +1213,7 @@ CustomButton.Modal = function (_ref) {
     }
   }, buttonRest), text), type === 'a' && React__default.createElement("a", _extends({
     onClick: function onClick() {
-      if (visible !== null) {
+      if (noVisible) {
         setState(true);
       }
 
@@ -1219,9 +1222,9 @@ CustomButton.Modal = function (_ref) {
       }
     }
   }, buttonRest), text), React__default.createElement(CustomModal, _extends({
-    visible: visible !== null ? visible : state,
+    visible: noVisible ? state : visible,
     onCancel: function onCancel() {
-      if (!visible) {
+      if (noVisible) {
         setState(false);
       }
 
@@ -1232,7 +1235,7 @@ CustomButton.Modal = function (_ref) {
   }, modalRest), children));
 };
 
-var css$b = ".src-components-CustomForm-_customForm_LRxdd .ant-col-custom5 {\n  display: block;\n  -webkit-box-flex: 0;\n          flex: 0 0 auto;\n  float: left;\n}\n.src-components-CustomForm-_customForm_LRxdd .ant-calendar-picker {\n  width: 100%;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF {\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF .ant-form-item-control-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n";
+var css$b = ".src-components-CustomForm-_customForm_LRxdd .ant-calendar-picker {\n  width: 100%;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF {\n  display: -webkit-box;\n  display: flex;\n}\n.src-components-CustomForm-_customForm_LRxdd .src-components-CustomForm-_inline_3I9TF .ant-form-item-control-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n";
 var styles$4 = {"customForm":"src-components-CustomForm-_customForm_LRxdd","inline":"src-components-CustomForm-_inline_3I9TF"};
 styleInject(css$b);
 
@@ -1268,22 +1271,28 @@ var index$b = _Form.create()(function (_ref) {
         restItemProps = _objectWithoutProperties(_ref2, ["label", "name", "component", "style", "className", "colSpan", "rules", "initialValue"]);
 
     return component ? React__default.createElement(_Col, {
-      span: five ? 'custom5' : cols * colSpan,
+      span: five ? 555 : cols * colSpan,
       key: index,
       style: five ? _objectSpread2({
+        display: 'block',
+        flex: '0 0 auto',
+        float: 'left',
         width: "".concat(20 * colSpan, "%")
       }, style) : _objectSpread2({}, style),
       className: className
     }, React__default.createElement(_Form.Item, _extends({
       label: label,
-      className: layout === 'inline' && styles$4.inline
+      className: layout === 'inline' ? styles$4.inline : null
     }, restItemProps), getFieldDecorator(name || label, {
       rules: rules,
       initialValue: initialValue
     })(component))) : React__default.createElement(_Col, {
-      span: five ? 'custom5' : cols * colSpan,
+      span: five ? 555 : cols * colSpan,
       key: index,
       style: five && {
+        display: 'block',
+        flex: '0 0 auto',
+        float: 'left',
         width: "".concat(20 * colSpan, "%")
       }
     }, React__default.createElement(_Form.Item, {
