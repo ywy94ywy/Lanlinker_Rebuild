@@ -9,6 +9,7 @@
 import { Fragment, useState, useReducer, useCallback } from 'react';
 import { PageHeaderWrapper, CustomCard } from 'lanlinker';
 import { Row, Col, Table, Button, Select, Input } from 'antd';
+import License from '@/components/License';
 import style from './style.less';
 import person from './imgs/person.png';
 
@@ -335,8 +336,36 @@ export default () => {
       <CustomCard title="用户实名认证情况列表" marginTop>
         <Table columns={columns} dataSource={dataSource}></Table>
       </CustomCard>
+      <CustomCard title="企业信息管理">
+        <License style={{ width: 711 }} data={data}></License>
+        <Row type="flex" justify="end" style={{ marginTop: 20 }}>
+          <Button type="primary">保存</Button>
+          <Button type="primary" style={{ marginLeft: 10 }}>
+            实名认证提交
+          </Button>
+        </Row>
+      </CustomCard>
+      <CustomCard title="用户实名认证情况列表" marginTop>
+        <Table columns={columns} dataSource={dataSource}></Table>
+      </CustomCard>
     </PageHeaderWrapper>
   );
+};
+
+const data = {
+  a: '913206811388888888',
+  b: '320681000000000',
+  c: '江苏南通二建集团有限公司',
+  d: '有限责任公司',
+  e: '上海市人民中路888号',
+  f: '杨晓东',
+  g: '人民币18500万元整',
+  h: '2001-11-12',
+  i: '2001-06-18 ~ 2033-12-02',
+  j:
+    '房屋建筑工程总承包（特级）；市政公用工程施工总承包（壹级）；建筑装修装饰工程专业承包（壹级）；机电设备安装工程专业承包（壹级）；钢结构工程专业承包（壹级）；机电安装工程施工总承包（贰级）；消防设施工程专业承包（贰级）；地基基础工程专业承包（贰级）；起重设备安装工程专业承包（贰级）（涉及专项审批的，在审批机关批准的经营期限内从事经营）；承包与其实力、规模、业绩相适应的国外工程项目；五金、建筑材料销售；建筑施工机械设备租赁，园林绿化工程施工，模块化建筑技术研发、组装。（依法须经批准的项目，经相关部门批准后方可开展经营活动）',
+  k: '上海市市场监督管理局',
+  l: '2001-06-18',
 };
 
 const dataSource = [

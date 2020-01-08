@@ -71,7 +71,6 @@ export default {
   targets: {
     ie: 11,
   },
-  // umi routes: https://umijs.org/zh/guide/router.html
   routes: [
     {
       path: '/user',
@@ -83,6 +82,10 @@ export default {
           component: './user/login',
         },
       ],
+    },
+    {
+      path: '/login',
+      component: './login',
     },
     {
       path: '/',

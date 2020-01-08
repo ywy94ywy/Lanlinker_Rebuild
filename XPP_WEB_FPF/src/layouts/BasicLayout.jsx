@@ -49,7 +49,12 @@ export default connect(({ user: { userInfo } }) => ({
         <>
           <SwitchTheme />
           <Notification />
-          <UserMenu user={userInfo} />
+          <UserMenu
+            user={userInfo}
+            logout={() => {
+              router.push('/login');
+            }}
+          />
         </>
       }
       siderWidth={230}

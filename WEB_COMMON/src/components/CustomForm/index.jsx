@@ -10,7 +10,7 @@ export default Form.create()(
     form,
     columns = 1,
     gutter = 24,
-    layout,
+    layout = 'horizontal',
     ...restFormProps
   }) => {
     const { getFieldDecorator } = form
@@ -79,7 +79,13 @@ export default Form.create()(
                     }
                   }
                 >
-                  <Form.Item label=' ' style={{ visibility: 'hidden' }}>
+                  <Form.Item
+                    label=' '
+                    style={{
+                      visibility: 'hidden',
+                      ...{ display: layout === 'inline' && 'flex' },
+                    }}
+                  >
                     <Input></Input>
                   </Form.Item>
                 </Col>

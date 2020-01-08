@@ -4,7 +4,7 @@ import styles from './style.less';
 import classNames from 'classnames';
 import license from './license.png';
 
-export default ({ className, data, ...props }) => {
+export default ({ className, data = {}, ...props }) => {
   const { a, b, c, d, e, f, g, h, i, j, k, l } = data;
   return (
     <div className={classNames(styles.license, className)} {...props}>

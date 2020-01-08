@@ -2,12 +2,16 @@
  * @module 系统执照管理
  * @author DesYang
  */
-
+import { useRef } from 'react';
 import { CustomCard, CustomTable, PageHeaderWrapper, CustomButton } from 'lanlinker';
-import { Input, Button } from 'antd';
+import { Input, Button, Form, Modal } from 'antd';
 import DataManagement from '@/components/DataManagement';
 
+const { confirm } = Modal;
+
 export default () => {
+  const ref = useRef();
+
   return (
     <PageHeaderWrapper>
       <CustomCard title="执照详细列表" style={{ height: '660px' }}>
@@ -24,8 +28,28 @@ export default () => {
                 buttonProps={{
                   type: 'primary',
                 }}
-                modalProps={{ title: '新增执照' }}
-              ></CustomButton.Modal>
+                modalProps={{
+                  title: '新增执照',
+                  bodyStyle: {
+                    height: 100,
+                  },
+                  onOk() {
+                    ref.current.validateFields((err, value) => {
+                      if (!err) {
+                        confirm({
+                          title: '是否确认激活?',
+                          content: '试用卡，剩余时间96天。',
+                          onOk() {
+                            console.log('OK');
+                          },
+                        });
+                      }
+                    });
+                  },
+                }}
+              >
+                <FormWrapper ref={ref} />
+              </CustomButton.Modal>
             ),
             right: (
               <>
@@ -42,6 +66,20 @@ export default () => {
     </PageHeaderWrapper>
   );
 };
+
+const FormWrapper = Form.create()(({ form }) => {
+  const { getFieldDecorator } = form;
+  
+  return (
+    <Form layout="inline" style={{ margin: '0 auto', width: 'fit-content' }}>
+      <Form.Item label="激活码">
+        {getFieldDecorator('code', { rules: [{ required: true, message: '请输入激活码' }] })(
+          <Input></Input>,
+        )}
+      </Form.Item>
+    </Form>
+  );
+});
 
 const columns = [
   {

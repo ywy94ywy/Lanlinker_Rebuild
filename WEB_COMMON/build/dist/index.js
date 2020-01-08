@@ -1248,7 +1248,8 @@ var index$b = _Form.create()(function (_ref) {
       columns = _ref$columns === void 0 ? 1 : _ref$columns,
       _ref$gutter = _ref.gutter,
       gutter = _ref$gutter === void 0 ? 24 : _ref$gutter,
-      layout = _ref.layout,
+      _ref$layout = _ref.layout,
+      layout = _ref$layout === void 0 ? 'horizontal' : _ref$layout,
       restFormProps = _objectWithoutProperties(_ref, ["data", "className", "form", "columns", "gutter", "layout"]);
 
   var getFieldDecorator = form.getFieldDecorator;
@@ -1297,9 +1298,11 @@ var index$b = _Form.create()(function (_ref) {
       }
     }, React__default.createElement(_Form.Item, {
       label: " ",
-      style: {
+      style: _objectSpread2({
         visibility: 'hidden'
-      }
+      }, {
+        display: layout === 'inline' && 'flex'
+      })
     }, React__default.createElement(_Input, null)));
   })));
 });

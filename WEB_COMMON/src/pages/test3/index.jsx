@@ -43,6 +43,7 @@ const index = () => {
           data={formData({ t2: 'hello2' })}
           ref={ref}
           columns={5}
+          // layout='inline'
         ></CustomForm>
         <Button
           onClick={() => {
@@ -55,8 +56,12 @@ const index = () => {
         </Button>
       </CustomCard>
       <CustomCardTabs>
-        <CustomCardTabs.TabPane tab='111' key='1'>1111</CustomCardTabs.TabPane>
-        <CustomCardTabs.TabPane tab='222' key='2'>2222</CustomCardTabs.TabPane>
+        <CustomCardTabs.TabPane tab='111' key='1'>
+          1111
+        </CustomCardTabs.TabPane>
+        <CustomCardTabs.TabPane tab='222' key='2'>
+          2222
+        </CustomCardTabs.TabPane>
       </CustomCardTabs>
     </PageHeaderWrapper>
   )

@@ -1,17 +1,30 @@
 /**
  * @module 用户综合管理
  * @author DesYang
- * @todo 模态框内容
  */
 import React from 'react';
-import { PageHeaderWrapper, CustomCard, SearchTree, CustomTable, CustomButton } from 'lanlinker';
+import {
+  PageHeaderWrapper,
+  CustomCard,
+  SearchTree,
+  CustomTable,
+  CustomButton,
+  CustomForm,
+} from 'lanlinker';
 import { Tabs, Button, Input, Checkbox, Modal } from 'antd';
 import ManageLayout from '@/components/ManageLayout';
 import DataManagement from '@/components/DataManagement';
+import userForm from './forms/user';
+import accountForm from './forms/account';
+import baseForm from './forms/base';
+import walletForm from './forms/wallet';
+import certificateForm from './forms/certificate';
+import securityForm from './forms/security';
+import bindForm from './forms/bind';
+import logForm from './forms/log';
 import styles from './style.less';
 
 const { TabPane } = Tabs;
-const { Search } = Input;
 const { confirm } = Modal;
 
 export default () => {
@@ -47,7 +60,49 @@ export default () => {
                     buttonProps={{
                       type: 'primary',
                     }}
-                  ></CustomButton.Modal>
+                    modalProps={{
+                      title: '新增',
+                      width: 920,
+                      wrapClassName: styles.userManagementModal,
+                    }}
+                  >
+                    <CustomForm data={userForm()} layout="inline" columns={2}></CustomForm>
+                    <Tabs tabBarGutter={24}>
+                      <Tabs.TabPane tab="账号信息" key="账号信息">
+                        <CustomForm data={accountForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="基本信息" key="基本信息">
+                        <CustomForm data={baseForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="钱包信息" key="钱包信息">
+                        <CustomForm data={walletForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="证件信息" key="证件信息">
+                        <CustomForm
+                          data={certificateForm()}
+                          layout="inline"
+                          columns={2}
+                        ></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="安全信息" key="安全信息">
+                        <CustomForm data={securityForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="绑定信息" key="绑定信息">
+                        <CustomForm data={bindForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="日志信息" key="日志信息">
+                        <CustomForm data={logForm()} layout="inline" columns={2}></CustomForm>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="执照信息" key="执照信息">
+                        <CustomTable
+                          columns={columns2}
+                          dataSource={data}
+                          rowKey={(v, i) => i}
+                          scroll={{ x: 1370, y: 220 }}
+                        ></CustomTable>
+                      </Tabs.TabPane>
+                    </Tabs>
+                  </CustomButton.Modal>
                   <Button
                     type="danger"
                     onClick={() => {
@@ -74,12 +129,6 @@ export default () => {
                   <Checkbox style={{ width: 100 }}>组别继承</Checkbox>
                   <Input style={{ width: 200 }} placeholder="请输入"></Input>
                   <Button type="primary">搜索</Button>
-                  {/* <Search
-                    placeholder="请输入"
-                    enterButton="搜索"
-                    onSearch={value => console.log(value)}
-                    className={styles.search}
-                  /> */}
                 </>
               ),
             }}
@@ -173,6 +222,37 @@ const columns = [
   {
     title: '用户通用积分总额',
     dataIndex: 'l',
+  },
+];
+
+const columns2 = [
+  {
+    title: '用户执照编号',
+    dataIndex: 'a',
+  },
+  {
+    title: '用户执照名称',
+    dataIndex: 'b',
+  },
+  {
+    title: '用户执照授权开始时间',
+    dataIndex: 'c',
+  },
+  {
+    title: '用户执照授权结束时间',
+    dataIndex: 'd',
+  },
+  {
+    title: '用户执照授权码',
+    dataIndex: 'e',
+  },
+  {
+    title: '用户执照授权码',
+    dataIndex: 'f',
+  },
+  {
+    title: '用户执照编号',
+    render: () => <a>删除</a>,
   },
 ];
 const data = [

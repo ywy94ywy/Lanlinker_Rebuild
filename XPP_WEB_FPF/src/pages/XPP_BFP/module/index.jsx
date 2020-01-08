@@ -4,10 +4,20 @@
  * @todo 模态框内容
  */
 import React from 'react';
-import { Tabs, Button, Modal } from 'antd';
-import { PageHeaderWrapper, CustomCard, SearchTree, CustomTable, CustomButton } from 'lanlinker';
+import { Tabs, Button, Modal, Row, Col, Avatar } from 'antd';
+import {
+  PageHeaderWrapper,
+  CustomCard,
+  SearchTree,
+  CustomTable,
+  CustomButton,
+  CustomForm,
+} from 'lanlinker';
 import ManageLayout from '@/components/ManageLayout';
 import DataManagement from '@/components/DataManagement';
+import moduleForm from './forms/module';
+import accountForm from './forms/account';
+import baseForm from './forms/base';
 import styles from './style.less';
 
 const { TabPane } = Tabs;
@@ -43,7 +53,46 @@ export default () => {
                     buttonProps={{
                       type: 'primary',
                     }}
-                  ></CustomButton.Modal>
+                    modalProps={{
+                      title: '新增',
+                      width: 920,
+                      bodyStyle: {
+                        height: 640,
+                        overflowX: 'auto',
+                      },
+                      wrapClassName: styles.moduleManagementModal,
+                    }}
+                  >
+                    <CustomForm
+                      data={moduleForm()}
+                      layout="inline"
+                      columns={2}
+                      labelCol={{ span: 10 }}
+                    ></CustomForm>
+                    <Tabs>
+                      <Tabs.TabPane tab="账号信息" key="1">
+                        <Row>
+                          <Col span={12}>
+                            <CustomForm
+                              data={accountForm()}
+                              layout="inline"
+                              labelCol={{ span: 9 }}
+                            ></CustomForm>
+                          </Col>
+                          <Col span={12}>
+                            <User></User>
+                          </Col>
+                        </Row>
+                      </Tabs.TabPane>
+                      <Tabs.TabPane tab="基本信息" key="2">
+                        <CustomForm
+                          data={baseForm()}
+                          layout="inline"
+                          labelCol={{ span: 4 }}
+                        ></CustomForm>
+                      </Tabs.TabPane>
+                    </Tabs>
+                  </CustomButton.Modal>
                   <Button
                     type="danger"
                     onClick={() => {
@@ -74,6 +123,43 @@ export default () => {
         <DataManagement />
       </CustomCard>
     </PageHeaderWrapper>
+  );
+};
+
+const User = () => {
+  return (
+    <div className={styles.user}>
+      <Avatar
+        src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+        size={180}
+      ></Avatar>
+      <CustomButton.Modal
+        text="更换头像"
+        buttonProps={{
+          icon: 'upload',
+          className: styles.upload,
+        }}
+        modalProps={{
+          title: '上传头像',
+        }}
+      >
+        暂无页面
+      </CustomButton.Modal>
+      <div className={styles.info}>
+        <p>
+          <span>图标中文名称：</span>
+          <span>蓝瓴科技</span>
+        </p>
+        <p>
+          <span>图标fontclass英文名称：</span>
+          <span>icon-logo-enterprise-lanlinker</span>
+        </p>
+        <p>
+          <span>图标unicode英文名称：</span>
+          <span>e69b</span>
+        </p>
+      </div>
+    </div>
   );
 };
 
