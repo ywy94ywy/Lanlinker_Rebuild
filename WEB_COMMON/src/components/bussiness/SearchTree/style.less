@@ -1,17 +1,11 @@
 @marginBottom: 8px;
 
-.tree {
-  height: 100%;
-  .search {
+.searchTree {
+  > .search {
     margin-bottom: @marginBottom;
   }
-  .searchTree {
+  > .tree {
     overflow: auto;
     height: calc(100% - 32px - @marginBottom);
-  }
-  :global {
-    .react-contextmenu-wrapper {
-      display: inline;
-    }
   }
 }

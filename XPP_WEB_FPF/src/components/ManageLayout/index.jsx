@@ -13,8 +13,8 @@ const ManageLayout = ({ children, className, ...props }) => (
   </Layout>
 );
 
-ManageLayout.LeftCard = ({ children, style, ...props }) => (
-  <Layout.Sider theme="light" width={365}>
+ManageLayout.LeftCard = ({ children, style, width = 365, ...props }) => (
+  <Layout.Sider theme="light" width={width}>
     <CustomCard
       style={{ height: '100%', overflow: 'hidden', ...style }}
       bodyStyle={{ padding: 0 }}

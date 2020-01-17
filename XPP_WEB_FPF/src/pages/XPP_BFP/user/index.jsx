@@ -11,9 +11,12 @@ import {
   CustomButton,
   CustomForm,
 } from 'lanlinker';
-import { Tabs, Button, Input, Checkbox, Modal } from 'antd';
+import { Tabs, Button, Input, Checkbox, Modal, Menu } from 'antd';
 import ManageLayout from '@/components/ManageLayout';
 import DataManagement from '@/components/DataManagement';
+import styles from './style.less';
+
+// 表单
 import userForm from './forms/user';
 import accountForm from './forms/account';
 import baseForm from './forms/base';
@@ -22,7 +25,6 @@ import certificateForm from './forms/certificate';
 import securityForm from './forms/security';
 import bindForm from './forms/bind';
 import logForm from './forms/log';
-import styles from './style.less';
 
 const { TabPane } = Tabs;
 const { confirm } = Modal;
@@ -31,16 +33,34 @@ export default () => {
   return (
     <PageHeaderWrapper className={styles.userManagement}>
       <ManageLayout>
-        <ManageLayout.LeftCard title="用户组别列表">
-          <Tabs tabBarGutter={6}>
+        <ManageLayout.LeftCard
+          title="用户组别列表"
+          // width={465}
+        >
+          <Tabs tabBarGutter={0}>
             <TabPane tab="用户职能分类" key="1">
-              <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
+              <SearchTreeWrapper
+                data={fakeTree}
+                rightClickMenuId="XPP_BFP_BUSSINESS_USERMANAGER1"
+              ></SearchTreeWrapper>
             </TabPane>
-            <TabPane tab="用户项目标签" key="2">
-              <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
+            <TabPane tab="承建工程标签" key="2">
+              <SearchTreeWrapper
+                data={fakeTree}
+                rightClickMenuId="XPP_BFP_BUSSINESS_USERMANAGER2"
+              ></SearchTreeWrapper>
             </TabPane>
-            <TabPane tab="用户权限标签" key="3">
-              <SearchTree data={fakeTree} className={styles.searchTree}></SearchTree>
+            <TabPane tab="监督工程标签" key="3">
+              <SearchTreeWrapper
+                data={fakeTree}
+                rightClickMenuId="XPP_BFP_BUSSINESS_USERMANAGER3"
+              ></SearchTreeWrapper>
+            </TabPane>
+            <TabPane tab="用户权限标签" key="4">
+              <SearchTreeWrapper
+                data={fakeTree}
+                rightClickMenuId="XPP_BFP_BUSSINESS_USERMANAGER4"
+              ></SearchTreeWrapper>
             </TabPane>
           </Tabs>
         </ManageLayout.LeftCard>
@@ -160,6 +180,31 @@ export default () => {
         />
       </CustomCard>
     </PageHeaderWrapper>
+  );
+};
+
+const SearchTreeWrapper = ({ ...props }) => {
+  return (
+    <SearchTree
+      titleName="name"
+      className={styles.searchTree}
+      rightClickMenu={e => {
+        return (
+          <Menu>
+            <Menu.Item
+              onClick={() => {
+                console.log(e);
+              }}
+            >
+              新增
+            </Menu.Item>
+            <Menu.Item>删除</Menu.Item>
+            <Menu.Item>排序</Menu.Item>
+          </Menu>
+        );
+      }}
+      {...props}
+    ></SearchTree>
   );
 };
 

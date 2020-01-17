@@ -50,9 +50,9 @@ body {
 }
 
 /* 样式被antd覆盖 fix */
-.ant-tree.ant-tree-show-line.hide-file-icon li:before {
+/* .ant-tree.ant-tree-show-line.hide-file-icon li:before {
   margin: 0 !important;
 }
 .ant-tree.ant-tree-show-line li:not(:last-child)::before {
   height: 100% !important;
-}
+} */
